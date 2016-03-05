@@ -305,7 +305,9 @@ body:not(#afui) .upage-outer {
   }
 }
 @media all {
-  
+  #afui .d-margins {
+    margin-top: 10px;
+  }
 }
 @media all {
   #afui .color {
@@ -360,6 +362,14 @@ body:not(#afui) .upage-outer {
 }
 .right-receptacle {
   float: right;
+}
+[data-uib="media/text"] p:first-of-type {
+  margin-top: 0px;
+}
+.ellipsis {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
 }
 #afui .with-label label.narrow-control {
   float: none;

@@ -87,112 +87,39 @@
         <script>
             af.ui.useOSThemes = false;
         </script>
+        <script type="application/javascript" src="app_framework/themeRelease.js"></script>
+        <script type="application/javascript" src="xdk/ad/af_subpage.js"></script>
     </head>
 
-    <body id="afui" class="af">
+    <body id="afui" class="ios7">
 
         <!-- IMPORTANT: Do not include a weinre script tag as part of your release builds! -->
         <!-- Place your remote debugging (weinre) script URL from the Test tab here, if it does not work above -->
         <!-- <script src="http://debug-software.intel.com/target/target-script-min.js#insertabiglongfunkynumberfromthexdkstesttab"></script> -->
         <header class="wrapping-col wrap-element uib_w_1" data-uib="app_framework/header" data-ver="2" id="af-header-1">
-            <h1>App Framework</h1>
+            <h1>Dive Buddies</h1>
         </header>
         <div id="content" class="uwrap">
             <div class="upage panel" id="mainpage" data-header="af-header-1" data-footer="none">
                 <div class="upage-outer">
-                    <div class="upage-content content-area vertical-col" id="page_100_31"><a class="button widget uib_w_2 d-margins color e-margins icon info" data-uib="app_framework/button" data-ver="1" id="mainButton">SideBar Trigger</a>
-                        <div class="button-grouped flex widget uib_w_3 d-margins" data-uib="app_framework/button_group" data-ver="1"><a class="button widget uib_w_4 color1" data-uib="app_framework/button" data-ver="1" style="border-left-width: 1px; border-left-style: solid; border-left-color: rgb(102, 102, 102); border-top-left-radius: 6px; border-bottom-left-radius: 6px;"
-                            id="button1">Button</a><a class="button widget uib_w_5 color2" data-uib="app_framework/button" data-ver="1" id="button2">Button</a><a class="button widget uib_w_6 color3" data-uib="app_framework/button" data-ver="1" style="border-top-right-radius: 6px; border-bottom-right-radius: 6px;">Button</a>
-                        </div>
+                    <div class="upage-content content-area vertical-col" id="page_100_31">
 
-                        <div class="table-thing with-label widget uib_w_8 d-margins" data-uib="app_framework/checkbox_group" data-ver="1">
-                            <label class="narrow-control label-inline">Group</label>
-                            <div class="wide-control">
-                                <div class="widget uib_w_9" data-uib="app_framework/checkbox" data-ver="1">
-                                    <input type="checkbox" id="af-checkbox-0">
-                                    <label class="content-box" for="af-checkbox-0">Checkbox</label>
-                                </div>
-                                <div class="widget uib_w_10" data-uib="app_framework/checkbox" data-ver="1">
-                                    <input type="checkbox" id="af-checkbox-1">
-                                    <label class="content-box" for="af-checkbox-1">Checkbox</label>
-                                </div>
-                                <div class="widget uib_w_11" data-uib="app_framework/checkbox" data-ver="1">
-                                    <input type="checkbox" id="af-checkbox-2">
-                                    <label class="content-box" for="af-checkbox-2">Checkbox</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="table-thing with-label widget uib_w_12 d-margins" data-uib="app_framework/flip_switch" data-ver="1">
-                            <label class="narrow-control label-inline">Flip switch</label>
-                            <div class="wide-control">
-                                <input type="checkbox" class="toggle" id="af-flipswitch-0">
-                                <label for="af-flipswitch-0" data-off="No" data-on="Yes"><span></span>
-                                </label>
-                            </div>
-                        </div>
                         <div class="table-thing with-label widget uib_w_13 d-margins" data-uib="app_framework/input" data-ver="1">
-                            <label class="narrow-control label-inline">Input</label>
-                            <input class="wide-control" placeholder="Placeholder Text" type="text">
-                        </div>
-                        <div class="table-thing with-label widget uib_w_14 d-margins" data-uib="app_framework/radio_button_group" data-ver="1" data-child-name="af-group-0">
-                            <label class="narrow-control label-inline">Group</label>
-                            <div class="wide-control">
-                                <div class="widget uib_w_15" data-uib="app_framework/radio_button" data-ver="1">
-                                    <input type="radio" id="af-radio-0" name="af-group-0">
-                                    <label class="content-box" for="af-radio-0">Radio</label>
-                                </div>
-                                <div class="widget uib_w_16" data-uib="app_framework/radio_button" data-ver="1">
-                                    <input type="radio" id="af-radio-1" name="af-group-0">
-                                    <label class="content-box" for="af-radio-1">Radio</label>
-                                </div>
-                                <div class="widget uib_w_17" data-uib="app_framework/radio_button" data-ver="1">
-                                    <input type="radio" id="af-radio-2" name="af-group-0">
-                                    <label class="content-box" for="af-radio-2">Radio</label>
-                                </div>
+                            <label class="narrow-control label-top-left" for="enterlocation">ENTER LOCATION</label>
+
+                            <input class="wide-control" placeholder="Example: Atlanta, GA" type="text" id="enterlocation">
+                        </div><a class="button widget uib_w_32 d-margins green" data-uib="app_framework/button" data-ver="1">Go</a>
+
+                        <div class="tarea widget uib_w_28 d-margins" data-uib="media/text" data-ver="0" name="uib_w_28">
+                            <div class="widget-container left-receptacle"></div>
+                            <div class="widget-container right-receptacle"></div>
+                            <div class="text-container">
+                                <h2>OR</h2>
                             </div>
-                        </div>
-                        <div class="table-thing with-label widget uib_w_18 d-margins" data-uib="app_framework/select" data-ver="1">
-                            <label class="narrow-control label-inline">Select</label>
-                            <select class="wide-control">
-                                <option>Option 1</option>
-                                <option>Option 2</option>
-                                <option>Option 3</option>
-                            </select>
-                        </div>
+                        </div><a class="button widget uib_w_29 d-margins green" data-uib="app_framework/button" data-ver="1">Use Current Location</a>
                     </div>
-                    <div class="inner-element uib_w_7 uib_sidebar leftbar bar-bg thumb-bg bar-gutter" data-uib="layout/left_sidebar" data-ver="1" data-anim="{'style':'overlap', 'v':200, 'side':'left', 'dur':200}">
-                        <div class="sidebar-content content-area vertical-col">
 
-                            <div class="grid grid-pad urow uib_row_1 row-height-1" data-uib="layout/row" data-ver="0">
-                                <div class="col uib_col_1 col-0_12-12" data-uib="layout/col" data-ver="0">
-                                    <div class="widget-container content-area vertical-col">
-                                        <span class="uib_shim"></span>
-                                    </div>
-                                </div>
-                                <span class="uib_shim"></span>
-                            </div>
-
-                            <div class="grid grid-pad urow uib_row_2 row-height-2" data-uib="layout/row" data-ver="0">
-                                <div class="col uib_col_2 col-0_12-12" data-uib="layout/col" data-ver="0">
-                                    <div class="widget-container content-area vertical-col">
-
-                                        <div class="widget uib_w_19 scale-image d-margins Image_sizing align" data-uib="media/img" data-ver="0">
-                                            <figure class="figure-align">
-                                                <img src="images/intel.png">
-
-                                                <figcaption data-position="bottom"></figcaption>
-                                            </figure>
-                                        </div>
-                                        <div class="button-grouped widget uib_w_24 d-margins vertical" data-uib="app_framework/button_group" data-ver="1"><a class="button widget uib_w_25" data-uib="app_framework/button" data-ver="1" style="border-top-left-radius: 6px; border-top-right-radius: 6px; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px;">Button</a>
-                                            <a class="button widget uib_w_26" data-uib="app_framework/button" data-ver="1">Button</a><a class="button widget uib_w_27" data-uib="app_framework/button" data-ver="1" style="border-top-right-radius: 0px; border-top-left-radius: 0px; border-bottom-right-radius: 6px; border-bottom-left-radius: 6px; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(102, 102, 102);">Button</a>
-                                        </div>
-
-                                        <span class="uib_shim"></span>
-                                    </div>
-                                </div>
-                                <span class="uib_shim"></span>
-                            </div>
-                        </div>
+                    <div id="DiveModeSelect" class="upage-content vertical-col left hidden"><a class="button widget uib_w_31 d-margins" data-uib="app_framework/button" data-ver="1" id="predive">PRE DIVE</a><a class="button widget uib_w_30 d-margins" data-uib="app_framework/button" data-ver="1" id="postdive">POST DIVE</a>
                     </div>
                 </div>
             </div>

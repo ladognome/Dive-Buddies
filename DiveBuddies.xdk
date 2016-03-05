@@ -6,7 +6,7 @@
       "projectTypeName": "com.intel.xdk.projecttype.webapp",
       "src": "webapp/sample-app-framework/sample.zip",
       "projectGuid": "98a4b025-422c-4e73-94a4-4c0b6a83b276",
-      "lastModifiedDate": 1457020622191,
+      "lastModifiedDate": 1457217911186,
       "creationDate": 1457020315421
     },
     "XDK-app-designer": "true",
@@ -26,7 +26,8 @@
         "preferences_": {
           "android-minSdkVersion": "14",
           "android-targetSdkVersion": "19",
-          "android-installLocation": "auto"
+          "android-installLocation": "auto",
+          "Orientation": "portrait"
         },
         "isActive_": true,
         "appName_": "DiveBuddies",
@@ -89,7 +90,8 @@
         "name_": "iOS",
         "preferences_": {
           "ios-target": "6",
-          "ios-configuration": "adhoc"
+          "ios-configuration": "adhoc",
+          "Orientation": "default"
         },
         "isActive_": true,
         "appName_": "DiveBuddies",

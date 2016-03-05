@@ -21,6 +21,27 @@
          uib_sb.toggle_sidebar($(".uib_w_7"));  
     });
     
+        /* button  Use Current Location */
+    $(document).on("click", ".uib_w_29", function(evt)
+    {
+         /*global activate_subpage */
+         activate_subpage("#DiveModeSelect"); 
+    });
+    
+        /* button  Use Current Location */
+    $(document).on("click", ".uib_w_29", function(evt)
+    {
+         /*global activate_subpage */
+         activate_subpage("#DiveModeSelect"); 
+    });
+    
+        /* button  Go */
+    $(document).on("click", ".uib_w_32", function(evt)
+    {
+         /*global activate_subpage */
+         activate_subpage("#DiveModeSelect"); 
+    });
+    
     }
  document.addEventListener("app.Ready", register_event_handlers, false);
 })();
