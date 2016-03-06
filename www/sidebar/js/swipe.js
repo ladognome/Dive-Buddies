@@ -1,4 +1,6 @@
+/*global uib_sb, jQuery, window */
 (function($) {
+  'use strict';
     //hook up swiping
     $(function()
     {
@@ -20,7 +22,7 @@
             return result;
         }
 
-        jQuery.event.special.swipe.settings.threshold = .1; //default is .4, but for the whole page area smaller seems better
+        jQuery.event.special.swipe.settings.threshold = 0.1; //default is .4, but for the whole page area smaller seems better
 
         var lastTarget;
         var hasSwipeableCrossbar = !!$('.swipe.uib_crossbar').length;
@@ -45,7 +47,7 @@
                          ["swipedown",  "botbar",   "bottom", "topbar", "y"]];
         arg_array.map(function(args)
         {
-            $(".upage").bind(args[0], function(evt)
+            $(".upage").bind(args[0], function()
             {
                 var $widgetTarget = $(lastTarget).closest('.widget');
                 if ($widgetTarget.hasClass('no_swipe') || $widgetTarget.hasClass('no_swipe-' + args[4])) {
@@ -53,7 +55,7 @@
                 }
 
                 //if there is an open sidebar/crossbar, close it.
-                var open_query = $(".swipe."+args[1]).not(".reveal").filter(function(){ return parseInt($(this).css(args[2])) == 0; });
+                var open_query = $(".swipe."+args[1]).not(".reveal").filter(function(){ return parseInt($(this).css(args[2])) === 0; });
                 if(open_query.length > 0){ uib_sb.close_sidebar(open_query); }
                 else //otherwise, open one
                 {
@@ -89,7 +91,7 @@
             var anim = JSON.parse(dquote(domNode_query.attr("data-anim")));
             var prop = (arg_list[1] == "left" || arg_list[1] == "right") ? "velocityX" : "velocityY";
             var min_v = -anim.v, max_v = 0;
-            var cur_pos = parseInt(domNode_query.css(arg_list[1]));
+
             var target_v = (evt[prop] < 0) ? min_v : max_v;
             if(arg_list[1] == "right" || arg_list[1] == "bottom"){target_v = (evt[prop] > 0) ? min_v : max_v;}
 

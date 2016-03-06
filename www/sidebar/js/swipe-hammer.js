@@ -1,6 +1,8 @@
 /*
- * @license Copyright (C) 2014 Intel Corporation. All rights reserved.
+ * @license Copyright (C) 2014-2015 Intel Corporation. All rights reserved.
  */
+/*jshint browser:true */
+/*global uib_sb, Hammer, jQuery */
 
 (function($) {
   'use strict';
@@ -41,10 +43,10 @@
 
   var getCloseDirection = function(args) {
     switch(args[1]) {
-      case 'left':   return Hammer.DIRECTION_LEFT;  break;
-      case 'right':  return Hammer.DIRECTION_RIGHT; break;
-      case 'top':    return Hammer.DIRECTION_UP;    break;
-      case 'bottom': return Hammer.DIRECTION_DOWN;  break;
+      case 'left':   return Hammer.DIRECTION_LEFT;  //break;
+      case 'right':  return Hammer.DIRECTION_RIGHT; //break;
+      case 'top':    return Hammer.DIRECTION_UP;    //break;
+      case 'bottom': return Hammer.DIRECTION_DOWN;  //break;
     }
   };
 
@@ -116,7 +118,7 @@
         if ($lefts.filter(isThisOpen).length) {
           $lefts.filter(isThisOpen).each(closeThisSidebar);
         } else {
-          $rights.filter(isThisClosed).each(openThisSidebar)
+          $rights.filter(isThisClosed).each(openThisSidebar);
         }
       }
 
@@ -124,7 +126,7 @@
         if ($rights.filter(isThisOpen).length) {
           $rights.filter(isThisOpen).each(closeThisSidebar);
         } else {
-          $lefts.filter(isThisClosed).each(openThisSidebar)
+          $lefts.filter(isThisClosed).each(openThisSidebar);
         }
       }
 
@@ -132,7 +134,7 @@
         if ($tops.filter(isThisOpen).length) {
           $tops.filter(isThisOpen).each(closeThisSidebar);
         } else {
-          $bottoms.filter(isThisClosed).each(openThisSidebar)
+          $bottoms.filter(isThisClosed).each(openThisSidebar);
         }
       }
 
@@ -140,7 +142,7 @@
         if ($bottoms.filter(isThisOpen).length) {
           $bottoms.filter(isThisOpen).each(closeThisSidebar);
         } else {
-          $tops.filter(isThisClosed).each(openThisSidebar)
+          $tops.filter(isThisClosed).each(openThisSidebar);
         }
       }
     });
@@ -152,7 +154,7 @@
       direction: Hammer.DIRECTION_ALL
     });
 
-    $swipe.hammer().on('panstart', function(e) {
+    $swipe.hammer().on('panstart', function() {
 
       // keep track of where the sidebar was when this pan started
       var $bar = $(this);

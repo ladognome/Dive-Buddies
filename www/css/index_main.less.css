@@ -305,9 +305,7 @@ body:not(#afui) .upage-outer {
   }
 }
 @media all {
-  #afui .d-margins {
-    margin-top: 10px;
-  }
+  
 }
 @media all {
   #afui .color {
@@ -416,9 +414,7 @@ body:not(#afui) .upage-outer {
   vertical-align: middle;
 }
 @media all {
-  #afui .scale-image img {
-    width: 200px;
-  }
+  
 }
 @media all {
   #afui .default-sprite-button div.uib-sprite {
@@ -470,9 +466,7 @@ body:not(#afui) .upage-outer {
   }
 }
 @media all {
-  #afui .Image_sizing img {
-    width: 110px;
-  }
+  
 }
 @media all {
   #afui .align {
@@ -487,7 +481,7 @@ body:not(#afui) .upage-outer {
     padding-right: 20px;
   }
 }
-@media all and (min-width: 0px) {
+@media all and (min-width: 4px) {
   #afui .row-height-1 > .col > .content-area {
     min-height: 32px;
   }
@@ -655,7 +649,7 @@ body:not(#afui) .upage-outer {
     padding-left: 0px !important;
   }
 }
-@media all and (min-width: 0px) {
+@media all and (min-width: 4px) {
   #afui .row-height-2 > .col > .content-area {
     min-height: 186px;
   }
@@ -684,4 +678,38 @@ body:not(#afui) .upage-outer {
 }
 @media all {
   
+}
+@media all {
+  #afui .hover-graphic-button:hover {
+    border-radius: 5px;
+    background-color: #eeeeee;
+  }
+}
+@media all {
+  #afui .active-graphic-button:active {
+    border-radius: 5px;
+    background-color: #dddddd;
+  }
+}
+@media all {
+  #afui .default-graphic-button {
+    border-radius: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: grey;
+    background-color: #ffffff;
+  }
+}
+@media all {
+  #afui .default-graphic-text {
+    text-align: center;
+  }
+}
+@media all {
+  
+}
+@media all {
+  #afui .default-image-sizing > img {
+    width: 100%;
+  }
 }

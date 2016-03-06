@@ -1,6 +1,8 @@
 /*
- Copyright © 2013 Intel Corporation. All rights reserved
+ Copyright © 2013-2015 Intel Corporation. All rights reserved
  */
+/*jshint browser:true, -W069, -W018, -W117 */
+/*global uib_sb */
 (function($) {
 
     'use strict';
@@ -16,6 +18,7 @@
      *  @exports uib_sb.show_all_overhang(show)
      *  @exports uib_sb.get_dispatch_arg_list(domNode_query)
      *  @exports uib_sb.move_sidebar(domNode_query, anim, v, finishf, property, partner_selector, partner_property, partner_base) //for swipe.js, not general usage
+     *  @exporst uib_sb.dquote() //convert data-anim to JSON string
      */
 
 
@@ -219,7 +222,7 @@
     };
 
     if (window.af) {
-        $(window).on('resize', function(e) { $('.uib_sidebar').each(resize_sidebar); });
+        $(window).on('resize', function() { $('.uib_sidebar').each(resize_sidebar); });
         $(function() { $('.uib_sidebar').each(resize_sidebar); });
     }
 
@@ -251,7 +254,7 @@
             if(force_page_fixed){ $(".upage-content").css("position", "relative"); }
             if(completef){ completef(); }
         };}
-        else if(reveal && force_page_fixed){ finishf = function(){ $(".upage-content").css("position", "relative"); if(completef){ completef(); } }}
+        else if(reveal && force_page_fixed){ finishf = function(){ $(".upage-content").css("position", "relative"); if(completef){ completef(); } };}
 
         uib_sb.move_sidebar(domNode_query, anim, target, finishf, property, partner_selector, partner_property, partner_base);
     }
@@ -287,6 +290,7 @@
 
         var final_f = function() {
             $(this).toggleClass('uib_bar_visible', v === 0);
+            $(document).trigger('sidebar-event', [domNode_query, anim]);
             if (finishf) { return finishf.call(this); }
         };
 
@@ -350,6 +354,8 @@
     {
         return str.replace(/'/g, "\"");
     }
+    uib_sb.dquote = dquote;
+
 
     function initialize_triggers()
     {
