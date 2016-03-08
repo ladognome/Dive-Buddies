@@ -22,11 +22,7 @@
     });
     
         /* button  Use Current Location */
-    $(document).on("click", ".uib_w_29", function(evt)
-    {
-         /*global activate_subpage */
-         activate_subpage("#DiveModeSelect"); 
-    });
+    
     
         /* button  Use Current Location */
     $(document).on("click", ".uib_w_29", function(evt)
@@ -36,11 +32,7 @@
     });
     
         /* button  Go */
-    $(document).on("click", ".uib_w_32", function(evt)
-    {
-         /*global activate_subpage */
-         activate_subpage("#DiveModeSelect"); 
-    });
+    
     
         /* button  #predive */
     $(document).on("click", "#predive", function(evt)
@@ -116,6 +108,41 @@
     {
          /*global activate_subpage */
          activate_subpage("#page_100_31"); 
+    });
+    
+        /* listitem  Dive Spot 1 */
+    $(document).on("click", ".uib_w_56", function(evt)
+    {
+         /*global activate_subpage */
+         activate_subpage("#DiveModeSelect"); 
+    });
+    
+        /* listitem  Dive Spot 2 */
+    $(document).on("click", ".uib_w_57", function(evt)
+    {
+         /*global activate_subpage */
+         activate_subpage("#DiveModeSelect"); 
+    });
+    
+        /* listitem  Dive Spot 3 */
+    $(document).on("click", ".uib_w_58", function(evt)
+    {
+         /*global activate_subpage */
+         activate_subpage("#DiveModeSelect"); 
+    });
+    
+        /* button  Go */
+    $(document).on("click", ".uib_w_32", function(evt)
+    {
+         /*global activate_subpage */
+         activate_subpage("#DiveSpotSelect"); 
+    });
+    
+        /* button  Use Current Location */
+    $(document).on("click", ".uib_w_29", function(evt)
+    {
+         /*global activate_subpage */
+         activate_subpage("#DiveSpotSelect"); 
     });
     
     }
