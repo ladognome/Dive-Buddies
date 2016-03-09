@@ -51,8 +51,26 @@
         /* button  Find */
     $(document).on("click", ".uib_w_45", function(evt)
     {
-         /*global activate_subpage */
-         activate_subpage("#PostDiveResults"); 
+         var inputText = document.getElementById("input").value.toLowerCase();
+        var splitText = inputText.split(" ");
+        var composedVectors = [];
+        
+        [].forEach.call(Word2VecUtils.findSimilarWords(1,splitText[0]), function(element, index, array){
+            composedVectors = wordVecs[element[0]];
+        });
+        
+        for (var i =1; i < splitText.length; i++){
+            [].forEach.call(Word2VecUtils.findSimilarWords(1,splitText[i]), function(element, index, array){
+                composedVectors = Word2VecUtils.addVecs(composedVectors, wordVecs[element[0]]);
+                //console.log(composedVectors);
+                //console.log(element[0]); //the word
+                //console.log(element[1]); //the confidence
+            });
+        }
+        //TODO: compare composedVectors to a composed vector of questions we trained on
+        
+
+        activate_subpage("#PostDiveResults");
     });
     
         /* listitem  Result Item */

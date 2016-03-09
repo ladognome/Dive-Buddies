@@ -81,6 +81,7 @@ var Word2VecUtils = (function() {
     });
     return sims.slice(0, n);
   }
+  
 
   /********************
    * helper functions */
