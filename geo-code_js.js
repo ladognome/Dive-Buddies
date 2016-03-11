@@ -1,5 +1,5 @@
 function initialize() {
-        var address = (document.getElementById('my-address'));
+        var address = (document.getElementById('enterlocation'));
         var  autocomplete = new google.maps.places.Autocomplete(address);
         autocomplete.setTypes(['geocode']);
         google.maps.event.addListener(autocomplete, 'place_changed', function() {
@@ -30,13 +30,12 @@ function codeAddress() {
       //alert("Latitude: "+results[0].geometry.location.lat());
       //alert("Longitude: "+results[0].geometry.location.lng());
       
-      document.getElementById("lati").innerHTML = "Latitutde:"+results[0].geometry.location.lat()
-      document.getElementById("longi").innerHTML = "Longitude:"+results[0].geometry.location.lng()
-
+//      document.getElementById("lati").innerHTML = "Latitutde:"+results[0].geometry.location.lat();
+//      document.getElementById("longi").innerHTML = "Longitude:"+results[0].geometry.location.lng();
       if (results[0].geometry.location.lng()>158 && results[0].geometry.location.lng()<160 && results[0].geometry.location.lat()>-32 && results[0].geometry.location.lat()<-31){
             alert("coordinates match");
             flag = true;
-            alert(flag)
+            alert(flag);
           }
           else{alert("Not found"); flag=false;}
 
@@ -48,15 +47,15 @@ function codeAddress() {
     });
     
    if (flag){alert("Flag is true");} 
-   else{alert("Flag is set to false now")};
+   else{alert("Flag is set to false now");}
 
   }
 
 
 
-window.onload = function(){initialize()}
+$('#enterlocation').onfocus = function(){initialize();};
   // alert("Hi")
-  $('#getCords1').click(function () {
+  $('#predive').click(function () {
   $.ajax({
          type: "GET",
          // url: "http://api.iobis.org",
@@ -70,7 +69,7 @@ window.onload = function(){initialize()}
          },
          success: function(data){
           //alert(data.count);
-          console.log("data count "+ data.count)
+          console.log("data count "+ data.count);
           //var text= $.parseJSON(data);
           // console.log(Object.keys(text));
           var keys = [];
@@ -112,7 +111,7 @@ window.onload = function(){initialize()}
         },
 
          error: function (jqXHR, status) {
-             console.log("Problem")
+             console.log("Problem");
          }
         });
     });  
@@ -124,12 +123,5 @@ window.onload = function(){initialize()}
     
 //   },
 //     success: function() { alert('GET completed'); }
-
-
-
-
-
-
-
 
 // });
