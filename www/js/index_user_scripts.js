@@ -150,17 +150,23 @@
     });
     
         /* button  Go */
-    $(document).on("click", ".uib_w_32", function(evt)
-    {
-         /*global activate_subpage */
-         activate_subpage("#DiveSpotSelect"); 
-    });
+    
     
         /* button  Use Current Location */
     $(document).on("click", ".uib_w_29", function(evt)
     {
          /*global activate_subpage */
          activate_subpage("#DiveSpotSelect"); 
+    });
+    
+        /* button  Go */
+    
+    
+        /* button  Go */
+    $(document).on("click", ".uib_w_32", function(evt)
+    {
+         /*global activate_subpage */
+         activate_subpage("#DiveModeSelect"); 
     });
     
     }

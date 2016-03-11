@@ -23,7 +23,7 @@ var flag= true;
 
 function codeAddress() {
     geocoder = new google.maps.Geocoder();
-    var address = document.getElementById("my-address").value;
+    var address = document.getElementById("enterlocation").value;
     geocoder.geocode( { 'address': address}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
 
