@@ -83,8 +83,8 @@
         var winningVector = [];
         var winningConfidence = 0;
         
-        //for (var i = 0; i < QUESTIONS.length; i++){
-            var question = QUESTIONS[0];
+        for (var i = 0; i < QUESTIONS.length; i++){
+            var question = QUESTIONS[i];
             var composedVector_question = [];
             var split_question = question.toLowerCase().split(" ");
             
@@ -109,7 +109,7 @@
                 winningConfidence = similarity;
             }
             console.log("Most similar question so far: "+question);
-    //}
+    }
         var WatsonAnswers = PostToWatson(winningQuestion);    
         
         activate_subpage("#PostDiveResults");
@@ -163,13 +163,7 @@
     {
          /*global activate_subpage */
          activate_subpage("#fishinfo"); 
-    });
-    
-        /* graphic button  StartPageGraphic */
-    
-    
-        /* graphic button  #StartPageGraphic */
-    
+    });    
     
         /* graphic button  #StartPageGraphic */
     $(document).on("click", "#StartPageGraphic", function(evt)
@@ -210,6 +204,8 @@
     $(document).on("click", ".uib_w_32", function(evt)
     {
          /*global activate_subpage */
+         $(GeoCode.initialize());
+         $(GeoCode.codeAddress());
          activate_subpage("#DiveModeSelect"); 
     });
     
