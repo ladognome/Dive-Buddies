@@ -1,5 +1,7 @@
 var GeoCode = (function() {
-    function initialize() {
+    var flag= true;
+    
+    function init(){
             var address = (document.getElementById('enterlocation'));
             var  autocomplete = new google.maps.places.Autocomplete(address);
             autocomplete.setTypes(['geocode']);
@@ -20,9 +22,9 @@ var GeoCode = (function() {
           });
     }
 
-    var flag= true;
+    
 
-    function codeAddress() {
+    function codeAddress(){
         geocoder = new google.maps.Geocoder();
         var address = document.getElementById("enterlocation").value;
         geocoder.geocode( { 'address': address}, function(results, status) {
@@ -115,7 +117,7 @@ var GeoCode = (function() {
                  console.log("Problem");
              }
             });
-        });  
+        });
     // $.ajax({
     //     url: 'http://api.iobis.org/',
     //     type: 'GET',
@@ -126,4 +128,9 @@ var GeoCode = (function() {
     //     success: function() { alert('GET completed'); }
 
     // });
-});
+    
+    return {
+    codeAddress: codeAddress,
+    init: init
+  };
+})();

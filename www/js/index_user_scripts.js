@@ -204,8 +204,8 @@
     $(document).on("click", ".uib_w_32", function(evt)
     {
          /*global activate_subpage */
-         $(GeoCode.initialize());
-         $(GeoCode.codeAddress());
+         GeoCode.init();
+         GeoCode.codeAddress();
          activate_subpage("#DiveModeSelect"); 
     });
     
