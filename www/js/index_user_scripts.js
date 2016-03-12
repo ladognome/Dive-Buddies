@@ -51,26 +51,76 @@
         /* button  Find */
     $(document).on("click", ".uib_w_45", function(evt)
     {
-         var inputText = document.getElementById("input").value.toLowerCase();
+        var inputText = document.getElementById("input").value.toLowerCase();
         var splitText = inputText.split(" ");
-        var composedVectors = [];
+        var composedVector = [];
         
         [].forEach.call(Word2VecUtils.findSimilarWords(1,splitText[0]), function(element, index, array){
-            composedVectors = wordVecs[element[0]];
+            composedVector = wordVecs[element[0]];
         });
         
         for (var i =1; i < splitText.length; i++){
             [].forEach.call(Word2VecUtils.findSimilarWords(1,splitText[i]), function(element, index, array){
-                composedVectors = Word2VecUtils.addVecs(composedVectors, wordVecs[element[0]]);
-                //console.log(composedVectors);
+                composedVector = Word2VecUtils.addVecs(composedVector, wordVecs[element[0]]);
+                //console.log(composedVector);
                 //console.log(element[0]); //the word
                 //console.log(element[1]); //the confidence
             });
         }
-        //TODO: compare composedVectors to a composed vector of questions we trained on
+        console.log(composedVector);
         
+        var QUESTIONS = ["what is a white round shaped sea slug",
+        "what is a white shell with dark brown lump and a purple opening",
+        "what shell is cream brown and pattern with small darker brown spots",
+        "what slug has odd black rings and pale yellow green or orange body",
+        "what squid is small and changes its color",
+        "what fish is silver to light blue with a flat body",
+        "what fish is brown red with large white spots all over",
+        ];
+        
+        
+        var winningQuestion = "";
+        var winningVector = [];
+        var winningConfidence = 0;
+        
+        //for (var i = 0; i < QUESTIONS.length; i++){
+            var question = QUESTIONS[0];
+            var composedVector_question = [];
+            var split_question = question.toLowerCase().split(" ");
+            
+            [].forEach.call(Word2VecUtils.findSimilarWords(1,split_question[0]), function(element, index, array){
+            composedVector_question = wordVecs[element[0]];
+            });
 
+            for (var i =1; i < split_question.length; i++){
+                [].forEach.call(Word2VecUtils.findSimilarWords(1,split_question[i]), function(element, index, array){
+                    composedVector_question = Word2VecUtils.addVecs(composedVector_question, wordVecs[element[0]]);
+                    
+                });
+            }
+            console.log(question); //the question
+            console.log(composedVector_question);
+            
+            var similarity = Word2VecUtils.getCosSim(composedVector, composedVector_question)
+            console.log(similarity);
+            if (winningConfidence < similarity){
+                winningQuestion = question;
+                winningVector = composedVector_question;
+                winningConfidence = similarity;
+            }
+            console.log("Most similar question so far: "+question);
+    //}
+        var WatsonAnswers = PostToWatson(winningQuestion);    
+        
         activate_subpage("#PostDiveResults");
+        var select = document.getElementById("result_list")
+        for (var i = 0; i < options.length; i++) {
+            var opt = options[i];
+            var el = document.createElement("option");
+            el.textContent = opt;
+            el.value = opt;
+            select.appendChild(el);
+        }
     });
     
         /* listitem  Result Item */
@@ -149,18 +199,12 @@
          activate_subpage("#DiveModeSelect"); 
     });
     
-        /* button  Go */
-    
-    
         /* button  Use Current Location */
     $(document).on("click", ".uib_w_29", function(evt)
     {
          /*global activate_subpage */
          activate_subpage("#DiveSpotSelect"); 
     });
-    
-        /* button  Go */
-    
     
         /* button  Go */
     $(document).on("click", ".uib_w_32", function(evt)

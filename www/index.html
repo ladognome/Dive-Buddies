@@ -6,6 +6,8 @@
   -->
 
     <head>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false&amp;libraries=places"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <link rel="stylesheet" type="text/css" href="galleria/galleria.classic.css">
         <link rel="stylesheet" type="text/css" href="media_button_bar/css/media_button_bar.css">
         <meta charset="UTF-8">
@@ -57,11 +59,12 @@
   * The cordova.js script is required if you convert your "Standard HTML5" project into a "Cordova" project.
   * You can safely ignore the error or comment out this line if you will not be developing a Cordova app.
 -->
+
+        <script src="js/watson_api.js"></script>
         <script src="js/wordvecs25000.js"></script>
         <script src="js/word2vecutils.js"></script>
         <script src="cordova.js" id="xdkJScordova_"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false&amp;libraries=places"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
         <script src="js/app.js"></script>
         <!-- for your event code, see README and file comments for details -->
         <script src="js/init-app.js"></script>
@@ -79,6 +82,7 @@
             See http://app-framework-software.intel.com/documentation.php#afui/afui_jquery
         -->
         <script type="application/javascript" src="lib/jquery.min.js"></script>
+        <script src="js/jquery.base64.js" type="application/javascript"></script>
         <script type="application/javascript" src="sidebar/js/hammer.js"></script>
         <script type="application/javascript" src="sidebar/js/jquery.hammer.js"></script>
         <script type="application/javascript" src="sidebar/js/swipe-hammer.js"></script>
@@ -124,7 +128,6 @@
                         <div class="tarea widget uib_w_28 d-margins" data-uib="media/text" data-ver="0" name="uib_w_28">
                             <div class="widget-container left-receptacle"></div>
                             <div class="widget-container right-receptacle"></div>
-
                             <div class="text-container">
                                 <h2>OR</h2>
                             </div>
@@ -222,7 +225,6 @@
 
         </div>
         <script type="text/javascript" src="geo-code_js.js"></script>
-
     </body>
 
 </html>
