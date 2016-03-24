@@ -8,12 +8,10 @@
 "what fish is brownish-red with large white spots all over",
 };*/
 
-var PostToWatson = (function(QUESTION){
+function PostToWatson(QUESTION){
     var WATSON_URL = "https://watson-wdc01.ihost.com/instance/514/deepqa/v1/question";
     var WATSON_USERNAME = "gt2_administrator";
     var WATSON_PASSWORD = "bCze2OdC";
-
-    //var QUESTION = "what fish is brownish-red with large white spots all over";
 
     var data = {
      "question": {
@@ -22,6 +20,7 @@ var PostToWatson = (function(QUESTION){
     };
     
     var authorizationBasic = $.base64.btoa(WATSON_USERNAME + ':' + WATSON_PASSWORD);
+    var output;
     $.ajax
         ({
             type: "POST",
@@ -32,17 +31,17 @@ var PostToWatson = (function(QUESTION){
             async: false,
             //json object to sent to the authentication url
             data: JSON.stringify(data),
-         // data: { username: WATSON_USERNAME, password: WATSON_PASSWORD, question: QUESTION},
             headers: { "Authorization" : "Basic " + authorizationBasic},
             success: function(resultData) {
-                //return resultData["question"]["evidencelist"];
-                console.log(resultData["question"]["answers"]);
-                return resultData["question"]["answers"];
+                console.log(resultData["question"]["answers"].text);
+                console.log(resultData["question"]["answers"].confidence);
+                output = resultData["question"]["answers"];
             },
             error: function(jqXHR, textStatus, errorThrown) {
             },
             timeout: 120000        
         });
-});
+    return output;
+}
 
 

@@ -38,9 +38,9 @@ var GeoCode = (function() {
           if (results[0].geometry.location.lng()>158 && results[0].geometry.location.lng()<160 && results[0].geometry.location.lat()>-32 && results[0].geometry.location.lat()<-31){
                 alert("coordinates match");
                 flag = true;
-                alert(flag);
+                //alert(flag);
               }
-              else{alert("Not found"); flag=false;}
+              else{/*alert("Not found");*/ flag=false;}
 
           } 
 
@@ -49,8 +49,8 @@ var GeoCode = (function() {
           }
         });
 
-       if (flag){alert("Flag is true");} 
-       else{alert("Flag is set to false now");}
+      // if (flag){alert("Flag is true");} 
+       //else{alert("Flag is set to false now");}
 
       }
 

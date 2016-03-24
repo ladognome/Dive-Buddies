@@ -1,58 +1,113 @@
 {
   "project": {
-    "projectSettingsVersion": "3.0.0",
+    "projectSettingsVersion": "2.0.0",
     "creationData": {
       "type": "App Designer",
       "projectTypeName": "com.intel.xdk.projecttype.webapp",
       "src": "webapp/sample-app-framework/sample.zip",
       "projectGuid": "98a4b025-422c-4e73-94a4-4c0b6a83b276",
-      "lastModifiedDate": 1458828886864,
+      "lastModifiedDate": 1457217911186,
       "creationDate": 1457020315421
     },
     "XDK-app-designer": "true",
     "sourceDirectory": "www",
     "startFile": "index.html",
-    "projectFiles": {
-      "xdk-publish-meta-data.json": {
-        "settings": {
-          "project": {
-            "XDK-not-deployed": "True"
-          }
-        }
-      }
-    },
+    "projectFiles": {},
     "projectDirectories": {},
     "libraries": [],
     "serviceMethods": [],
     "cordovaPluginsDirectory": "plugins",
     "cordovaPlugins": [],
     "buildConfigurations": {
-      "iOS": {
-        "platform_": "ios",
+      "Android": {
+        "platform_": "android",
         "runtime_": "W3C on Cordova",
-        "name_": "iOS",
+        "name_": "Android",
         "preferences_": {
-          "ios-configuration": "adhoc",
-          "Orientation": "default",
-          "deployment-target": "6"
+          "android-minSdkVersion": "14",
+          "android-targetSdkVersion": "19",
+          "android-installLocation": "auto",
+          "Orientation": "portrait"
         },
         "isActive_": true,
         "appName_": "DiveBuddies",
         "appID_": "xdk.intel.blank.ad.template",
         "appAccess_": {
-          "mode": "whitelist",
+          "mode": "legacy",
           "network": [
             "*"
           ],
           "intents": [],
-          "navigation": [],
-          "properties": {}
+          "navigation": []
         },
         "icons_": [],
         "splashes_": [],
         "addlPermissions_": "",
         "excludedLibraries_": "",
-        "certificateId_": "",
+        "iosProvs_": [],
+        "cordovaCLIVersion_": "5.1.1",
+        "crosswalkVersion_": "14",
+        "appVersion_": "0.0.1",
+        "appAuthor_": "Intel XDK",
+        "appDescription_": "Template to develop a packaged mobile web app using the App Designer UI editor.",
+        "appVersionCode_": "1"
+      },
+      "Android-Crosswalk": {
+        "platform_": "android",
+        "runtime_": "W3C on Crosswalk",
+        "name_": "Android-Crosswalk",
+        "preferences_": {
+          "android-minSdkVersion": "14",
+          "android-targetSdkVersion": "19",
+          "android-installLocation": "auto"
+        },
+        "isActive_": true,
+        "appName_": "DiveBuddies",
+        "appID_": "xdk.intel.blank.ad.template.crosswalk",
+        "appAccess_": {
+          "mode": "legacy",
+          "network": [
+            "*"
+          ],
+          "intents": [],
+          "navigation": []
+        },
+        "icons_": [],
+        "splashes_": [],
+        "addlPermissions_": "",
+        "excludedLibraries_": "",
+        "iosProvs_": [],
+        "cordovaCLIVersion_": "5.1.1",
+        "crosswalkVersion_": "15",
+        "appVersion_": "0.0.1",
+        "appAuthor_": "Intel XDK",
+        "appDescription_": "Template to develop a packaged mobile web app using the App Designer UI editor.",
+        "appVersionCode_": "1"
+      },
+      "iOS": {
+        "platform_": "ios",
+        "runtime_": "W3C on Cordova",
+        "name_": "iOS",
+        "preferences_": {
+          "ios-target": "6",
+          "ios-configuration": "adhoc",
+          "Orientation": "default"
+        },
+        "isActive_": true,
+        "appName_": "DiveBuddies",
+        "appID_": "xdk.intel.blank.ad.template",
+        "appAccess_": {
+          "mode": "legacy",
+          "network": [
+            "*"
+          ],
+          "intents": [],
+          "navigation": []
+        },
+        "icons_": [],
+        "splashes_": [],
+        "addlPermissions_": "",
+        "excludedLibraries_": "",
         "iosProvs_": [],
         "cordovaCLIVersion_": "5.1.1",
         "crosswalkVersion_": "14",
@@ -72,19 +127,17 @@
         "appName_": "DiveBuddies",
         "appID_": "xdk.intel.blank.ad.template",
         "appAccess_": {
-          "mode": "whitelist",
+          "mode": "legacy",
           "network": [
             "*"
           ],
           "intents": [],
-          "navigation": [],
-          "properties": {}
+          "navigation": []
         },
         "icons_": [],
         "splashes_": [],
         "addlPermissions_": "",
         "excludedLibraries_": "",
-        "certificateId_": "",
         "iosProvs_": [],
         "cordovaCLIVersion_": "5.1.1",
         "crosswalkVersion_": "14",
@@ -112,7 +165,6 @@
         "splashes_": [],
         "addlPermissions_": "",
         "excludedLibraries_": "",
-        "certificateId_": "",
         "appVersion_": "0.0.1",
         "appAuthor_": "Intel XDK",
         "appDescription_": "Template to develop a packaged mobile web app using the App Designer UI editor."
@@ -137,7 +189,6 @@
         "splashes_": [],
         "addlPermissions_": "",
         "excludedLibraries_": "",
-        "certificateId_": "",
         "appVersion_": "0.0.1",
         "appAuthor_": "Intel XDK",
         "appDescription_": "Template to develop a packaged mobile web app using the App Designer UI editor."
@@ -162,7 +213,6 @@
         "splashes_": [],
         "addlPermissions_": "",
         "excludedLibraries_": "",
-        "certificateId_": "",
         "appVersion_": "0.0.1",
         "appAuthor_": "Intel XDK",
         "appDescription_": "Template to develop a packaged mobile web app using the App Designer UI editor."
@@ -187,7 +237,6 @@
         "splashes_": [],
         "addlPermissions_": "",
         "excludedLibraries_": "",
-        "certificateId_": "",
         "appVersion_": "0.0.1",
         "appAuthor_": "Intel XDK",
         "appDescription_": "Template to develop a packaged mobile web app using the App Designer UI editor."
@@ -210,42 +259,8 @@
         "splashes_": [],
         "addlPermissions_": "",
         "excludedLibraries_": "",
-        "certificateId_": "",
         "appVersion_": "0.0.0.1",
         "cordovaCLIVersion_": "5.1.1"
-      },
-      "Android": {
-        "platform_": "android",
-        "runtime_": "W3C on Crosswalk",
-        "name_": "Android",
-        "preferences_": {
-          "android-minSdkVersion": "14",
-          "android-targetSdkVersion": "19",
-          "android-installLocation": "auto"
-        },
-        "isActive_": true,
-        "appName_": "DiveBuddies",
-        "appID_": "xdk.intel.blank.ad.template.crosswalk",
-        "appAccess_": {
-          "mode": "legacy",
-          "network": [
-            "*"
-          ],
-          "intents": [],
-          "navigation": []
-        },
-        "icons_": [],
-        "splashes_": [],
-        "addlPermissions_": "",
-        "excludedLibraries_": "",
-        "certificateId_": "",
-        "iosProvs_": [],
-        "cordovaCLIVersion_": "5.1.1",
-        "crosswalkVersion_": "15",
-        "appVersion_": "0.0.1",
-        "appAuthor_": "Intel XDK",
-        "appDescription_": "Template to develop a packaged mobile web app using the App Designer UI editor.",
-        "appVersionCode_": "1"
       }
     },
     "gameAssetDirectory": "asset",

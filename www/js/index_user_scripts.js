@@ -70,12 +70,12 @@
         console.log(composedVector);
         
         var QUESTIONS = ["what is a white round shaped sea slug",
-        "what is a white shell with dark brown lump and a purple opening",
-        "what shell is cream brown and pattern with small darker brown spots",
-        "what slug has odd black rings and pale yellow green or orange body",
-        "what squid is small and changes its color",
-        "what fish is silver to light blue with a flat body",
-        "what fish is brown red with large white spots all over",
+        //"what is a white shell with dark brown lump and a purple opening",
+        //"what shell is cream brown and pattern with small darker brown spots",
+        //"what slug has odd black rings and pale yellow green or orange body",
+        //"what squid is small and changes its color",
+        //"what fish is silver to light blue with a flat body",
+        //"what fish is brown red with large white spots all over",
         ];
         
         
@@ -110,17 +110,20 @@
             }
             console.log("Most similar question so far: "+question);
     }
-        var WatsonAnswers = PostToWatson(winningQuestion);    
+        
+        
+        var WatsonAnswers = PostToWatson(winningQuestion);
         
         activate_subpage("#PostDiveResults");
-        var select = document.getElementById("result_list")
-        for (var i = 0; i < options.length; i++) {
-            var opt = options[i];
-            var el = document.createElement("option");
-            el.textContent = opt;
-            el.value = opt;
-            select.appendChild(el);
+        var filler = "";
+        for (var i = 0; i < WatsonAnswers.length; i++) {
+            var opt = WatsonAnswers[i].text;
+            if (opt == "${noAnswer}") {continue;}
+            var split = opt.split(" - ");
+            console.log(opt);
+            filler += "<li class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+split[1]+" - <i>"+split[2]+"</i></a></li>\n";
         }
+        document.getElementById("watson_results").innerHTML = filler;
     });
     
         /* listitem  Result Item */
