@@ -80,7 +80,7 @@ var GeoCode = (function() {
 
               alert("total " + keys.length + " keys: " + keys);
               console.log(data.results);
-              //console.log((data.results).length)
+              //console.log((data.results).length);
 
               var scientifNameList = [];
               //for (var item in data.results) scientifNameList.push(item['scientificName']);
@@ -93,7 +93,7 @@ var GeoCode = (function() {
 
 
 
-            var div_display = document.getElementById('list_display');
+            var div_display = document.getElementById('list_display1');
 
             // say that fruits contains all your data
             //var fruits = ['Apples','Bananas','Pineapples','Peaches','Grapes'],
