@@ -69,21 +69,23 @@
         }
         console.log(composedVector);
         
-        var QUESTIONS = ["what is a white round shaped sea slug",
-        //"what is a white shell with dark brown lump and a purple opening",
-        //"what shell is cream brown and pattern with small darker brown spots",
-        //"what slug has odd black rings and pale yellow green or orange body",
-        //"what squid is small and changes its color",
-        //"what fish is silver to light blue with a flat body",
-        //"what fish is brown red with large white spots all over",
-        ];
+        /*var QUESTIONS = ["what is a white round shaped sea slug",
+        "what is a white shell with dark brown lump and a purple opening",
+        "what shell is cream brown and pattern with small darker brown spots",
+        "what slug has odd black rings and pale yellow green or orange body",
+        "what squid is small and changes its color",
+        "what fish is silver to light blue with a flat body",
+        "what fish is brown red with large white spots all over",
+        ];*/
+        
+        
         
         
         var winningQuestion = "";
-        var winningVector = [];
+       //var winningVector = [];
         var winningConfidence = 0;
         
-        for (var i = 0; i < QUESTIONS.length; i++){
+        /*for (var i = 0; i < QUESTIONS.length; i++){
             var question = QUESTIONS[i];
             var composedVector_question = [];
             var split_question = question.toLowerCase().split(" ");
@@ -92,14 +94,14 @@
             composedVector_question = wordVecs[element[0]];
             });
 
-            for (var i =1; i < split_question.length; i++){
-                [].forEach.call(Word2VecUtils.findSimilarWords(1,split_question[i]), function(element, index, array){
+            for (var j =1; j < split_question.length; j++){
+                [].forEach.call(Word2VecUtils.findSimilarWords(1,split_question[j]), function(element, index, array){
                     composedVector_question = Word2VecUtils.addVecs(composedVector_question, wordVecs[element[0]]);
                     
                 });
             }
             console.log(question); //the question
-            console.log(composedVector_question);
+            console.log(JSON.stringify(composedVector_question));
             
             var similarity = Word2VecUtils.getCosSim(composedVector, composedVector_question)
             console.log(similarity);
@@ -108,8 +110,20 @@
                 winningVector = composedVector_question;
                 winningConfidence = similarity;
             }
-            console.log("Most similar question so far: "+question);
-    }
+            console.log("Most similar question so far: "+winningQuestion);
+        }*/
+        
+        for (var key in QUESTION_VECTORS){
+            if (QUESTION_VECTORS.hasOwnProperty(key)) {
+                var similarity = Word2VecUtils.getCosSim(composedVector, QUESTION_VECTORS[key])
+                console.log(similarity);
+                if (winningConfidence < similarity){
+                    winningQuestion = key;
+                    winningConfidence = similarity;
+                }
+                console.log("Most similar question so far: "+winningQuestion);
+            }
+        }
         
         
         var WatsonAnswers = PostToWatson(winningQuestion);
@@ -118,7 +132,7 @@
         var filler = "";
         for (var i = 0; i < WatsonAnswers.length; i++) {
             var opt = WatsonAnswers[i].text;
-            if (opt == "${noAnswer}") {continue;}
+            if (opt == "${noAnswer}" || opt.indexOf("undefined") > -1) {continue;}
             var split = opt.split(" - ");
             console.log(opt);
             filler += "<li class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+split[1]+" - <i>"+split[2]+"</i></a></li>\n";
