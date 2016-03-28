@@ -36,7 +36,7 @@ var GeoCode = (function() {
     //      document.getElementById("lati").innerHTML = "Latitutde:"+results[0].geometry.location.lat();
     //      document.getElementById("longi").innerHTML = "Longitude:"+results[0].geometry.location.lng();
           if (results[0].geometry.location.lng()>158 && results[0].geometry.location.lng()<160 && results[0].geometry.location.lat()>-32 && results[0].geometry.location.lat()<-31){
-                alert("coordinates match");
+                console.log("coordinates match");
                 flag = true;
                 //alert(flag);
               }
@@ -78,7 +78,7 @@ var GeoCode = (function() {
               var keys = [];
               for(var k in data) keys.push(k);
 
-              alert("total " + keys.length + " keys: " + keys);
+              console.log("total " + keys.length + " keys: " + keys);
               console.log(data.results);
               //console.log((data.results).length);
 
@@ -93,7 +93,7 @@ var GeoCode = (function() {
 
 
 
-            var div_display = document.getElementById('list_display1');
+            var div_display = document.getElementById('list_display');
 
             // say that fruits contains all your data
             //var fruits = ['Apples','Bananas','Pineapples','Peaches','Grapes'],
@@ -103,7 +103,7 @@ var GeoCode = (function() {
             for(var i in scientifNameList) {
                     // create an arbitrary li element
               var li = document.createElement('li'),
-                 content = document.createTextNode(scientifNameList); // create a textnode to the document
+                 content = document.createTextNode(scientifNameList[i]); // create a textnode to the document
 
               li.appendChild(content); // append the created textnode above to the li element
               ul.appendChild(li); // append the created li element above to the ul element
