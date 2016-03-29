@@ -1,5 +1,7 @@
 var GeoCode = (function() {
     var flag= true;
+    var location_coordinates = null;
+    var f = null;
     
     function init(){
             var address = (document.getElementById('enterlocation'));
@@ -32,15 +34,20 @@ var GeoCode = (function() {
 
           //alert("Latitude: "+results[0].geometry.location.lat());
           //alert("Longitude: "+results[0].geometry.location.lng());
-
+    f = 'POLYGON(('+ String(Math.floor(results[0].geometry.location.lng() -1)) +' '+ String(Math.floor(results[0].geometry.location.lat() -1)) + ',' + ' '+ String(Math.floor(results[0].geometry.location.lng() -1)) + ' ' +String(Math.floor(results[0].geometry.location.lat() +1)) + ',' + ' '+ String(Math.floor(results[0].geometry.location.lng() +1)) + ' ' + String(Math.floor(results[0].geometry.location.lat() +1)) + ',' + ' ' + String(Math.floor(results[0].geometry.location.lng() +1)) + ' ' + String(Math.floor(results[0].geometry.location.lat() -1)) + ',' + ' ' + String(Math.floor(results[0].geometry.location.lng() -1)) + ' ' + String(Math.floor(results[0].geometry.location.lat() -1)) + '))'; 
+              
+              console.log(f);
     //      document.getElementById("lati").innerHTML = "Latitutde:"+results[0].geometry.location.lat();
     //      document.getElementById("longi").innerHTML = "Longitude:"+results[0].geometry.location.lng();
           if (results[0].geometry.location.lng()>158 && results[0].geometry.location.lng()<160 && results[0].geometry.location.lat()>-32 && results[0].geometry.location.lat()<-31){
                 console.log("coordinates match");
                 flag = true;
+                location_coordinates = results[0].geometry.location;
                 //alert(flag);
               }
-              else{/*alert("Not found");*/ flag=false;}
+              else{/*alert("Not found");*/ flag=false;
+                  location_coordinates = results[0].geometry.location;
+                  }
 
           } 
 
@@ -59,6 +66,7 @@ var GeoCode = (function() {
     $('#enterlocation').onfocus = function(){initialize();};
       // alert("Hi")
       $('#predive').click(function () {
+          var scientifNameList = [];
       $.ajax({
              type: "GET",
              // url: "http://api.iobis.org",
@@ -67,10 +75,12 @@ var GeoCode = (function() {
              dataType: "jsonp",
              data: {
 
-              'geometry': 'POLYGON((158 -31, 158 -32, 160 -32, 160 -31, 158 -31))',
+              'geometry': String(f),
+//                 'geometry': POLYGON(((location_address.lng-1) (location_address),,,))
               'limit': 10,
              },
              success: function(data){
+
               //alert(data.count);
               console.log("data count "+ data.count);
               //var text= $.parseJSON(data);
@@ -82,7 +92,7 @@ var GeoCode = (function() {
               console.log(data.results);
               //console.log((data.results).length);
 
-              var scientifNameList = [];
+              
               //for (var item in data.results) scientifNameList.push(item['scientificName']);
               for (i=0;i<(data.results).length;i++){
 
@@ -90,9 +100,14 @@ var GeoCode = (function() {
                 console.log(scientifNameList[i]);
               }
               console.log(scientifNameList[0]);
+                 if (flag==true){
+                     console.log("Flag is true, proceeding to specific display");
+                 }
+                 else{
+                     console.log("Flag is not true, proceed to generic display");
+                 }
 
-
-
+                // if(window.flag==true){
             var div_display = document.getElementById('list_display');
 
             // say that fruits contains all your data
@@ -103,19 +118,23 @@ var GeoCode = (function() {
             for(var i in scientifNameList) {
                     // create an arbitrary li element
               var li = document.createElement('li'),
+//                  if (scientifNameList[i] == undefined){
+//                      continue;
+//                  }
                  content = document.createTextNode(scientifNameList[i]); // create a textnode to the document
-
+              console.log(scientifNameList[i]);        
               li.appendChild(content); // append the created textnode above to the li element
               ul.appendChild(li); // append the created li element above to the ul element
             }
 
             div_display.appendChild(ul); // finally the ul element to the div with an id of placeholder
-
+             
             },
 
              error: function (jqXHR, status) {
                  console.log("Problem");
              }
+            // }
             });
         });
     // $.ajax({
