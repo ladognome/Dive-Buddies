@@ -56,15 +56,11 @@ var GeoCode = (function() {
           }
         });
 
-      // if (flag){alert("Flag is true");} 
-       //else{alert("Flag is set to false now");}
-
       }
 
 
 
     $('#enterlocation').onfocus = function(){initialize();};
-      // alert("Hi")
       $('#predive').click(function () {
           var scientifNameList = [];
       $.ajax({
@@ -94,7 +90,7 @@ var GeoCode = (function() {
 
               
               //for (var item in data.results) scientifNameList.push(item['scientificName']);
-              for (i=0;i<(data.results).length;i++){
+              for (var i=0;i<(data.results).length;i++){
 
                 scientifNameList.push(data.results[i]['species']);
                 console.log(scientifNameList[i]);
@@ -107,27 +103,16 @@ var GeoCode = (function() {
                      console.log("Flag is not true, proceed to generic display");
                  }
 
-                // if(window.flag==true){
-            var div_display = document.getElementById('list_display');
-
-            // say that fruits contains all your data
-            //var fruits = ['Apples','Bananas','Pineapples','Peaches','Grapes'],
-                ul = document.createElement('ul'); // create an arbitrary ul element
-
-            // loop through the fruits array
-            for(var i in scientifNameList) {
-                    // create an arbitrary li element
-              var li = document.createElement('li'),
-//                  if (scientifNameList[i] == undefined){
-//                      continue;
-//                  }
-                 content = document.createTextNode(scientifNameList[i]); // create a textnode to the document
-              console.log(scientifNameList[i]);        
-              li.appendChild(content); // append the created textnode above to the li element
-              ul.appendChild(li); // append the created li element above to the ul element
+             var filler = "";
+            var index = 39;
+            for (var i in scientifNameList) {
+                if (scientifNameList[i] == 'undefined'){
+                    continue;
+                }
+                filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+scientifNameList[i]+"</i></a></li>\n";
+                index++;
             }
-
-            div_display.appendChild(ul); // finally the ul element to the div with an id of placeholder
+            document.getElementById("list_display").innerHTML = filler;
              
             },
 
