@@ -2,6 +2,10 @@ var GeoCode = (function() {
     var flag= true;
     var location_coordinates = null;
     var f = null;
+    var scientifNameList = [];
+      var fishList = [];
+      var mollusksList = [];
+      var coralsList = [];  
     
     function init(){
             var address = (document.getElementById('enterlocation'));
@@ -34,7 +38,7 @@ var GeoCode = (function() {
 
           //alert("Latitude: "+results[0].geometry.location.lat());
           //alert("Longitude: "+results[0].geometry.location.lng());
-    f = 'POLYGON(('+ String(Math.floor(results[0].geometry.location.lng() -1)) +' '+ String(Math.floor(results[0].geometry.location.lat() -1)) + ',' + ' '+ String(Math.floor(results[0].geometry.location.lng() -1)) + ' ' +String(Math.floor(results[0].geometry.location.lat() +1)) + ',' + ' '+ String(Math.floor(results[0].geometry.location.lng() +1)) + ' ' + String(Math.floor(results[0].geometry.location.lat() +1)) + ',' + ' ' + String(Math.floor(results[0].geometry.location.lng() +1)) + ' ' + String(Math.floor(results[0].geometry.location.lat() -1)) + ',' + ' ' + String(Math.floor(results[0].geometry.location.lng() -1)) + ' ' + String(Math.floor(results[0].geometry.location.lat() -1)) + '))'; 
+            f = 'POLYGON(('+ String(Math.floor(results[0].geometry.location.lng() -1)) +' '+ String(Math.floor(results[0].geometry.location.lat() -1)) + ',' + ' '+ String(Math.floor(results[0].geometry.location.lng() -1)) + ' ' +String(Math.floor(results[0].geometry.location.lat() +1)) + ',' + ' '+ String(Math.floor(results[0].geometry.location.lng() +1)) + ' ' + String(Math.floor(results[0].geometry.location.lat() +1)) + ',' + ' ' + String(Math.floor(results[0].geometry.location.lng() +1)) + ' ' + String(Math.floor(results[0].geometry.location.lat() -1)) + ',' + ' ' + String(Math.floor(results[0].geometry.location.lng() -1)) + ' ' + String(Math.floor(results[0].geometry.location.lat() -1)) + '))'; 
               
               console.log(f);
     //      document.getElementById("lati").innerHTML = "Latitutde:"+results[0].geometry.location.lat();
@@ -56,13 +60,50 @@ var GeoCode = (function() {
           }
         });
 
-      }
+      } 
 
-
+    $('#fishTab').click(function(){
+        console.log("clicked fish");
+        var index = 39;
+        filler = null;
+        for (var i in fishList) {
+                
+                filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+fishList[i]+"</i></a></li>\n";
+                index++;
+            }
+            document.getElementById("list_display").innerHTML = filler;
+    });
+    
+    $('#mollusksTab').click(function(){
+        console.log("clicked mollusks");
+        var index = 39;
+        filler=null;
+        for (var i in fishList) {
+                
+                filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+mollusksList[i]+"</i></a></li>\n";
+                index++;
+            }
+            document.getElementById("list_display").innerHTML = filler;
+    });
+    
+    $('#coralsTabs').click(function(){
+        console.log("clicked corals");
+        var index = 39;
+//        meraElement = "<li class="widget uib_w_39" data-uib="app_framework/listitem" data-ver="1"><a>List Item</a>";
+//        document.getElementById("list_display").innerHTML = meraElement;
+        filler=null;
+        for (var i in fishList) {
+                
+                filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+coralsList[i]+"</i></a></li>\n";
+                index++;
+            }
+            document.getElementById("list_display").innerHTML = filler;
+    });
 
     $('#enterlocation').onfocus = function(){initialize();};
-      $('#predive').click(function () {
-          var scientifNameList = [];
+    
+    $('#predive').click(function () {
+          
       $.ajax({
              type: "GET",
              // url: "http://api.iobis.org",
@@ -72,8 +113,9 @@ var GeoCode = (function() {
              data: {
 
               'geometry': String(f),
+                 phylum: "Chordata",
 //                 'geometry': POLYGON(((location_address.lng-1) (location_address),,,))
-              'limit': 10,
+              'limit': 1000,
              },
              success: function(data){
 
@@ -91,10 +133,29 @@ var GeoCode = (function() {
               
               //for (var item in data.results) scientifNameList.push(item['scientificName']);
               for (var i=0;i<(data.results).length;i++){
-
+                if(typeof data.results[i]['species'] == 'undefined'){
+                    continue;
+                }
                 scientifNameList.push(data.results[i]['species']);
+                  if (data.results[i]['phylum'] == 'Mollusca' && mollusksList.length < 10){
+                      mollusksList.push(data.results[i]['species'])
+                  }
+                  else if(data.results[i]['phylum'] == 'Chordata' && fishList.length < 10){
+                    fishList.push(data.results[i]['species'])
+                  }
+                  else if(data.results[i]['phylum'] == 'Cnidaria' && coralsList.length < 10){
+                    coralsList.push(data.results[i]['species'])
+                  }
                 console.log(scientifNameList[i]);
+                
+                console.log(typeof scientifNameList[i])
               }
+              console.log("List of fish");
+                console.log(fishList);
+                console.log("List of Mollusks");
+                console.log(mollusksList);
+                console.log("List of corals");
+                console.log(coralsList); 
               console.log(scientifNameList[0]);
                  if (flag==true){
                      console.log("Flag is true, proceeding to specific display");
@@ -106,7 +167,7 @@ var GeoCode = (function() {
              var filler = "";
             var index = 39;
             for (var i in scientifNameList) {
-                if (scientifNameList[i] == 'undefined'){
+                if (typeof scientifNameList[i] == 'undefined'){
                     continue;
                 }
                 filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+scientifNameList[i]+"</i></a></li>\n";
