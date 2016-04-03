@@ -33,9 +33,8 @@ function PostToWatson(QUESTION){
             data: JSON.stringify(data),
             headers: { "Authorization" : "Basic " + authorizationBasic},
             success: function(resultData) {
-                console.log(resultData["question"]["answers"].text);
-                console.log(resultData["question"]["answers"].confidence);
-                output = resultData["question"]["answers"];
+                console.log(resultData["question"]);
+                output = resultData["question"];
             },
             error: function(jqXHR, textStatus, errorThrown) {
             },

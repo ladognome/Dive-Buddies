@@ -48,50 +48,54 @@
          activate_subpage("#PostDive"); 
     });
     
-        /* button  Find */
+     //POST DIVE SUBMIT
     $(document).on("click", ".uib_w_45", function(evt)
     {
         var inputText = document.getElementById("input").value.toLowerCase();
         var splitText = inputText.split(" ");
-        var composedVector = [];
+        var composedVector = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0];
+
         
-        [].forEach.call(Word2VecUtils.findSimilarWords(1,splitText[0]), function(element, index, array){
-            composedVector = wordVecs[element[0]];
-        });
-        
-        for (var i =1; i < splitText.length; i++){
+        //CONVERT QUERY INTO WORD-TO-VEC VECTOR, WORDS SUMMED
+        for (var i =0; i < splitText.length; i++){
             [].forEach.call(Word2VecUtils.findSimilarWords(1,splitText[i]), function(element, index, array){
-                composedVector = Word2VecUtils.addVecs(composedVector, wordVecs[element[0]]);
-                //console.log(composedVector);
+                if (element[0] == "fin"){
+                    composedVector = Word2VecUtils.addVecs(composedVector, wordVecs["limb"]); //change all instances of fin to limb
+                }
+                else{
+                    composedVector = Word2VecUtils.addVecs(composedVector, wordVecs[element[0]]);
+                }
                 //console.log(element[0]); //the word
                 //console.log(element[1]); //the confidence
             });
         }
         console.log(composedVector);
         
-        /*var QUESTIONS = ["what is a white round shaped sea slug",
+
+        var winningQuestion = "";       
+        var winningConfidence = 0;
+        
+        //************************************************************
+        
+        //CODE FOR FINDING THE VECTORS FOR THE QUESTIONS
+        /*var winningVector = [];
+        
+        var QUESTIONS = ["what is a white round shaped sea slug",
         "what is a white shell with dark brown lump and a purple opening",
         "what shell is cream brown and pattern with small darker brown spots",
         "what slug has odd black rings and pale yellow green or orange body",
         "what squid is small and changes its color",
         "what fish is silver to light blue with a flat body",
         "what fish is brown red with large white spots all over",
-        ];*/
+        ];
         
-        
-        
-        
-        var winningQuestion = "";
-       //var winningVector = [];
-        var winningConfidence = 0;
-        
-        /*for (var i = 0; i < QUESTIONS.length; i++){
+        for (var i = 0; i < QUESTIONS.length; i++){
             var question = QUESTIONS[i];
             var composedVector_question = [];
             var split_question = question.toLowerCase().split(" ");
             
             [].forEach.call(Word2VecUtils.findSimilarWords(1,split_question[0]), function(element, index, array){
-            composedVector_question = wordVecs[element[0]];
+                composedVector_question = wordVecs[element[0]];
             });
 
             for (var j =1; j < split_question.length; j++){
@@ -113,9 +117,12 @@
             console.log("Most similar question so far: "+winningQuestion);
         }*/
         
+        //************************************************************
+        
+        //MATCH THE DESCRIPTION TO EACH QUESTION VECTOR
         for (var key in QUESTION_VECTORS){
             if (QUESTION_VECTORS.hasOwnProperty(key)) {
-                var similarity = Word2VecUtils.getCosSim(composedVector, QUESTION_VECTORS[key])
+                var similarity = Word2VecUtils.getCosSim(composedVector, QUESTION_VECTORS[key]);
                 console.log(similarity);
                 if (winningConfidence < similarity){
                     winningQuestion = key;
@@ -125,17 +132,53 @@
             }
         }
         
+        //FEED THE WINNING QUESTION TO WATSON
+        var WatsonResults = new PostToWatson(winningQuestion);
+        var WatsonAnswers = WatsonResults["answers"];
+        var WatsonDocuments = WatsonResults["evidencelist"];
         
-        var WatsonAnswers = PostToWatson(winningQuestion);
-        
+        //DISPLAY THE RESULTS
         activate_subpage("#PostDiveResults");
         var filler = "";
+        
+        
+        function IMAGE(imageDoc)
+        {
+            var imageHTML = "";
+            $.ajax
+            ({
+                url : imageDoc,
+                async: false,
+                success : function(result){
+                    var imageURL = $(result).filter("img").first()[0];
+                    if (imageURL !== undefined && imageURL.hasAttribute("src")){
+                        console.log(imageURL.src);
+                        imageHTML = "<img src=\""+imageURL.src+"\"></img>";
+                    }
+                    console.log("IMAGE HTML: "+imageHTML);   
+                }
+            });
+            return imageHTML;
+        }
+        
+        
+
         for (var i = 0; i < WatsonAnswers.length; i++) {
             var opt = WatsonAnswers[i].text;
             if (opt == "${noAnswer}" || opt.indexOf("undefined") > -1) {continue;}
             var split = opt.split(" - ");
             console.log(opt);
-            filler += "<li class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+split[1]+" - <i>"+split[2]+"</i></a></li>\n";
+            var imageDoc = WatsonDocuments[i].document;
+            imageDoc = imageDoc.replace("http://10.110.88.131:8080", "https://watson-wdc01.ihost.com");
+            //var imageResult = new IMAGE(imageDoc);
+            var imageHTML = IMAGE(imageDoc);
+            
+            //$.when(IMAGE(imageDoc)).done(function(result){
+                             
+                
+            filler += "<li class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+split[1]+" - <i>"+split[2]+"</i></a></li>\n";
+            console.log(filler); 
+           // });            
         }
         document.getElementById("watson_results").innerHTML = filler;
     });
