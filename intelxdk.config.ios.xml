@@ -9,9 +9,10 @@
 <author>Intel XDK</author>
 <content src="index.html"/>
 <access origin="*"/>
-<preference name="ios-target" value="6"/>
 <preference name="ios-configuration" value="adhoc"/>
-<preference name="Orientation" value="default"/>
+<platform name="ios">
+<preference name="Orientation" value="default"/></platform>
+<preference name="deployment-target" value="6"/>
 <!--creationInfo:{"src":"webapp/sample-app-framework/sample.zip","projectTypeName":"com.intel.xdk.projecttype.webapp"}-->
 <preference name="debuggable" value="false"/>
 <platform name="ios">
