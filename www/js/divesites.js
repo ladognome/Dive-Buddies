@@ -7,6 +7,7 @@
 //console.log(xhr.status);
 //console.log(xhr.statusText);
 $('#Go').click(function(){
+    var url;
     geocoder = new google.maps.Geocoder();
         var address = document.getElementById("enterlocation").value;
         geocoder.geocode( { 'address': address}, function(results, status) {
@@ -16,7 +17,8 @@ $('#Go').click(function(){
           console.log("Longitude: "+results[0].geometry.location.lng());
         var lat = results[0].geometry.location.lat();
         var long = results[0].geometry.location.lng();
-        var url = "http://api.divesites.com/?mode=sites&lat="+lat+"&lng="+long+"&dist=25";
+        url = "http://api.divesites.com/?mode=sites&lat="+lat+"&lng="+long+"&dist=25";
+          }
                                                  
     $.ajax({
              type: "GET",
@@ -30,7 +32,7 @@ $('#Go').click(function(){
               console.log("success");
              }
     
-})
+});});});
 
 $('#UseCurrent').click(function(){
       
@@ -48,4 +50,4 @@ $('#UseCurrent').click(function(){
              }
     
                 
-  })
+  });});
