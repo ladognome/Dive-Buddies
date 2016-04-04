@@ -103,7 +103,8 @@ var GeoCode = (function() {
     $('#enterlocation').onfocus = function(){initialize();};
     
     $('#predive').click(function () {
-          
+          var postDate = new Date();
+          postDate.setMonth(postDate.getMonth()-3);
       $.ajax({
              type: "GET",
              // url: "http://api.iobis.org",
@@ -113,7 +114,12 @@ var GeoCode = (function() {
              data: {
 
               'geometry': String(f),
-                 phylum: "Chordata",
+//               'year': new Date().getYear(),
+              // 'startdate': new Date(),
+              // 'enddate': postDate,
+
+
+              // 'phylum': "Chordata",
 //                 'geometry': POLYGON(((location_address.lng-1) (location_address),,,))
               'limit': 1000,
              },
@@ -130,7 +136,17 @@ var GeoCode = (function() {
               console.log(data.results);
               //console.log((data.results).length);
 
+
+              for(var i=0;i<(data.results).length;i++){
+                if(typeof data.results[i]['species'] == 'undefined'){
+                  continue;
+                }
+                scientifNameList.push([data.results[i]['count'],data.results[i]['species']]);
+              }
               
+              scientifNameList.sort(function(a,b){return a[1]-b[1]});
+              scientifNameList.reverse();
+
               //for (var item in data.results) scientifNameList.push(item['scientificName']);
               for (var i=0;i<(data.results).length;i++){
                 if(typeof data.results[i]['species'] == 'undefined'){
