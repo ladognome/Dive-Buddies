@@ -7,6 +7,9 @@
 
     <head>
         <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false&amp;libraries=places"></script>
+        <script type="text/javascript" src="http://www.google.com/jsapi">
+            google.load('search', '1');
+        </script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <link rel="stylesheet" type="text/css" href="galleria/galleria.classic.css">
         <link rel="stylesheet" type="text/css" href="media_button_bar/css/media_button_bar.css">
@@ -146,19 +149,17 @@
                                 <h3>You might find these creatures here...</h3>
                             </div>
                         </div>
-                        <div class="button-grouped flex widget uib_w_34 d-margins" data-uib="app_framework/button_group" data-ver="1"><a class="button widget uib_w_35 green" data-uib="app_framework/button" data-ver="1" style="border-left-width: 1px; border-left-style: solid; border-left-color: rgb(102, 102, 102); border-top-left-radius: 6px; border-bottom-left-radius: 6px;">Fish</a>
-                            <a class="button widget uib_w_36 green" data-uib="app_framework/button" data-ver="1">Mollusks</a><a class="button widget uib_w_37 green" data-uib="app_framework/button" data-ver="1" style="border-top-right-radius: 6px; border-bottom-right-radius: 6px;">Corals</a>
+                        <div class="button-grouped flex widget uib_w_34 d-margins" data-uib="app_framework/button_group" data-ver="1"><a id="fishTab" class="button widget uib_w_35 green" data-uib="app_framework/button" data-ver="1" style="border-left-width: 1px; border-left-style: solid; border-left-color: rgb(102, 102, 102); border-top-left-radius: 6px; border-bottom-left-radius: 6px;">Fish</a>
+                            <a id="mollusksTab" class="button widget uib_w_36 green" data-uib="app_framework/button" data-ver="1">Mollusks</a><a id="coralsTabs" class="button widget uib_w_37 green" data-uib="app_framework/button" data-ver="1" style="border-top-right-radius: 6px; border-bottom-right-radius: 6px;">Corals</a>
                         </div>
-                        
+
                         <ul class="list widget uib_w_38 d-margins" data-uib="app_framework/listview" id="list_display" data-ver="1">
-<!--
                             <li class="widget uib_w_39" data-uib="app_framework/listitem" data-ver="1"><a>List Item</a>
                             </li>
                             <li class="widget uib_w_40" data-uib="app_framework/listitem" data-ver="1"><a>List Item</a>
                             </li>
                             <li class="widget uib_w_41" data-uib="app_framework/listitem" data-ver="1"><a>List Item</a>
                             </li>
--->
                         </ul>
                     </div>
                     <div id="PostDive" class="upage-content vertical-col left hidden">
