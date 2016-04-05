@@ -51,7 +51,7 @@
      //POST DIVE SUBMIT
     $(document).on("click", ".uib_w_45", function(evt)
     {
-        var inputText = document.getElementById("input").value.toLowerCase();
+        var inputText = document.getElementById("input").value.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
         var splitText = inputText.split(" ");
         var composedVector = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0];
 
@@ -78,15 +78,17 @@
         //************************************************************
         
         //CODE FOR FINDING THE VECTORS FOR THE QUESTIONS
-        /*var winningVector = [];
+       /* var winningVector = [];
         
-        var QUESTIONS = ["what is a white round shaped sea slug",
-        "what is a white shell with dark brown lump and a purple opening",
-        "what shell is cream brown and pattern with small darker brown spots",
-        "what slug has odd black rings and pale yellow green or orange body",
-        "what squid is small and changes its color",
-        "what fish is silver to light blue with a flat body",
-        "what fish is brown red with large white spots all over",
+        var QUESTIONS = [
+            "what fish is silver to white blue on back and yellow towards the tail",
+            "what fish has a narrow bronze line along middle of body becoming yellow towards the tail",
+            "what fish is black with big white spots",
+            "what fish lives in shallow rocky and coral reef and the common name is double head",
+            "what fish has lots of limbs which fan out from its body",
+            "what fish has long spine coming out the side of the body",
+            "what fish looks like a turkey",
+            "what fish has gold brown bands stretch across a light yellow or white background"
         ];
         
         for (var i = 0; i < QUESTIONS.length; i++){
@@ -140,74 +142,21 @@
         //DISPLAY THE RESULTS
         activate_subpage("#PostDiveResults");
         var filler = "";
-        
-        
-        function IMAGE(imageDoc)
-        {
-            var imageHTML = "";
-            $.ajax
-            ({
-                url : imageDoc,
-                async: false,
-                success : function(result){
-                    var imageURL = $(result).filter("img").first()[0];
-                    if (imageURL !== undefined && imageURL.hasAttribute("src")){
-                        console.log(imageURL.src);
-                        imageHTML = "<img src=\""+imageURL.src+"\" width=\"150\"></img>";
-                    }
-                    console.log("IMAGE HTML: "+imageHTML);   
-                }
-            });
-            return imageHTML;
-        }
-   
-    
-    function wiki(word) {
-        var response = "";
-        word = word.toLowerCase();
-        $.ajax({
-            type: "GET",
-            url: "https://en.wikipedia.org/w/api.php?action=parse&format=json&section=0&prop=text&page=" + word,
-            async: false,
-            dataType: "json",
-            contentType: "application/json; charset=utf-8",
-            success : function(data, textStatus, jqXHR){
-                
-                var markup = data.parse.text["*"];
-                var blurb = $('<div></div>').html(markup);
-                var imageURL = $(blurb[0]).find('img')[0];
-                console.log(imageURL);
-                if (imageURL !== undefined && imageURL.hasAttribute("src")){
-                    console.log(imageURL.src);
-                    imageHTML = "<img src=\""+imageURL.src+"\" width=\"150\"></img>";
-                }
-                console.log("IMAGE HTML: "+imageHTML);
-                response = imageHTML;            
-            },
-            error: function (errorMessage) {
-            }
-
-        });
-        return response;
-    }
-        
-        
-
         for (var i = 0; i < WatsonAnswers.length; i++) {
+            var imageHTML = "";
             var opt = WatsonAnswers[i].text;
             if (opt == "${noAnswer}" || opt.indexOf("undefined") > -1) {continue;}
             var split = opt.split(" - ");
             console.log(opt);
             var imageDoc = WatsonDocuments[i].document;
             imageDoc = imageDoc.replace("http://10.110.88.131:8080", "https://watson-wdc01.ihost.com");
-            var imageHTML = IMAGE(imageDoc);
+            imageHTML = IMAGE(imageDoc);
             if (imageHTML == ""){
                 var word = split[1].split(" ").join("_")
                 imageHTML = wiki(word);
             }
             filler += "<li class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p>"+split[1]+" - <i>"+split[2]+"</i></a></li>\n";
-            console.log(filler); 
-           // });            
+            console.log(filler);          
         }
         document.getElementById("watson_results").innerHTML = filler;
     });
