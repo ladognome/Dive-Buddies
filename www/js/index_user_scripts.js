@@ -153,13 +153,43 @@
                     var imageURL = $(result).filter("img").first()[0];
                     if (imageURL !== undefined && imageURL.hasAttribute("src")){
                         console.log(imageURL.src);
-                        imageHTML = "<img src=\""+imageURL.src+"\"></img>";
+                        imageHTML = "<img src=\""+imageURL.src+"\" width=\"150\"></img>";
                     }
                     console.log("IMAGE HTML: "+imageHTML);   
                 }
             });
             return imageHTML;
         }
+   
+    
+    function wiki(word) {
+        var response = "";
+        word = word.toLowerCase();
+        $.ajax({
+            type: "GET",
+            url: "https://en.wikipedia.org/w/api.php?action=parse&format=json&section=0&prop=text&page=" + word,
+            async: false,
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success : function(data, textStatus, jqXHR){
+                
+                var markup = data.parse.text["*"];
+                var blurb = $('<div></div>').html(markup);
+                var imageURL = $(blurb[0]).find('img')[0];
+                console.log(imageURL);
+                if (imageURL !== undefined && imageURL.hasAttribute("src")){
+                    console.log(imageURL.src);
+                    imageHTML = "<img src=\""+imageURL.src+"\" width=\"150\"></img>";
+                }
+                console.log("IMAGE HTML: "+imageHTML);
+                response = imageHTML;            
+            },
+            error: function (errorMessage) {
+            }
+
+        });
+        return response;
+    }
         
         
 
@@ -170,13 +200,12 @@
             console.log(opt);
             var imageDoc = WatsonDocuments[i].document;
             imageDoc = imageDoc.replace("http://10.110.88.131:8080", "https://watson-wdc01.ihost.com");
-            //var imageResult = new IMAGE(imageDoc);
             var imageHTML = IMAGE(imageDoc);
-            
-            //$.when(IMAGE(imageDoc)).done(function(result){
-                             
-                
-            filler += "<li class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+split[1]+" - <i>"+split[2]+"</i></a></li>\n";
+            if (imageHTML == ""){
+                var word = split[1].split(" ").join("_")
+                imageHTML = wiki(word);
+            }
+            filler += "<li class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p>"+split[1]+" - <i>"+split[2]+"</i></a></li>\n";
             console.log(filler); 
            // });            
         }
