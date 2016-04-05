@@ -1,12 +1,4 @@
-//TODO: stem words & removed punctuation
-/*var questions = {"what is a white oval shaped sea slug",
-"what is a white shell with dark brown nodules and a purplish opening",
-"what shell is creamy brown, and patterned with small darker brown spots",
-"what slug has irregular black rings and pale yellowish, greenish, or orangish body",
-"what squid is small and changes its color",
-"what fish is silvery to light blue with a flat body",
-"what fish is brownish-red with large white spots all over",
-};*/
+//TODO: stem?
 
 function PostToWatson(QUESTION){
     var WATSON_URL = "https://watson-wdc01.ihost.com/instance/514/deepqa/v1/question";
@@ -15,7 +7,8 @@ function PostToWatson(QUESTION){
 
     var data = {
      "question": {
-        "questionText" :  QUESTION
+        "questionText" :  QUESTION,
+         "items" : 10
       }   
     };
     

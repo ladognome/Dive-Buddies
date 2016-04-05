@@ -144,19 +144,22 @@
         var filler = "";
         for (var i = 0; i < WatsonAnswers.length; i++) {
             var imageHTML = "";
+            console.log(WatsonAnswers[i]);
             var opt = WatsonAnswers[i].text;
             if (opt == "${noAnswer}" || opt.indexOf("undefined") > -1) {continue;}
             var split = opt.split(" - ");
             console.log(opt);
-            var imageDoc = WatsonDocuments[i].document;
-            imageDoc = imageDoc.replace("http://10.110.88.131:8080", "https://watson-wdc01.ihost.com");
-            imageHTML = IMAGE(imageDoc);
-            if (imageHTML == ""){
-                var word = split[1].split(" ").join("_")
-                imageHTML = wiki(word);
+            if (split[1] !== undefined){
+                var imageDoc = WatsonDocuments[i].document;
+                imageDoc = imageDoc.replace("http://10.110.88.131:8080", "https://watson-wdc01.ihost.com");
+                imageHTML = IMAGE(imageDoc);
+                if (imageHTML == ""){
+                    var word = split[1].split(" ").join("_")
+                    imageHTML = wiki(word);
+                }
+                filler += "<li class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p>"+split[1]+" - <i>"+split[2]+"</i></a></li>\n";
+                console.log(filler);
             }
-            filler += "<li class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p>"+split[1]+" - <i>"+split[2]+"</i></a></li>\n";
-            console.log(filler);          
         }
         document.getElementById("watson_results").innerHTML = filler;
     });
