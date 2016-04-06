@@ -7,7 +7,7 @@
  function register_event_handlers()
  {
     
-    
+    var backpage="#StartPage";
      /* button  #mainButton */
     $(document).on("click", "#mainButton", function(evt)
     {
@@ -21,10 +21,51 @@
          uib_sb.toggle_sidebar($(".uib_w_7"));  
     });
     
-        /* button  Use Current Location */
-    
-    
-        /* button  Use Current Location */
+   
+      $(document).on("load", "#page_100_31", function(evt)
+    {
+         /*global activate_subpage */
+
+         backpage="#StartPage"; 
+    });
+      $(document).on("load", "#DiveSpotSelect", function(evt)
+    {
+         /*global activate_subpage */
+
+         backpage="#page_100_31"; 
+    });
+      $(document).on("load", "#DiveModeSelect", function(evt)
+    {
+         /*global activate_subpage */
+
+         backpage="#DiveSpotSelect"; 
+    });
+      $(document).on("load", "#PreDive", function(evt)
+    {
+         /*global activate_subpage */
+
+         backpage="#DiveModeSelect"; 
+    });
+      $(document).on("load", "#PostDive", function(evt)
+    {
+         /*global activate_subpage */
+
+         backpage="#DiveModeSelect"; 
+    });
+       $(document).on("load", "#PostDiveResults", function(evt)
+    {
+         /*global activate_subpage */
+
+         backpage="#PostDive"; 
+    });
+      $(document).on("load", "#fishinfo", function(evt)
+    {
+         /*global activate_subpage */
+
+         backpage="#DiveModeSelect"; 
+    });
+
+     
     $(document).on("click", ".uib_w_29", function(evt)
     {
          /*global activate_subpage */
@@ -249,7 +290,12 @@
          GeoCode.codeAddress();
          activate_subpage("#DiveModeSelect"); 
     });
-    
+    $(document).on("click", "#back", function(evt)
+    {
+        /* your code goes here */ 
+        activate_subpage(backpage);
+        
+    });
     }
  document.addEventListener("app.Ready", register_event_handlers, false);
 })();
