@@ -66,13 +66,19 @@
     });
 
      
-    $(document).on("click", ".uib_w_29", function(evt)
+    $(document).on("click", "#Go", function(evt)
     {
          /*global activate_subpage */
-         activate_subpage("#DiveModeSelect"); 
+         activate_subpage("#DiveSpotSelect"); 
     });
     
         /* button  Go */
+    
+      $(document).on("click", "#UseCurrent", function(evt)
+    {
+         /*global activate_subpage */
+         activate_subpage("#DiveSpotSelect"); 
+    });
     
     
         /* button  #predive */
@@ -290,6 +296,7 @@
          GeoCode.codeAddress();
          activate_subpage("#DiveModeSelect"); 
     });
+     
     $(document).on("click", "#back", function(evt)
     {
         /* your code goes here */ 
