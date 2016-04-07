@@ -6,6 +6,9 @@ var GeoCode = (function() {
       var fishList = [];
       var mollusksList = [];
       var coralsList = [];  
+      var specificList_LordHowe_fish = ['Pterois volitans','Coris bulbifrons','Seriola lalandi','Thalassoma lunare','Canthigaster callisternus','Pseudanthias pictilis','Alutarius macracanthus','Trachypoma macracanthus','Xyrichtys niger','Epinephelus undulatostriatus'];
+      var specificList_LordHowe_mollusks = ['Aequipecten nux','Sepioteuthis lessoniana','Aplysia dactylomela','Conus arenatus','Ctena bella','Diacria trispinosa','Sepia bandensis','Drupa morum','Engina zonalis','Umbraculum sinicum'];
+      var specificList_LordHowe_corals = ['Acropora glauca','Acropora solitaryensis','Madrepora hyacinthus','Parascolymia vitiensis','Acropora yongei','Acanthastrea bowerbanki','Isopora palifera','Goniopora lichen','Stephanocyathus spiniger','Pavona minuta'];
     
     function init(){
             var address = (document.getElementById('enterlocation'));
@@ -125,6 +128,27 @@ var GeoCode = (function() {
              },
              success: function(data){
 
+              if (flag==true){
+                     console.log("Flag is true, proceeding to specific display");
+                     scientifNameList = ['Pterois volitans','Coris bulbifrons','Seriola lalandi','Thalassoma lunare','Canthigaster callisternus','Pseudanthias pictilis','Alutarius macracanthus','Trachypoma macracanthus','Xyrichtys niger','Epinephelus undulatostriatus','Aequipecten nux','Sepioteuthis lessoniana','Aplysia dactylomela','Conus arenatus','Ctena bella','Diacria trispinosa','Sepia bandensis','Drupa morum','Engina zonalis','Umbraculum sinicum','Acropora glauca','Acropora solitaryensis','Madrepora hyacinthus','Parascolymia vitiensis','Acropora yongei','Acanthastrea bowerbanki','Isopora palifera','Goniopora lichen','Stephanocyathus spiniger','Pavona minuta'];
+                     mollusksList = specificList_LordHowe_mollusks;
+                     coralsList = specificList_LordHowe_corals;
+                     fishList = specificList_LordHowe_fish;
+
+                     var filler = "";
+                      var index = 39;
+                      for (var i in scientifNameList) {
+                          if (typeof scientifNameList[i] == 'undefined'){
+                              continue;
+                          }
+                          filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+scientifNameList[i]+"</i></a></li>\n";
+                          index++;
+                      }
+                 }
+                 else{
+                     console.log("Flag is not true, proceed to generic display");
+                 
+
               //alert(data.count);
               console.log("data count "+ data.count);
               //var text= $.parseJSON(data);
@@ -141,31 +165,53 @@ var GeoCode = (function() {
                 if(typeof data.results[i]['species'] == 'undefined'){
                   continue;
                 }
-                scientifNameList.push([data.results[i]['count'],data.results[i]['species']]);
+                scientifNameList.push([data.results[i]['records'],data.results[i]['species'],data.results[i]['phylum']]);
               }
               
               scientifNameList.sort(function(a,b){return a[1]-b[1]});
               scientifNameList.reverse();
+              console.log("format of name list");
+              console.log(scientifNameList);
 
               //for (var item in data.results) scientifNameList.push(item['scientificName']);
-              for (var i=0;i<(data.results).length;i++){
-                if(typeof data.results[i]['species'] == 'undefined'){
-                    continue;
-                }
-                scientifNameList.push(data.results[i]['species']);
-                  if (data.results[i]['phylum'] == 'Mollusca' && mollusksList.length < 10){
-                      mollusksList.push(data.results[i]['species'])
-                  }
-                  else if(data.results[i]['phylum'] == 'Chordata' && fishList.length < 10){
-                    fishList.push(data.results[i]['species'])
-                  }
-                  else if(data.results[i]['phylum'] == 'Cnidaria' && coralsList.length < 10){
-                    coralsList.push(data.results[i]['species'])
-                  }
-                console.log(scientifNameList[i]);
+              // for (var i=0;i<(data.results).length;i++){
+              //   if(typeof data.results[i]['species'] == 'undefined'){
+              //       continue;
+              //   }
+              //   scientifNameList.push(data.results[i]['species']);
+              //     if (data.results[i]['phylum'] == 'Mollusca' && mollusksList.length < 10){
+              //         mollusksList.push(data.results[i]['species'])
+              //     }
+              //     else if(data.results[i]['phylum'] == 'Chordata' && fishList.length < 10){
+              //       fishList.push(data.results[i]['species'])
+              //     }
+              //     else if(data.results[i]['phylum'] == 'Cnidaria' && coralsList.length < 10){
+              //       coralsList.push(data.results[i]['species'])
+              //     }
+              //   console.log(scientifNameList[i]);
                 
-                console.log(typeof scientifNameList[i])
+              //   console.log(typeof scientifNameList[i])
+              // }
+
+              for (var i=0;i<(scientifNameList).length;i++){
+                // if(typeof data.results[i]['species'] == 'undefined'){
+                //     continue;
+                // }
+                // scientifNameList.push(data.results[i]['species']);
+                  if (scientifNameList[i][2] == 'Mollusca' && mollusksList.length < 10){
+                      mollusksList.push(scientifNameList[i][1])
+                  }
+                  else if(scientifNameList[i][2] == 'Chordata' && fishList.length < 10){
+                    fishList.push(scientifNameList[i][1])
+                  }
+                  else if(scientifNameList[i][2] == 'Cnidaria' && coralsList.length < 10){
+                    coralsList.push(scientifNameList[i][1])
+                  }
+                // console.log(scientifNameList[i]);
+                
+                // console.log(typeof scientifNameList[i])
               }
+
               console.log("List of fish");
                 console.log(fishList);
                 console.log("List of Mollusks");
@@ -173,12 +219,7 @@ var GeoCode = (function() {
                 console.log("List of corals");
                 console.log(coralsList); 
               console.log(scientifNameList[0]);
-                 if (flag==true){
-                     console.log("Flag is true, proceeding to specific display");
-                 }
-                 else{
-                     console.log("Flag is not true, proceed to generic display");
-                 }
+                
 
              var filler = "";
             var index = 39;
@@ -186,9 +227,10 @@ var GeoCode = (function() {
                 if (typeof scientifNameList[i] == 'undefined'){
                     continue;
                 }
-                filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+scientifNameList[i]+"</i></a></li>\n";
+                filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+scientifNameList[i][1]+"</i></a></li>\n";
                 index++;
             }
+            } 
             document.getElementById("list_display").innerHTML = filler;
              
             },

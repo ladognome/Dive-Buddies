@@ -12,7 +12,7 @@ function imageWp() {
 
 
     $.get(
-    'https://de.wikipedia.org/w/api.php?action=parse&format=json&prop=text&section=0&page=' + word + '&callback=?',
+    'https://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&section=0&page=' + word + '&callback=?',
     function (response) {
         var resp = $.parseJSON(response);
         var text = resp.parse.text['*'];
