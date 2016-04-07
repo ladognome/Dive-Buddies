@@ -19,12 +19,7 @@
          uib_sb.toggle_sidebar($(".uib_w_7"));  
     });
     
-    $(document).on("click", "#Go", function(evt)
-    {
-         /*global activate_subpage */
-         activate_subpage("#DiveSpotSelect"); 
-    });
-    
+
         /* button  Go */
     
       $(document).on("click", "#UseCurrent", function(evt)
@@ -271,7 +266,7 @@
          /*global activate_subpage */
          GeoCode.init();
          GeoCode.codeAddress();
-         activate_subpage("#DiveModeSelect"); 
+         activate_subpage("#DiveSpotSelect"); 
     });
      
     $(document).on("click", "#back", function(evt)

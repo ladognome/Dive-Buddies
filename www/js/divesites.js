@@ -24,8 +24,10 @@ function getList(data){
 
 $('#Go').click(function(){
     var url;
+    console.log("executing divesites");
     geocoder = new google.maps.Geocoder();
         var address = document.getElementById("enterlocation").value;
+    console.log(address);
         geocoder.geocode( { 'address': address}, function(results, status) {
           if (status == google.maps.GeocoderStatus.OK) {
 
@@ -40,7 +42,7 @@ $('#Go').click(function(){
              type: "GET",
              url:url,
              contentType: "application/json; charset=utf-8",
-             dataType: "jsonp",
+             dataType: "json",
              
              success: function(data){
                  getList(data);
@@ -56,7 +58,7 @@ $('#UseCurrent').click(function(){
              type: "GET",
              url:"http://api.divesites.com/",
              contentType: "application/json; charset=utf-8",
-             dataType: "jsonp",
+             dataType: "json",
             
              success: function(data){
                  getList(data);
