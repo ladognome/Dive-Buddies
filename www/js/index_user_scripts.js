@@ -6,10 +6,7 @@
  */
  function register_event_handlers()
  {
-    
-    var backpage="#StartPage";
      
-     /* button  #mainButton */
     $(document).on("click", "#mainButton", function(evt)
     {
          /* Other possible functions are: 
@@ -22,54 +19,6 @@
          uib_sb.toggle_sidebar($(".uib_w_7"));  
     });
     
-   
-      $(document).on("load", "#page_100_31", function(evt)
-    {
-         /*global activate_subpage */
-
-         backpage="#StartPage"; 
-          console.log(backpage);
-    });
-      $(document).on("load", "#DiveSpotSelect", function(evt)
-    {
-         /*global activate_subpage */
-
-         backpage="#page_100_31"; 
-          console.log(backpage);
-    });
-      $(document).on("load", "#DiveModeSelect", function(evt)
-    {
-         /*global activate_subpage */
-
-         backpage="#DiveSpotSelect"; 
-          console.log(backpage);
-    });
-      $(document).on("load", "#PreDive", function(evt)
-    {
-         /*global activate_subpage */
-
-         backpage="#DiveModeSelect"; 
-    });
-      $(document).on("load", "#PostDive", function(evt)
-    {
-         /*global activate_subpage */
-
-         backpage="#DiveModeSelect"; 
-    });
-       $(document).on("load", "#PostDiveResults", function(evt)
-    {
-         /*global activate_subpage */
-
-         backpage="#PostDive"; 
-    });
-      $(document).on("load", "#fishinfo", function(evt)
-    {
-         /*global activate_subpage */
-
-         backpage="#DiveModeSelect"; 
-    });
-
-     
     $(document).on("click", "#Go", function(evt)
     {
          /*global activate_subpage */
@@ -326,11 +275,39 @@
     });
      
     $(document).on("click", "#back", function(evt)
-    {
-        /* your code goes here */ 
+    { 
+        var backpage = "#StartPage";
+        var location = window.location.href;
+        switch(location.substring(location.indexOf("#")+1))
+        {
+            case "#page_100_31":
+                backpage="#StartPage"; 
+                break;
+            case "#DiveSpotSelect":
+                backpage="#page_100_31"; 
+                break;
+            case "#DiveModeSelect":
+                backpage="#DiveSpotSelect"; 
+                break;
+            case "#PreDive":
+                backpage="#DiveModeSelect"; 
+                break;
+            case "#PostDive":
+                backpage="#DiveModeSelect";
+                break;
+            case "#PostDiveResults":
+                backpage="#PostDive"; 
+                break;
+            case "#fishinfo":
+                backpage="#DiveModeSelect"; 
+                break;
+            default:
+                backpage="#StartPage";
+        }
+        console.log(backpage);
         activate_subpage(backpage);
         
     });
-    }
+ }
  document.addEventListener("app.Ready", register_event_handlers, false);
 })();
