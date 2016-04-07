@@ -6,6 +6,22 @@
 //xhr.send();
 //console.log(xhr.status);
 //console.log(xhr.statusText);
+function getList(data){
+    
+    var sites = data["sites"];
+    console.log(sites);
+    
+    var filler=null;
+        for (var i in sites) {
+                var spot = sites[i];
+                var index = 56;
+                filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+spot["name"]+"</i></a></li>\n";
+                index++;
+            }
+            document.getElementById("divespots").innerHTML = filler;
+   
+}
+
 $('#Go').click(function(){
     var url;
     geocoder = new google.maps.Geocoder();
@@ -25,9 +41,9 @@ $('#Go').click(function(){
              url:url,
              contentType: "application/json; charset=utf-8",
              dataType: "jsonp",
-             data: {
-             },
+             
              success: function(data){
+                 getList(data);
 
               console.log("success");
              }
@@ -41,10 +57,9 @@ $('#UseCurrent').click(function(){
              url:"http://api.divesites.com/",
              contentType: "application/json; charset=utf-8",
              dataType: "jsonp",
-             data: {
-             },
+            
              success: function(data){
-
+                 getList(data);
 
               console.log("success");
              }

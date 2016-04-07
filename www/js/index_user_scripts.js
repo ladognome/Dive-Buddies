@@ -8,6 +8,7 @@
  {
     
     var backpage="#StartPage";
+     
      /* button  #mainButton */
     $(document).on("click", "#mainButton", function(evt)
     {
@@ -27,18 +28,21 @@
          /*global activate_subpage */
 
          backpage="#StartPage"; 
+          console.log(backpage);
     });
       $(document).on("load", "#DiveSpotSelect", function(evt)
     {
          /*global activate_subpage */
 
          backpage="#page_100_31"; 
+          console.log(backpage);
     });
       $(document).on("load", "#DiveModeSelect", function(evt)
     {
          /*global activate_subpage */
 
          backpage="#DiveSpotSelect"; 
+          console.log(backpage);
     });
       $(document).on("load", "#PreDive", function(evt)
     {
@@ -210,7 +214,31 @@
         }
         document.getElementById("watson_results").innerHTML = filler;
     });
-    
+     $(document).on("click", ".uib_w_59", function(evt)
+    {
+         /*global activate_subpage */
+         activate_subpage("#DiveModeSelect"); 
+    });
+     $(document).on("click", ".uib_w_58", function(evt)
+    {
+         /*global activate_subpage */
+         activate_subpage("#DiveModeSelect"); 
+    });
+     $(document).on("click", ".uib_w_57", function(evt)
+    {
+         /*global activate_subpage */
+         activate_subpage("#DiveModeSelect"); 
+    });
+     $(document).on("click", ".uib_w_56", function(evt)
+    {
+         /*global activate_subpage */
+         activate_subpage("#DiveModeSelect"); 
+    });
+    $(document).on("click", ".uib_w_55", function(evt)
+    {
+         /*global activate_subpage */
+         activate_subpage("#DiveModeSelect"); 
+    });
         /* listitem  Result Item */
     $(document).on("click", ".uib_w_50", function(evt)
     {
