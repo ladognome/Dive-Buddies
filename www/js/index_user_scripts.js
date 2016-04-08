@@ -6,7 +6,12 @@
  */
  function register_event_handlers()
  {
-     
+     /* graphic button  #StartPageGraphic */
+    $(document).on("click", "#StartPageGraphic", function(evt)
+    {
+         activate_subpage("#page_100_31"); 
+    });
+    
     $(document).on("click", "#mainButton", function(evt)
     {
          /* Other possible functions are: 
@@ -20,8 +25,7 @@
     });
     
 
-        /* button  Go */
-    
+     /* button  Go */    
       $(document).on("click", "#UseCurrent", function(evt)
     {
          /*global activate_subpage */
@@ -29,17 +33,15 @@
     });
     
     
-        /* button  #predive */
+    /* button  #predive */
     $(document).on("click", "#predive", function(evt)
     {
-         /*global activate_subpage */
          activate_subpage("#PreDive"); 
     });
     
         /* button  #postdive */
     $(document).on("click", "#postdive", function(evt)
     {
-         /*global activate_subpage */
          activate_subpage("#PostDive"); 
     });
     
@@ -141,122 +143,103 @@
             var imageHTML = "";
             console.log(WatsonAnswers[i]);
             var opt = WatsonAnswers[i].text;
-            if (opt == "${noAnswer}" || opt.indexOf("undefined") > -1) {continue;}
+            if (opt == "${noAnswer}" || opt.indexOf("undefined") > -1 || opt.indexOf("Encyclopedia of Life") == -1) {continue;}
             var split = opt.split(" - ");
             console.log(opt);
             if (split[1] !== undefined){
-                var imageDoc = WatsonDocuments[i].document;
-                imageDoc = imageDoc.replace("http://10.110.88.131:8080", "https://watson-wdc01.ihost.com");
-                imageHTML = IMAGE(imageDoc);
-                if (imageHTML == ""){
-                    var word = split[1].split(" ").join("_")
-                    imageHTML = wiki(word);
+                if (filler.indexOf(split[2]) == -1){ //check for duplicates
+                    var imageDoc = WatsonDocuments[i].document;
+                    imageDoc = imageDoc.replace("http://10.110.88.131:8080", "https://watson-wdc01.ihost.com");
+                    imageHTML = IMAGE(imageDoc);
+                    if (imageHTML == ""){
+                        var word = split[1].split(" ").join("_")
+                        imageHTML = wiki(word);
+                    }
+                    filler += "<li id=\"animal_selection\" class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p>"+split[1]+" - <i>"+split[2]+"</i></a></li>\n";
+                    console.log(filler);
                 }
-                filler += "<li class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p>"+split[1]+" - <i>"+split[2]+"</i></a></li>\n";
-                console.log(filler);
             }
         }
         document.getElementById("watson_results").innerHTML = filler;
     });
+    
+    $(document).on('click', "#animal_selection", function(evt){
+         console.log(this.value);
+         activate_subpage("#fishinfo");
+         
+         //populate fishinfo page with relevant info
+     });
+    
      $(document).on("click", ".uib_w_59", function(evt)
     {
-         /*global activate_subpage */
          activate_subpage("#DiveModeSelect"); 
     });
      $(document).on("click", ".uib_w_58", function(evt)
     {
-         /*global activate_subpage */
          activate_subpage("#DiveModeSelect"); 
     });
      $(document).on("click", ".uib_w_57", function(evt)
     {
-         /*global activate_subpage */
          activate_subpage("#DiveModeSelect"); 
     });
      $(document).on("click", ".uib_w_56", function(evt)
     {
-         /*global activate_subpage */
          activate_subpage("#DiveModeSelect"); 
     });
     $(document).on("click", ".uib_w_55", function(evt)
     {
-         /*global activate_subpage */
          activate_subpage("#DiveModeSelect"); 
     });
-        /* listitem  Result Item */
-    $(document).on("click", ".uib_w_50", function(evt)
+    
+    
+   /*$(document).on("click", ".uib_w_50", function(evt)
     {
-         /*global activate_subpage */
          activate_subpage("#fishinfo"); 
     });
     
-        /* listitem  Result Item */
     $(document).on("click", ".uib_w_49", function(evt)
     {
-         /*global activate_subpage */
          activate_subpage("#fishinfo"); 
     });
     
-        /* listitem  Result Item */
     $(document).on("click", ".uib_w_48", function(evt)
     {
-         /*global activate_subpage */
          activate_subpage("#fishinfo"); 
-    });
+    });*/
     
-        /* listitem  List Item */
-    $(document).on("click", ".uib_w_41", function(evt)
+    
+            $(document).on("click", ".uib_w_41", function(evt)
     {
-         /*global activate_subpage */
          activate_subpage("#fishinfo"); 
     });
-    
-        /* listitem  List Item */
     $(document).on("click", ".uib_w_40", function(evt)
     {
-         /*global activate_subpage */
          activate_subpage("#fishinfo"); 
     });
-    
-        /* listitem  List Item */
     $(document).on("click", ".uib_w_39", function(evt)
     {
-         /*global activate_subpage */
          activate_subpage("#fishinfo"); 
-    });    
-    
-        /* graphic button  #StartPageGraphic */
-    $(document).on("click", "#StartPageGraphic", function(evt)
-    {
-         /*global activate_subpage */
-         activate_subpage("#page_100_31"); 
     });
     
-        /* listitem  Dive Spot 1 */
+
     $(document).on("click", ".uib_w_56", function(evt)
     {
-         /*global activate_subpage */
          activate_subpage("#DiveModeSelect"); 
     });
-    
-        /* listitem  Dive Spot 2 */
     $(document).on("click", ".uib_w_57", function(evt)
     {
-         /*global activate_subpage */
          activate_subpage("#DiveModeSelect"); 
     });
-    
-        /* listitem  Dive Spot 3 */
     $(document).on("click", ".uib_w_58", function(evt)
     {
-         /*global activate_subpage */
          activate_subpage("#DiveModeSelect"); 
     });
+     
+     
     
         /* button  Use Current Location */
     $(document).on("click", ".uib_w_29", function(evt)
     {
-         /*global activate_subpage */
          activate_subpage("#DiveSpotSelect"); 
     });
     
