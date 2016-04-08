@@ -11,7 +11,7 @@ function getList(data){
     var sites = data["sites"];
     console.log(sites);
     
-    var filler=null;
+    var filler="";
         for (var i in sites) {
                 var spot = sites[i];
                 var index = 56;
