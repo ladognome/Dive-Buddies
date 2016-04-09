@@ -80,7 +80,7 @@ var GeoCode = (function() {
     $('#mollusksTab').click(function(){
         console.log("clicked mollusks");
         var index = 39;
-        filler=null;
+        filler="";
         for (var i in fishList) {
                 
                 filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+mollusksList[i]+"</i></a></li>\n";
@@ -94,7 +94,7 @@ var GeoCode = (function() {
         var index = 39;
 //        meraElement = "<li class="widget uib_w_39" data-uib="app_framework/listitem" data-ver="1"><a>List Item</a>";
 //        document.getElementById("list_display").innerHTML = meraElement;
-        filler=null;
+        filler="";
         for (var i in fishList) {
                 
                 filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+coralsList[i]+"</i></a></li>\n";
