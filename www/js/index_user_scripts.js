@@ -143,20 +143,44 @@
             var imageHTML = "";
             console.log(WatsonAnswers[i]);
             var opt = WatsonAnswers[i].text;
-            if (opt == "${noAnswer}" || opt.indexOf("undefined") > -1 || opt.indexOf("Encyclopedia of Life") == -1) {continue;}
+            if (opt == "${noAnswer}" || opt.indexOf("undefined") > -1 ) {continue;}
             var split = opt.split(" - ");
             console.log(opt);
             if (split[1] !== undefined){
-                if (filler.indexOf(split[2]) == -1){ //check for duplicates
-                    var imageDoc = WatsonDocuments[i].document;
-                    imageDoc = imageDoc.replace("http://10.110.88.131:8080", "https://watson-wdc01.ihost.com");
-                    imageHTML = IMAGE(imageDoc);
-                    if (imageHTML == ""){
-                        var word = split[1].split(" ").join("_")
-                        imageHTML = wiki(word);
+                var imageDoc = WatsonDocuments[i].document;
+                imageDoc = imageDoc.replace("http://10.110.88.131:8080", "https://watson-wdc01.ihost.com");
+                imageHTML = IMAGE(imageDoc);
+                
+                if (opt.indexOf("Corals of the World") > -1){
+                    var coral = split[1].split(".")[0]
+                    if (filler.indexOf(coral)){ //check for duplicates
+                        if (imageHTML == ""){
+                            var word = coral.split(" ").join("_")
+                            imageHTML = wiki(word);
+                        }
+                        filler += "<li id=\"animal_selection\" class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p><i>"+coral+"</i></a></li>\n";
+                        console.log(filler);
                     }
-                    filler += "<li id=\"animal_selection\" class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p>"+split[1]+" - <i>"+split[2]+"</i></a></li>\n";
-                    console.log(filler);
+                    
+                    
+                }
+                else if (opt.indexOf("Encyclopedia of Life") > -1){
+                    if (filler.indexOf(split[1]) == -1){ //check for duplicates
+                        
+                        if (imageHTML == ""){
+                            var word = split[1].split(" ").join("_")
+                            imageHTML = wiki(word);
+                            if (imageHTML == ""){
+                                word = split[2].split(" ").join("_")
+                                imageHTML = wiki(word);
+                            }
+                        }
+                        filler += "<li id=\"animal_selection\" class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p>"+split[1]+" - <i>"+split[2]+"</i></a></li>\n";
+                        console.log(filler);
+                    }
+                }
+                else{
+                    continue;
                 }
             }
         }
