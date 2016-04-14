@@ -33,8 +33,9 @@ $('#Go').click(function(){
 
           console.log("Latitude: "+results[0].geometry.location.lat());
           console.log("Longitude: "+results[0].geometry.location.lng());
-        var lat = results[0].geometry.location.lat();
-        var long = results[0].geometry.location.lng();
+          var lat = results[0].geometry.location.lat();
+          var long = results[0].geometry.location.lng();
+
         url = "http://api.divesites.com/?mode=sites&lat="+lat+"&lng="+long+"&dist=25";
           }
                                                  
@@ -53,10 +54,13 @@ $('#Go').click(function(){
 });});});
 
 $('#UseCurrent').click(function(){
-      
+//      var lat = "-31.6";
+//      var long = "159.1";
+//      url = "http://api.divesites.com/?mode=sites&lat="+lat+"&lng="+long+"&dist=25";
         $.ajax({
              type: "GET",
-             url:"http://api.divesites.com/",
+            url:"http://api.divesites.com/",
+           // url:url,
              contentType: "application/json; charset=utf-8",
              dataType: "json",
             
