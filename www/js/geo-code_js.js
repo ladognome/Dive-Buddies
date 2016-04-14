@@ -68,7 +68,7 @@ var GeoCode = (function() {
     $('#fishTab').click(function(){
         console.log("clicked fish");
         var index = 39;
-        filler = null;
+        filler = "";
         for (var i in fishList) {
                 
                 filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+fishList[i]+"</i></a></li>\n";
