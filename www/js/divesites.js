@@ -6,6 +6,9 @@
 //xhr.send();
 //console.log(xhr.status);
 //console.log(xhr.statusText);
+
+var diveSitesFunction=(function(){
+
 function getList(data){
     
     var sites = data["sites"];
@@ -22,7 +25,8 @@ function getList(data){
    
 }
 
-$('#Go').click(function(){
+function goClickedHere(){
+//$('#Go').click(function(){
     var url;
     console.log("executing divesites");
     geocoder = new google.maps.Geocoder();
@@ -72,3 +76,4 @@ $('#UseCurrent').click(function(){
     
                 
   });});
+})();

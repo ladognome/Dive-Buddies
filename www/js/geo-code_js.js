@@ -272,23 +272,7 @@ var GeoCode = (function() {
 
     // });
     
-    return {
-    codeAddress: codeAddress,
-    init: init
-  };
-})();
-// modified_code
-/*
-WHAT I DID: Basically added an <img> tag to all the filler variables in the code (there are 5).
-Got the image URLs from the below two functions. 
-*/
-
-/* getSpecies() takes in the name of the species scientific name and
- gets its id number from the EOL search API. 
- Doesn't need to be tested, it works.' */
-
-
-function getSpecies(species){
+    function getSpecies(species){
 
 //var species = "Xyrichtys martinicensis";
 
@@ -343,3 +327,23 @@ function getImages(id){
     
 });
 }
+    
+    return {
+    codeAddress: codeAddress,
+    init: init
+  };
+    
+    
+
+})();
+// modified_code
+/*
+WHAT I DID: Basically added an <img> tag to all the filler variables in the code (there are 5).
+Got the image URLs from the below two functions. 
+*/
+
+/* getSpecies() takes in the name of the species scientific name and
+ gets its id number from the EOL search API. 
+ Doesn't need to be tested, it works.' */
+
+

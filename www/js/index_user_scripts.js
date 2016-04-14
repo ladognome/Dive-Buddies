@@ -28,6 +28,7 @@
      /* button  Go */    
       $(document).on("click", "#UseCurrent", function(evt)
     {
+//          alert("Use Current Called");
          /*global activate_subpage */
          activate_subpage("#DiveSpotSelect"); 
     });
@@ -264,6 +265,7 @@
         /* button  Use Current Location */
     $(document).on("click", ".uib_w_29", function(evt)
     {
+        alert("Use Current Not Called");
          activate_subpage("#DiveSpotSelect"); 
     });
     
@@ -273,6 +275,7 @@
          /*global activate_subpage */
          GeoCode.init();
          GeoCode.codeAddress();
+//         diveSitesFunction.goClickedHere();
          activate_subpage("#DiveSpotSelect"); 
     });
      
