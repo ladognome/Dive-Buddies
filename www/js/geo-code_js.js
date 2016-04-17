@@ -68,19 +68,27 @@ var GeoCode = (function() {
     $('#fishTab').click(function(){
         console.log("clicked fish");
         var index = 39;
-        filler = null;
+        filler = "";
+        // modified_code
+        var imageLink = "";
         for (var i in fishList) {
-                if (fishList[i].split().length == 1){
-                  imageHTML = wiki(fishList[i]);
-                  filler += "<li class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p>"+fishList[i]+"</i></a></li>\n";
-                }
-                else{
-                  splitWords = fishList[i].split(" ");
-                  var word = fishList[i].split(" ").join("_");
-                  imageHTML = wiki(word)
-                  filler += "<li class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p>"+fishList[i]+"</i></a></li>\n";
-                }
+<<<<<<< HEAD
+                // if (fishList[i].split().length == 1){
+                //   imageHTML = wiki(fishList[i]);
+                //   filler += "<li class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p>"+fishList[i]+"</i></a></li>\n";
+                // }
+                // else{
+                //   splitWords = fishList[i].split(" ");
+                //   var word = fishList[i].split(" ").join("_");
+                //   imageHTML = wiki(word)
+                //   filler += "<li class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p>"+fishList[i]+"</i></a></li>\n";
+                // }
                 // filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+fishList[i]+"</i></a></li>\n";
+=======
+                imageLink += getImages(getSpecies(fishList[i]));
+                 var imagehtmltext = "<img src=\""+imageLink+"\" width=\"150\"></img>";
+                filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imagehtmltext+fishList[i]+"</i></a></li>\n";
+>>>>>>> 5fda67df58ff8897da3cb94bcb4bb16f01845ef1
                 index++;
             }
             document.getElementById("list_display").innerHTML = filler;
@@ -89,22 +97,30 @@ var GeoCode = (function() {
     $('#mollusksTab').click(function(){
         console.log("clicked mollusks");
         var index = 39;
-        filler=null;
+        filler="";
+        // modified_code
+        var imageLink = "";
         for (var i in fishList) {
+<<<<<<< HEAD
                 
-                if (mollusksList[i].split().length == 1){
-                  imageHTML = wiki(mollusksList[i]);
-                  filler += "<li class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p>"+mollusksList[i]+"</i></a></li>\n";
-                }
-                else{
-                  splitWords = mollusksList[i].split(" ");
-                  var word = mollusksList[i].split(" ").join("_");
-                  imageHTML = wiki(word)
-                  filler += "<li class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p>"+mollusksList[i]+"</i></a></li>\n";
-                }
+                // if (mollusksList[i].split().length == 1){
+                //   imageHTML = wiki(mollusksList[i]);
+                //   filler += "<li class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p>"+mollusksList[i]+"</i></a></li>\n";
+                // }
+                // else{
+                //   splitWords = mollusksList[i].split(" ");
+                //   var word = mollusksList[i].split(" ").join("_");
+                //   imageHTML = wiki(word)
+                //   filler += "<li class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p>"+mollusksList[i]+"</i></a></li>\n";
+                // }
              
                 
                 // filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+mollusksList[i]+"</i></a></li>\n";
+=======
+                imageLink += getImages(getSpecies(mollusksList[i]));
+                          var imagehtmltext = "<img src=\""+imageLink+"\" width=\"150\"></img>";
+                filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imagehtmltext+mollusksList[i]+"</i></a></li>\n";
+>>>>>>> 5fda67df58ff8897da3cb94bcb4bb16f01845ef1
                 index++;
             }
             document.getElementById("list_display").innerHTML = filler;
@@ -115,21 +131,29 @@ var GeoCode = (function() {
         var index = 39;
 //        meraElement = "<li class="widget uib_w_39" data-uib="app_framework/listitem" data-ver="1"><a>List Item</a>";
 //        document.getElementById("list_display").innerHTML = meraElement;
-        filler=null;
+        filler="";
+        // modified_code
+        var imageLink="";
         for (var i in fishList) {
+<<<<<<< HEAD
                 
-                if (coralsList[i].split().length == 1){
-                  imageHTML = wiki(coralsList[i]);
-                  filler += "<li class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p>"+coralsList[i]+"</i></a></li>\n";
-                }
-                else{
-                  splitWords = coralsList[i].split(" ");
-                  var word = coralsList[i].split(" ").join("_");
-                  imageHTML = wiki(word)
-                  filler += "<li class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p>"+coralsList[i]+"</i></a></li>\n";
-                }
+                // if (coralsList[i].split().length == 1){
+                //   imageHTML = wiki(coralsList[i]);
+                //   filler += "<li class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p>"+coralsList[i]+"</i></a></li>\n";
+                // }
+                // else{
+                //   splitWords = coralsList[i].split(" ");
+                //   var word = coralsList[i].split(" ").join("_");
+                //   imageHTML = wiki(word)
+                //   filler += "<li class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p>"+coralsList[i]+"</i></a></li>\n";
+                // }
              
                 // filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+coralsList[i]+"</i></a></li>\n";
+=======
+                imageLink += getImages(getSpecies(coralsList[i]));
+                var imagehtmltext = "<img src=\""+imageLink+"\" width=\"150\"></img>";
+                filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imagehtmltext+coralsList[i]+"</i></a></li>\n";
+>>>>>>> 5fda67df58ff8897da3cb94bcb4bb16f01845ef1
                 index++;
             }
             document.getElementById("list_display").innerHTML = filler;
@@ -168,11 +192,16 @@ var GeoCode = (function() {
                      fishList = specificList_LordHowe_fish;
 
                      var filler = "";
+                  // modified_code below
+                  var imageLink = "";
+                  
+                  //imageLink += getImages(getSpecies(scientifNameList[i]));
                       var index = 39;
                       for (var i in scientifNameList) {
                           if (typeof scientifNameList[i] == 'undefined'){
                               continue;
                           }
+<<<<<<< HEAD
 
                           if (scientifNameList[i].split().length == 1){
                             imageHTML = wiki(scientifNameList[i]);
@@ -186,6 +215,11 @@ var GeoCode = (function() {
                           }
 
                           
+=======
+                          imageLink += getImages(getSpecies(scientifNameList[i]));
+                          var imagehtmltext = "<img src=\""+imageLink+"\" width=\"150\"></img>";
+                          filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imagehtmltext+scientifNameList[i]+"</i></a></li>\n";
+>>>>>>> 5fda67df58ff8897da3cb94bcb4bb16f01845ef1
                           index++;
                       }
                       // document.getElementById("list_display").innerHTML = filler;
@@ -267,11 +301,14 @@ var GeoCode = (function() {
                         
 
                      var filler = "";
+                     // modified_code
+                     var imageLink = "";
                       var index = 39;
                       for (var i in scientifNameList) {
                           if (typeof scientifNameList[i] == 'undefined'){
                               continue;
                           }
+<<<<<<< HEAD
                           imageHTML = IMAGE(imageDoc);
                           if (imageHTML == ""){
                           var word = split[1].split(" ").join("_")
@@ -290,6 +327,11 @@ var GeoCode = (function() {
 
 
                          
+=======
+                          imageLink += getImages(getSpecies(scientifNameList[i]));
+                          var imagehtmltext = "<img src=\""+imageLink+"\" width=\"150\"></img>";
+                          filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imagehtmltext+scientifNameList[i][1]+"</i></a></li>\n";
+>>>>>>> 5fda67df58ff8897da3cb94bcb4bb16f01845ef1
                           index++;
                       }
                      }
@@ -314,8 +356,78 @@ var GeoCode = (function() {
 
     // });
     
+    function getSpecies(species){
+
+//var species = "Xyrichtys martinicensis";
+
+$.ajax({
+             type: "GET",
+             url:"http://eol.org/api/search/1.0.json?q="+species+"&page=1&exact=false&filter_by_taxon_concept_id=&filter_by_hierarchy_entry_id=&filter_by_string=&cache_ttl=",
+             contentType: "application/json; charset=utf-8",
+             dataType: "json",
+             
+             success: function(data){
+                 var id=0;
+                 id = data["results"][0]["id"];
+                 console.log("id assigned");
+                 getImages(id);
+                 console.log(id);
+                 console.log(id.toString);
+              console.log("success after calling getImages");
+             }
+    
+});
+    return id;
+}
+
+/* getImages() takes in the id returned by the getSpecies function and 
+returns the image URL of the species as a string.
+ Doesn't need to be tested, it works.' */
+
+function getImages(id){
+    var link = "";
+    $.ajax({
+             type: "GET",
+
+        url:"http://eol.org/api/pages/1.0.json?batch=false&id="+id+"&images_per_page=2&images_page=1&videos_per_page=0&videos_page=1&sounds_per_page=0&sounds_page=1&maps_per_page=0&maps_page=1&texts_per_page=2&texts_page=1&iucn=false&subjects=overview&licenses=all&details=true&common_names=true&synonyms=true&references=true&taxonomy=true&vetted=0&cache_ttl=&language=en",
+             contentType: "application/json; charset=utf-8",
+             dataType: "json",
+             
+             success: function(imgdata){
+                 console.log(id);
+
+              console.log("pages api call success");
+            console.log(imgdata["dataObjects"][2]["eolMediaURL"]);
+             link += imgdata["dataObjects"][2]["eolMediaURL"];
+             },
+        error: function (errorMessage) {
+        console.log("error");
+            console.log(id);
+        console.log(errorMessage);
+    
+        }
+    
+        return link;
+    
+});
+}
+    
     return {
     codeAddress: codeAddress,
     init: init
   };
+    
+    
+
 })();
+// modified_code
+/*
+WHAT I DID: Basically added an <img> tag to all the filler variables in the code (there are 5).
+Got the image URLs from the below two functions. 
+*/
+
+/* getSpecies() takes in the name of the species scientific name and
+ gets its id number from the EOL search API. 
+ Doesn't need to be tested, it works.' */
+
+

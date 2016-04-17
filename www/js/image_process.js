@@ -33,7 +33,7 @@ function wiki(word) {
                     var markup = data.parse.text["*"];
                     var blurb = $('<div></div>').html(markup);
                     var imageURL = $(blurb[0]).find('img')[0];
-                    console.log(imageURL);
+                    //console.log(imageURL);
                     if (imageURL !== undefined && imageURL.hasAttribute("src")){
                         console.log(imageURL.src);
                         imageHTML = "<img src=\""+imageURL.src+"\" width=\"150\"></img>";

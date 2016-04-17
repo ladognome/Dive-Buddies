@@ -6,7 +6,12 @@
  */
  function register_event_handlers()
  {
-     
+     /* graphic button  #StartPageGraphic */
+    $(document).on("click", "#StartPageGraphic", function(evt)
+    {
+         activate_subpage("#page_100_31"); 
+    });
+    
     $(document).on("click", "#mainButton", function(evt)
     {
          /* Other possible functions are: 
@@ -19,39 +24,32 @@
          uib_sb.toggle_sidebar($(".uib_w_7"));  
     });
     
-    $(document).on("click", "#Go", function(evt)
-    {
-         /*global activate_subpage */
-         activate_subpage("#DiveSpotSelect"); 
-    });
-    
-        /* button  Go */
-    
+
+     /* button  Go */    
       $(document).on("click", "#UseCurrent", function(evt)
     {
+//          alert("Use Current Called");
          /*global activate_subpage */
          activate_subpage("#DiveSpotSelect"); 
     });
     
     
-        /* button  #predive */
+    /* button  #predive */
     $(document).on("click", "#predive", function(evt)
     {
-         /*global activate_subpage */
          activate_subpage("#PreDive"); 
     });
     
         /* button  #postdive */
     $(document).on("click", "#postdive", function(evt)
     {
-         /*global activate_subpage */
          activate_subpage("#PostDive"); 
     });
     
      //POST DIVE SUBMIT
     $(document).on("click", ".uib_w_45", function(evt)
     {
-        var inputText = document.getElementById("input").value.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
+        var inputText = document.getElementById("input").value.toLowerCase().replace(/[.,\/#"'!$%\^&\*;:{}=\-_`~()]/g,"").replace("-"," ");
         var splitText = inputText.split(" ");
         var composedVector = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0];
 
@@ -76,7 +74,7 @@
         var winningConfidence = 0;
         
         //************************************************************
-        
+        //TRAINING
         //CODE FOR FINDING THE VECTORS FOR THE QUESTIONS
        /* var winningVector = [];
         
@@ -146,122 +144,128 @@
             var imageHTML = "";
             console.log(WatsonAnswers[i]);
             var opt = WatsonAnswers[i].text;
-            if (opt == "${noAnswer}" || opt.indexOf("undefined") > -1) {continue;}
+            if (opt == "${noAnswer}" || opt.indexOf("undefined") > -1 ) {continue;}
             var split = opt.split(" - ");
             console.log(opt);
             if (split[1] !== undefined){
                 var imageDoc = WatsonDocuments[i].document;
                 imageDoc = imageDoc.replace("http://10.110.88.131:8080", "https://watson-wdc01.ihost.com");
                 imageHTML = IMAGE(imageDoc);
-                if (imageHTML == ""){
-                    var word = split[1].split(" ").join("_")
-                    imageHTML = wiki(word);
+                
+                if (opt.indexOf("Corals of the World") > -1){
+                    var coral = split[1].split(".")[0]
+                    if (filler.indexOf(coral)){ //check for duplicates
+                        if (imageHTML == ""){
+                            var word = coral.split(" ").join("_")
+                            imageHTML = wiki(word);
+                        }
+                        filler += "<li id=\"animal_selection\" class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p><i>"+coral+"</i></a></li>\n";
+                        console.log(filler);
+                    }
+                    
+                    
                 }
-                filler += "<li class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p>"+split[1]+" - <i>"+split[2]+"</i></a></li>\n";
-                console.log(filler);
+                else if (opt.indexOf("Encyclopedia of Life") > -1){
+                    if (filler.indexOf(split[1]) == -1){ //check for duplicates
+                        
+                        if (imageHTML == ""){
+                            var word = split[1].split(" ").join("_")
+                            imageHTML = wiki(word);
+                            if (imageHTML == ""){
+                                word = split[2].split(" ").join("_")
+                                imageHTML = wiki(word);
+                            }
+                        }
+                        filler += "<li id=\"animal_selection\" class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p>"+split[1]+" - <i>"+split[2]+"</i></a></li>\n";
+                        console.log(filler);
+                    }
+                }
+                else{
+                    continue;
+                }
             }
         }
         document.getElementById("watson_results").innerHTML = filler;
     });
+    
+    $(document).on('click', "#animal_selection", function(evt){
+         console.log(this.value);
+         activate_subpage("#fishinfo");
+         
+         //populate fishinfo page with relevant info
+     });
+    
      $(document).on("click", ".uib_w_59", function(evt)
     {
-         /*global activate_subpage */
          activate_subpage("#DiveModeSelect"); 
     });
      $(document).on("click", ".uib_w_58", function(evt)
     {
-         /*global activate_subpage */
          activate_subpage("#DiveModeSelect"); 
     });
      $(document).on("click", ".uib_w_57", function(evt)
     {
-         /*global activate_subpage */
          activate_subpage("#DiveModeSelect"); 
     });
      $(document).on("click", ".uib_w_56", function(evt)
     {
-         /*global activate_subpage */
          activate_subpage("#DiveModeSelect"); 
     });
     $(document).on("click", ".uib_w_55", function(evt)
     {
-         /*global activate_subpage */
          activate_subpage("#DiveModeSelect"); 
     });
-        /* listitem  Result Item */
-    $(document).on("click", ".uib_w_50", function(evt)
+    
+    
+   /*$(document).on("click", ".uib_w_50", function(evt)
     {
-         /*global activate_subpage */
          activate_subpage("#fishinfo"); 
     });
     
-        /* listitem  Result Item */
     $(document).on("click", ".uib_w_49", function(evt)
     {
-         /*global activate_subpage */
          activate_subpage("#fishinfo"); 
     });
     
-        /* listitem  Result Item */
     $(document).on("click", ".uib_w_48", function(evt)
     {
-         /*global activate_subpage */
          activate_subpage("#fishinfo"); 
-    });
+    });*/
     
-        /* listitem  List Item */
-    $(document).on("click", ".uib_w_41", function(evt)
+    
+            $(document).on("click", ".uib_w_41", function(evt)
     {
-         /*global activate_subpage */
          activate_subpage("#fishinfo"); 
     });
-    
-        /* listitem  List Item */
     $(document).on("click", ".uib_w_40", function(evt)
     {
-         /*global activate_subpage */
          activate_subpage("#fishinfo"); 
     });
-    
-        /* listitem  List Item */
     $(document).on("click", ".uib_w_39", function(evt)
     {
-         /*global activate_subpage */
          activate_subpage("#fishinfo"); 
-    });    
-    
-        /* graphic button  #StartPageGraphic */
-    $(document).on("click", "#StartPageGraphic", function(evt)
-    {
-         /*global activate_subpage */
-         activate_subpage("#page_100_31"); 
     });
     
-        /* listitem  Dive Spot 1 */
+
     $(document).on("click", ".uib_w_56", function(evt)
     {
-         /*global activate_subpage */
          activate_subpage("#DiveModeSelect"); 
     });
-    
-        /* listitem  Dive Spot 2 */
     $(document).on("click", ".uib_w_57", function(evt)
     {
-         /*global activate_subpage */
          activate_subpage("#DiveModeSelect"); 
     });
-    
-        /* listitem  Dive Spot 3 */
     $(document).on("click", ".uib_w_58", function(evt)
     {
-         /*global activate_subpage */
          activate_subpage("#DiveModeSelect"); 
     });
+     
+     
     
         /* button  Use Current Location */
     $(document).on("click", ".uib_w_29", function(evt)
     {
-         /*global activate_subpage */
+        alert("Use Current Not Called");
          activate_subpage("#DiveSpotSelect"); 
     });
     
@@ -271,7 +275,8 @@
          /*global activate_subpage */
          GeoCode.init();
          GeoCode.codeAddress();
-         activate_subpage("#DiveModeSelect"); 
+//         diveSitesFunction.goClickedHere();
+         activate_subpage("#DiveSpotSelect"); 
     });
      
     $(document).on("click", "#back", function(evt)

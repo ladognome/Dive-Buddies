@@ -15,6 +15,7 @@
         <link rel="stylesheet" type="text/css" href="media_button_bar/css/media_button_bar.css">
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="app_framework/2.1/css/af.ui.min.css">
+        <link rel="stylesheet" type="text/css" href="css/mystyle.css">
         <link rel="stylesheet" type="text/css" href="app_framework/2.1/css/icons.min.css">
         <title>Dive Buddies</title>
         <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -65,7 +66,7 @@
 
         <script src="js/question_vectors.js"></script>
         <script src="js/image_process.js"></script>
-        <script src="js/divesites.js"></script>
+
         <script src="js/watson_api.js"></script>
         <script src="js/wordvecs25000.js"></script>
         <script src="js/word2vecutils.js"></script>
@@ -123,7 +124,7 @@
             <h1>Dive Buddies</h1>
         </header>
         <div id="content" class="uwrap">
-            <div class="upage panel" id="mainpage" data-header="af-header-1" data-footer="none">
+            <div class="upage panel bgimg" id="mainpage" data-header="af-header-1" data-footer="none">
                 <div class="upage-outer">
                     <div class="upage-content content-area vertical-col" id="page_100_31">
 
@@ -142,7 +143,8 @@
                         </div><a class="button widget uib_w_29 d-margins green" data-uib="app_framework/button" data-ver="1" id="UseCurrent">Use Current Location</a>
                     </div>
 
-                    <div id="DiveModeSelect" class="upage-content vertical-col left hidden"><a class="button widget uib_w_31 d-margins yellow" data-uib="app_framework/button" data-ver="1" id="predive">PRE DIVE</a><a class="button widget uib_w_30 d-margins green" data-uib="app_framework/button" data-ver="1" id="postdive">POST DIVE</a>
+                    <div id="DiveModeSelect" class="upage-content vertical-col left hidden"><a class="button widget uib_w_31 d-margins predivebutton yellow" data-uib="app_framework/button" data-ver="1" id="predive">PRE DIVE</a><a class="button widget uib_w_30 d-margins postdivebutton green" data-uib="app_framework/button"
+                        data-ver="1" id="postdive">POST DIVE</a>
                     </div>
                     <div id="PreDive" class="upage-content vertical-col left hidden">
                         <div class="tarea widget uib_w_33 d-margins" data-uib="media/text" data-ver="0" name="uib_w_33">
@@ -199,38 +201,51 @@
                     </div>
                     <div id="fishinfo" class="upage-content vertical-col left hidden">
                         <div class="widget uib_w_51 scale-image d-margins" data-uib="media/img" data-ver="0">
-                            <figure class="figure-align">
-                                <img src="images/Strabburg.jpg">
+                            <figure class="figure-align" id="fishimg">
+                            
 
                                 <figcaption data-position="bottom"></figcaption>
                             </figure>
                         </div>
                         <div class="tarea widget uib_w_52 d-margins" data-uib="media/text" data-ver="0" name="uib_w_52" id="SpeciesName">
-                            <div class="widget-container left-receptacle"></div>
-                            <div class="widget-container right-receptacle"></div>
-                            <div class="text-container">
-                                <p><big><span class="marker">Creature Name (scientific name)</span></big>
-                                </p>
-                            </div>
+                            
                         </div>
-                        <div class="tarea widget uib_w_53 d-margins" data-uib="media/text" data-ver="0" name="uib_w_53">
-                            <div class="widget-container left-receptacle"></div>
-                            <div class="widget-container right-receptacle"></div>
-                            <div class="text-container">
-                                <p>Description Text</p>
-                            </div>
+                        <div class="tarea widget uib_w_53 d-margins" data-uib="media/text" data-ver="0" name="uib_w_53" id="CommonName">
+                           
+                        </div>
+                         <div class="tarea widget uib_w_54 d-margins" data-uib="media/text" data-ver="0" name="uib_w_53" id="Description">
+                            
                         </div>
                     </div>
                     <div id="DiveSpotSelect" class="upage-content vertical-col left hidden">
-						<ul class="list widget uib_w_55 d-margins" data-uib="app_framework/listview" data-ver="1" id="divespots">
-                            
+                        <div class="tarea widget uib_w_70 d-margins" data-uib="media/text" data-ver="0" name="uib_w_55">
+                            <div class="widget-container left-receptacle"></div>
+                            <div class="widget-container right-receptacle"></div>
+                            <div class="text-container">
+                                <h3><strong>Pick a Dive Spot</strong></h3>
+
+                            </div>
+                        </div>
+
+                        <br>
+                        <ul class="list widget uib_w_55 d-margins" data-uib="app_framework/listview" data-ver="1" id="divespots">
+                            <li class="widget uib_w_56" data-uib="app_framework/listitem" data-ver="1"><a>List Item</a>
+                            </li>
+                            <li class="widget uib_w_57" data-uib="app_framework/listitem" data-ver="1"><a>List Item</a>
+                            </li>
+                            <li class="widget uib_w_58" data-uib="app_framework/listitem" data-ver="1"><a>List Item</a>
+                            </li>
                         </ul>
+
                     </div>
                 </div>
             </div>
 
         </div>
+        <script type="text/javascript" src="js/divesites.js"></script>
         <script type="text/javascript" src="js/geo-code_js.js"></script>
+        
+        <script type="text/javascript" src="js/EOLdata.js"></script>
     </body>
 
 </html>

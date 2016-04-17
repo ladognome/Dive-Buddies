@@ -713,3 +713,29 @@ body:not(#afui) .upage-outer {
     width: 100%;
   }
 }
+.predivebutton {
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 15px;
+  background: #66b517;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+.postdivebutton {
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 15px;
+  background: #61abff;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+@media all {
+  #afui .bgimg .panel {
+    background-color: ;
+    background-image: url("../images/divebackground.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+  }
+}

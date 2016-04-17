@@ -6,12 +6,15 @@
 //xhr.send();
 //console.log(xhr.status);
 //console.log(xhr.statusText);
+
+var diveSitesFunction=(function(){
+
 function getList(data){
     
     var sites = data["sites"];
     console.log(sites);
     
-    var filler=null;
+    var filler="";
         for (var i in sites) {
                 var spot = sites[i];
                 var index = 56;
@@ -22,17 +25,21 @@ function getList(data){
    
 }
 
-$('#Go').click(function(){
+function goClickedHere(){
+//$('#Go').click(function(){
     var url;
+    console.log("executing divesites");
     geocoder = new google.maps.Geocoder();
         var address = document.getElementById("enterlocation").value;
+    console.log(address);
         geocoder.geocode( { 'address': address}, function(results, status) {
           if (status == google.maps.GeocoderStatus.OK) {
 
           console.log("Latitude: "+results[0].geometry.location.lat());
           console.log("Longitude: "+results[0].geometry.location.lng());
-        var lat = results[0].geometry.location.lat();
-        var long = results[0].geometry.location.lng();
+          var lat = results[0].geometry.location.lat();
+          var long = results[0].geometry.location.lng();
+
         url = "http://api.divesites.com/?mode=sites&lat="+lat+"&lng="+long+"&dist=25";
           }
                                                  
@@ -40,7 +47,7 @@ $('#Go').click(function(){
              type: "GET",
              url:url,
              contentType: "application/json; charset=utf-8",
-             dataType: "jsonp",
+             dataType: "json",
              
              success: function(data){
                  getList(data);
@@ -51,12 +58,15 @@ $('#Go').click(function(){
 });});});
 
 $('#UseCurrent').click(function(){
-      
+//      var lat = "-31.6";
+//      var long = "159.1";
+//      url = "http://api.divesites.com/?mode=sites&lat="+lat+"&lng="+long+"&dist=25";
         $.ajax({
              type: "GET",
-             url:"http://api.divesites.com/",
+            url:"http://api.divesites.com/",
+           // url:url,
              contentType: "application/json; charset=utf-8",
-             dataType: "jsonp",
+             dataType: "json",
             
              success: function(data){
                  getList(data);
@@ -66,3 +76,4 @@ $('#UseCurrent').click(function(){
     
                 
   });});
+})();
