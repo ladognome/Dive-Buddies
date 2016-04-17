@@ -36,7 +36,8 @@
     
     /* button  #predive */
     $(document).on("click", "#predive", function(evt)
-    {
+    {   
+         // GeoCode.codeAddress();
          activate_subpage("#PreDive"); 
     });
     
@@ -276,7 +277,7 @@
          GeoCodeGoogle.init();
         GeoCodeGoogle.codeAddress();
 //         GeoCode.codeAddress();
-//         diveSitesFunction.goClickedHere();
+         diveSitesFunction.goClickedHere();
          activate_subpage("#DiveSpotSelect"); 
     });
      

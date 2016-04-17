@@ -159,9 +159,14 @@ var GeoCode = (function() {
             document.getElementById("list_display").innerHTML = filler;
     });
 
-//    $('#enterlocation').onfocus = function(){initialize();};
+   // $('#enterlocation').onfocus = function(){initialize();};
+   // $('#predive').click = function(){initialize();};
     
     $('#predive').click(function () {
+      initialize();
+        alert("pre dive clicked");
+        codeAddress();
+        console.log(document.getElementById("enterlocation").value);
           var postDate = new Date();
           postDate.setMonth(postDate.getMonth()-3);
       $.ajax({
@@ -413,7 +418,7 @@ function getImages(id){
 }
     
     return {
-//    codeAddress: codeAddress,
+   codeAddress: codeAddress,
 //    init: init
   };
     

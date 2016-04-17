@@ -6,8 +6,11 @@
 //xhr.send();
 //console.log(xhr.status);
 //console.log(xhr.statusText);
+console.log("Divesites page included");
 
 var diveSitesFunction=(function(){
+
+// $('#enterlocation').onfocus=function(){initialize();};
 
 function getList(data){
     
@@ -24,7 +27,8 @@ function getList(data){
             document.getElementById("divespots").innerHTML = filler;
    
 }
-
+// #('Go').click=function(){goClickedHere();};
+// #('enterlocation').onfocus=function(){initialize();};
 function goClickedHere(){
 //$('#Go').click(function(){
     var url;
@@ -55,7 +59,7 @@ function goClickedHere(){
               console.log("success");
              }
     
-});});});
+});});}
 
 $('#UseCurrent').click(function(){
 //      var lat = "-31.6";
@@ -76,4 +80,13 @@ $('#UseCurrent').click(function(){
     
                 
   });});
+
+return {
+  goClickedHere: goClickedHere,
+  getList: getList
+}
+
+
 })();
+
+
