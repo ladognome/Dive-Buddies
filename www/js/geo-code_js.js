@@ -72,7 +72,7 @@ var GeoCode = (function() {
         // modified_code
         var imageLink = "";
         for (var i in fishList) {
-<<<<<<< HEAD
+
                 // if (fishList[i].split().length == 1){
                 //   imageHTML = wiki(fishList[i]);
                 //   filler += "<li class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p>"+fishList[i]+"</i></a></li>\n";
@@ -84,11 +84,11 @@ var GeoCode = (function() {
                 //   filler += "<li class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p>"+fishList[i]+"</i></a></li>\n";
                 // }
                 // filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+fishList[i]+"</i></a></li>\n";
-=======
+
                 imageLink += getImages(getSpecies(fishList[i]));
                  var imagehtmltext = "<img src=\""+imageLink+"\" width=\"150\"></img>";
                 filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imagehtmltext+fishList[i]+"</i></a></li>\n";
->>>>>>> 5fda67df58ff8897da3cb94bcb4bb16f01845ef1
+
                 index++;
             }
             document.getElementById("list_display").innerHTML = filler;
@@ -101,7 +101,7 @@ var GeoCode = (function() {
         // modified_code
         var imageLink = "";
         for (var i in fishList) {
-<<<<<<< HEAD
+
                 
                 // if (mollusksList[i].split().length == 1){
                 //   imageHTML = wiki(mollusksList[i]);
@@ -116,11 +116,11 @@ var GeoCode = (function() {
              
                 
                 // filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+mollusksList[i]+"</i></a></li>\n";
-=======
+
                 imageLink += getImages(getSpecies(mollusksList[i]));
                           var imagehtmltext = "<img src=\""+imageLink+"\" width=\"150\"></img>";
                 filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imagehtmltext+mollusksList[i]+"</i></a></li>\n";
->>>>>>> 5fda67df58ff8897da3cb94bcb4bb16f01845ef1
+
                 index++;
             }
             document.getElementById("list_display").innerHTML = filler;
@@ -135,7 +135,7 @@ var GeoCode = (function() {
         // modified_code
         var imageLink="";
         for (var i in fishList) {
-<<<<<<< HEAD
+
                 
                 // if (coralsList[i].split().length == 1){
                 //   imageHTML = wiki(coralsList[i]);
@@ -149,11 +149,11 @@ var GeoCode = (function() {
                 // }
              
                 // filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+coralsList[i]+"</i></a></li>\n";
-=======
+
                 imageLink += getImages(getSpecies(coralsList[i]));
                 var imagehtmltext = "<img src=\""+imageLink+"\" width=\"150\"></img>";
                 filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imagehtmltext+coralsList[i]+"</i></a></li>\n";
->>>>>>> 5fda67df58ff8897da3cb94bcb4bb16f01845ef1
+
                 index++;
             }
             document.getElementById("list_display").innerHTML = filler;
@@ -201,25 +201,25 @@ var GeoCode = (function() {
                           if (typeof scientifNameList[i] == 'undefined'){
                               continue;
                           }
-<<<<<<< HEAD
 
-                          if (scientifNameList[i].split().length == 1){
-                            imageHTML = wiki(scientifNameList[i]);
-                            filler += "<li class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p>"+scientifNameList[i]+"</i></a></li>\n";
-                          }
-                          else{
-                            splitWords = scientifNameList[i].split(" ");
-                            var word = scientifNameList[i].split(" ").join("_");
-                            imageHTML = wiki(word)
-                            filler += "<li class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p>"+scientifNameList[i]+"</i></a></li>\n";
-                          }
+
+                          // if (scientifNameList[i].split().length == 1){
+                          //   imageHTML = wiki(scientifNameList[i]);
+                          //   filler += "<li class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p>"+scientifNameList[i]+"</i></a></li>\n";
+                          // }
+                          // else{
+                          //   splitWords = scientifNameList[i].split(" ");
+                          //   var word = scientifNameList[i].split(" ").join("_");
+                          //   imageHTML = wiki(word)
+                          //   filler += "<li class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p>"+scientifNameList[i]+"</i></a></li>\n";
+                          // }
 
                           
-=======
+
                           imageLink += getImages(getSpecies(scientifNameList[i]));
                           var imagehtmltext = "<img src=\""+imageLink+"\" width=\"150\"></img>";
                           filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imagehtmltext+scientifNameList[i]+"</i></a></li>\n";
->>>>>>> 5fda67df58ff8897da3cb94bcb4bb16f01845ef1
+
                           index++;
                       }
                       // document.getElementById("list_display").innerHTML = filler;
@@ -308,30 +308,30 @@ var GeoCode = (function() {
                           if (typeof scientifNameList[i] == 'undefined'){
                               continue;
                           }
-<<<<<<< HEAD
-                          imageHTML = IMAGE(imageDoc);
-                          if (imageHTML == ""){
-                          var word = split[1].split(" ").join("_")
-                          imageHTML = wiki(word);
-                        }
-                          if (scientifNameList[i].split().length == 1){
-                            imageHTML = wiki(scientifNameList[i][1]);
-                            filler += "<li class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p>"+scientifNameList[i][1]+"</i></a></li>\n";
-                          }
-                          else{
-                            splitWords = scientifNameList[i][1].split(" ");
-                            var word = scientifNameList[i][1].split(" ").join("_");
-                            imageHTML = wiki(word)
-                            filler += "<li class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p>"+scientifNameList[i][1]+"</i></a></li>\n";
-                          }
+
+                        //   imageHTML = IMAGE(imageDoc);
+                        //   if (imageHTML == ""){
+                        //   var word = split[1].split(" ").join("_")
+                        //   imageHTML = wiki(word);
+                        // }
+                        //   if (scientifNameList[i].split().length == 1){
+                        //     imageHTML = wiki(scientifNameList[i][1]);
+                        //     filler += "<li class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p>"+scientifNameList[i][1]+"</i></a></li>\n";
+                        //   }
+                        //   else{
+                        //     splitWords = scientifNameList[i][1].split(" ");
+                        //     var word = scientifNameList[i][1].split(" ").join("_");
+                        //     imageHTML = wiki(word)
+                        //     filler += "<li class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p>"+scientifNameList[i][1]+"</i></a></li>\n";
+                        //   }
 
 
                          
-=======
+
                           imageLink += getImages(getSpecies(scientifNameList[i]));
                           var imagehtmltext = "<img src=\""+imageLink+"\" width=\"150\"></img>";
                           filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imagehtmltext+scientifNameList[i][1]+"</i></a></li>\n";
->>>>>>> 5fda67df58ff8897da3cb94bcb4bb16f01845ef1
+
                           index++;
                       }
                      }
