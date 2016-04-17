@@ -273,8 +273,9 @@
     $(document).on("click", ".uib_w_32", function(evt)
     {
          /*global activate_subpage */
-         GeoCode.init();
-         GeoCode.codeAddress();
+         GeoCodeGoogle.init();
+        GeoCodeGoogle.codeAddress();
+//         GeoCode.codeAddress();
 //         diveSitesFunction.goClickedHere();
          activate_subpage("#DiveSpotSelect"); 
     });

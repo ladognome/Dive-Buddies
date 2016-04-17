@@ -159,7 +159,7 @@ var GeoCode = (function() {
             document.getElementById("list_display").innerHTML = filler;
     });
 
-    $('#enterlocation').onfocus = function(){initialize();};
+//    $('#enterlocation').onfocus = function(){initialize();};
     
     $('#predive').click(function () {
           var postDate = new Date();
@@ -413,8 +413,8 @@ function getImages(id){
 }
     
     return {
-    codeAddress: codeAddress,
-    init: init
+//    codeAddress: codeAddress,
+//    init: init
   };
     
     
