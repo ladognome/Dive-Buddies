@@ -19,6 +19,7 @@ function IMAGE(imageDoc)
 
 function wiki(word) {
     var response = "";
+    var imageHTML = null;
     word = word.toLowerCase();
     $.ajax({
         type: "GET",
