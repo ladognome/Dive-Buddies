@@ -402,7 +402,7 @@ function getImages(id){
                  console.log(id);
 
               console.log("pages api call success");
-            console.log(imgdata["dataObjects"][2]["eolMediaURL"]);
+            console.log(imgdata["dataObjects"][2]["eolMediaURL"]);       
              link += imgdata["dataObjects"][2]["eolMediaURL"];
              },
         error: function (errorMessage) {

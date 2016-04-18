@@ -266,7 +266,7 @@
         /* button  Use Current Location */
     $(document).on("click", ".uib_w_29", function(evt)
     {
-        alert("Use Current Not Called");
+        //alert("Use Current Not Called");
          activate_subpage("#DiveSpotSelect"); 
     });
     
