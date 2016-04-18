@@ -45,7 +45,7 @@ function getToxic(id){
             description += imgdata["dataObjects"][0]["description"];
                  for(var i =0;i<toxicList.length;i++){
                      startPoint = 0;
-                     while(startPoint<description.length && startPoint!=-1){
+                     while(startPoint<description.length && description.indexOf(toxicList[i],startPoint)!=-1){
                      if(description.indexOf(toxicList[i],startPoint)>=startPoint){
                          startPoint = description.indexOf(toxicList[i]);
                          toxicCount+=1;
