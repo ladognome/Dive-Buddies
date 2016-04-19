@@ -36,6 +36,7 @@ var GeoCode = (function() {
     function codeAddress(){
         geocoder = new google.maps.Geocoder();
         var address = document.getElementById("enterlocation").value;
+        console.log()
         geocoder.geocode( { 'address': address}, function(results, status) {
           if (status == google.maps.GeocoderStatus.OK) {
 
@@ -71,15 +72,17 @@ var GeoCode = (function() {
         document.getElementById('mollusksTab').style.backgroundColor = "white";
         document.getElementById('coralsTabs').style.backgroundColor = "white";
         var index = 39;
-        filler = null;
+        filler = "";
         if (fishList.length == 0){
           filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+"No Fishes Found"+"</i></a></li>\n";
           index++;
         }
         else{
               for (var i in fishList) {
-                      species_id = getSpecies(i);
-                      image_info=getImageInfo(species_id);
+                      console.log(fishList[i]);
+                      species_id = eolDataFile.getSpeciesID(fishList[i]);
+                      image_info=eolDataFile.getImageInfo(species_id);
+                      console.log(image_info);
                       imageHTML = IMAGE(image_info);
                       filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p><i>"+fishList[i]+"</i></a></li>\n";
                       index++;
@@ -94,7 +97,7 @@ var GeoCode = (function() {
         document.getElementById('mollusksTab').style.backgroundColor = "lightblue";
         document.getElementById('coralsTabs').style.backgroundColor = "white";
         var index = 39;
-        filler=null;
+        filler="";
         if (mollusksList.length == 0){
           filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+"No Mollusks Found"+"</i></a></li>\n";
           index++;
@@ -117,7 +120,7 @@ var GeoCode = (function() {
         var index = 39;
 //        meraElement = "<li class="widget uib_w_39" data-uib="app_framework/listitem" data-ver="1"><a>List Item</a>";
 //        document.getElementById("list_display").innerHTML = meraElement;
-        filler=null;
+        filler="";
         if (coralsList.length == 0){
           filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+"No Corals Found"+"</i></a></li>\n";
           index++;
@@ -254,7 +257,7 @@ var GeoCode = (function() {
                       document.getElementById('mollusksTab').style.backgroundColor = "white";
                       document.getElementById('coralsTabs').style.backgroundColor = "white";
                       var index = 39;
-                      filler = null;
+                      filler = "";
                       if (fishList.length == 0){
                         filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+"No Fishes Found"+"</i></a></li>\n";
                         index++;

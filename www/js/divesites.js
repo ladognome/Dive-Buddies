@@ -9,16 +9,19 @@
 console.log("Divesites page included");
 
 var diveSitesFunction=(function(){
-
+$('#enterlocation').onfocus = function(){initialize();};
 // $('#enterlocation').onfocus=function(){initialize();};
 
-function getList(data){
+function getList(data,source){
     
     var sites = data["sites"];
     // var re
-    console.log(data["loc"]);
-    console.log(sites);
-    
+    location_diveSite = data["loc"]["postal_code"];
+    if (source=='current'){
+      document.getElementById("enterlocation").value = location_diveSite;
+      console.log(data["loc"]);
+      console.log(sites);
+    }
     var filler="";
         for (var i in sites) {
                 var spot = sites[i];
@@ -56,7 +59,7 @@ function goClickedHere(){
              dataType: "json",
              
              success: function(data){
-                 getList(data);
+                 getList(data,"entered");
 
               console.log("success");
              }
@@ -75,8 +78,8 @@ $('#UseCurrent').click(function(){
              dataType: "json",
             
              success: function(data){
-                 getList(data);
-              console.log(data);
+                 getList(data,'current');
+              // console.log(data,"current");
 
               console.log("success");
              }
