@@ -37,7 +37,7 @@
     /* button  #predive */
     $(document).on("click", "#predive", function(evt)
     {   
-         // GeoCode.codeAddress();
+         GeoCode.codeAddress();
          activate_subpage("#PreDive"); 
     });
     
@@ -274,9 +274,10 @@
     $(document).on("click", ".uib_w_32", function(evt)
     {
          /*global activate_subpage */
-         GeoCodeGoogle.init();
-        GeoCodeGoogle.codeAddress();
-//         GeoCode.codeAddress();
+//         GeoCodeGoogle.init();
+//        GeoCodeGoogle.codeAddress();
+        GeoCode.init(); 
+        GeoCode.codeAddress();
          diveSitesFunction.goClickedHere();
          activate_subpage("#DiveSpotSelect"); 
     });

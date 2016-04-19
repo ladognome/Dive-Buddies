@@ -15,6 +15,8 @@ var diveSitesFunction=(function(){
 function getList(data){
     
     var sites = data["sites"];
+    // var re
+    console.log(data["loc"]);
     console.log(sites);
     
     var filler="";
@@ -67,13 +69,14 @@ $('#UseCurrent').click(function(){
 //      url = "http://api.divesites.com/?mode=sites&lat="+lat+"&lng="+long+"&dist=25";
         $.ajax({
              type: "GET",
-            url:"http://api.divesites.com/",
+             url:"http://api.divesites.com/",
            // url:url,
              contentType: "application/json; charset=utf-8",
              dataType: "json",
             
              success: function(data){
                  getList(data);
+              console.log(data);
 
               console.log("success");
              }

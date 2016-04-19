@@ -61,8 +61,8 @@ function getImageInfo(id){
         console.log(errorMessage);
     
         }
-    
         
+        });
+    return link;
     
-});
 }

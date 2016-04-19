@@ -67,106 +67,74 @@ var GeoCode = (function() {
 
     $('#fishTab').click(function(){
         console.log("clicked fish");
+        document.getElementById('fishTab').style.backgroundColor = "lightblue";
+        document.getElementById('mollusksTab').style.backgroundColor = "white";
+        document.getElementById('coralsTabs').style.backgroundColor = "white";
         var index = 39;
-        filler = "";
-        // modified_code
-        var imageLink = "";
-        for (var i in fishList) {
-
-                // if (fishList[i].split().length == 1){
-                //   imageHTML = wiki(fishList[i]);
-                //   filler += "<li class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p>"+fishList[i]+"</i></a></li>\n";
-                // }
-                // else{
-                //   splitWords = fishList[i].split(" ");
-                //   var word = fishList[i].split(" ").join("_");
-                //   imageHTML = wiki(word)
-                //   filler += "<li class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p>"+fishList[i]+"</i></a></li>\n";
-                // }
-                // filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+fishList[i]+"</i></a></li>\n";
-
-                imageLink += getImages(getSpecies(fishList[i]));
-                 var imagehtmltext = "<img src=\""+imageLink+"\" width=\"150\"></img>";
-                filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imagehtmltext+fishList[i]+"</i></a></li>\n";
-
-                index++;
+        filler = null;
+        if (fishList.length == 0){
+          filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+"No Fishes Found"+"</i></a></li>\n";
+          index++;
+        }
+        else{
+              for (var i in fishList) {
+                      species_id = getSpecies(i);
+                      image_info=getImageInfo(species_id);
+                      imageHTML = IMAGE(image_info);
+                      filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p><i>"+fishList[i]+"</i></a></li>\n";
+                      index++;
+                  }
             }
             document.getElementById("list_display").innerHTML = filler;
     });
     
     $('#mollusksTab').click(function(){
         console.log("clicked mollusks");
+        document.getElementById('fishTab').style.backgroundColor = "white";
+        document.getElementById('mollusksTab').style.backgroundColor = "lightblue";
+        document.getElementById('coralsTabs').style.backgroundColor = "white";
         var index = 39;
-        filler="";
-        // modified_code
-        var imageLink = "";
-        for (var i in fishList) {
-
-                
-                // if (mollusksList[i].split().length == 1){
-                //   imageHTML = wiki(mollusksList[i]);
-                //   filler += "<li class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p>"+mollusksList[i]+"</i></a></li>\n";
-                // }
-                // else{
-                //   splitWords = mollusksList[i].split(" ");
-                //   var word = mollusksList[i].split(" ").join("_");
-                //   imageHTML = wiki(word)
-                //   filler += "<li class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p>"+mollusksList[i]+"</i></a></li>\n";
-                // }
-             
-                
-                // filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+mollusksList[i]+"</i></a></li>\n";
-
-                imageLink += getImages(getSpecies(mollusksList[i]));
-                          var imagehtmltext = "<img src=\""+imageLink+"\" width=\"150\"></img>";
-                filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imagehtmltext+mollusksList[i]+"</i></a></li>\n";
-
-                index++;
+        filler=null;
+        if (mollusksList.length == 0){
+          filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+"No Mollusks Found"+"</i></a></li>\n";
+          index++;
+        }
+        else{
+            for (var i in mollusksList) {
+                    
+                    filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+mollusksList[i]+"</i></a></li>\n";
+                    index++;
+                }
             }
-            document.getElementById("list_display").innerHTML = filler;
+        document.getElementById("list_display").innerHTML = filler;
     });
     
     $('#coralsTabs').click(function(){
         console.log("clicked corals");
+        document.getElementById('fishTab').style.backgroundColor = "white";
+        document.getElementById('mollusksTab').style.backgroundColor = "white";
+        document.getElementById('coralsTabs').style.backgroundColor = "lightblue";
         var index = 39;
 //        meraElement = "<li class="widget uib_w_39" data-uib="app_framework/listitem" data-ver="1"><a>List Item</a>";
 //        document.getElementById("list_display").innerHTML = meraElement;
-        filler="";
-        // modified_code
-        var imageLink="";
-        for (var i in fishList) {
-
-                
-                // if (coralsList[i].split().length == 1){
-                //   imageHTML = wiki(coralsList[i]);
-                //   filler += "<li class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p>"+coralsList[i]+"</i></a></li>\n";
-                // }
-                // else{
-                //   splitWords = coralsList[i].split(" ");
-                //   var word = coralsList[i].split(" ").join("_");
-                //   imageHTML = wiki(word)
-                //   filler += "<li class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p>"+coralsList[i]+"</i></a></li>\n";
-                // }
-             
-                // filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+coralsList[i]+"</i></a></li>\n";
-
-                imageLink += getImages(getSpecies(coralsList[i]));
-                var imagehtmltext = "<img src=\""+imageLink+"\" width=\"150\"></img>";
-                filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imagehtmltext+coralsList[i]+"</i></a></li>\n";
-
-                index++;
+        filler=null;
+        if (coralsList.length == 0){
+          filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+"No Corals Found"+"</i></a></li>\n";
+          index++;
+        }
+        else{
+            for (var i in coralsList) {
+                    
+                    filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+coralsList[i]+"</i></a></li>\n";
+                    index++;
+                }
             }
-            document.getElementById("list_display").innerHTML = filler;
+        document.getElementById("list_display").innerHTML = filler;
     });
 
-   // $('#enterlocation').onfocus = function(){initialize();};
-   // $('#predive').click = function(){initialize();};
+    $('#enterlocation').onfocus = function(){initialize();};
     
     $('#predive').click(function () {
-      initialize();
-        alert("pre dive clicked");
-        codeAddress();
-        console.log(document.getElementById("enterlocation").value);
           var postDate = new Date();
           postDate.setMonth(postDate.getMonth()-3);
       $.ajax({
@@ -185,7 +153,7 @@ var GeoCode = (function() {
 
               // 'phylum': "Chordata",
 //                 'geometry': POLYGON(((location_address.lng-1) (location_address),,,))
-              'limit': 1000,
+              // 'limit': 1000,
              },
              success: function(data){
 
@@ -197,34 +165,12 @@ var GeoCode = (function() {
                      fishList = specificList_LordHowe_fish;
 
                      var filler = "";
-                  // modified_code below
-                  var imageLink = "";
-                  
-                  //imageLink += getImages(getSpecies(scientifNameList[i]));
                       var index = 39;
                       for (var i in scientifNameList) {
                           if (typeof scientifNameList[i] == 'undefined'){
                               continue;
                           }
-
-
-                          // if (scientifNameList[i].split().length == 1){
-                          //   imageHTML = wiki(scientifNameList[i]);
-                          //   filler += "<li class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p>"+scientifNameList[i]+"</i></a></li>\n";
-                          // }
-                          // else{
-                          //   splitWords = scientifNameList[i].split(" ");
-                          //   var word = scientifNameList[i].split(" ").join("_");
-                          //   imageHTML = wiki(word)
-                          //   filler += "<li class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p>"+scientifNameList[i]+"</i></a></li>\n";
-                          // }
-
-                          
-
-                          imageLink += getImages(getSpecies(scientifNameList[i]));
-                          var imagehtmltext = "<img src=\""+imageLink+"\" width=\"150\"></img>";
-                          filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imagehtmltext+scientifNameList[i]+"</i></a></li>\n";
-
+                          filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+scientifNameList[i]+"</i></a></li>\n";
                           index++;
                       }
                       // document.getElementById("list_display").innerHTML = filler;
@@ -282,13 +228,13 @@ var GeoCode = (function() {
                         //     continue;
                         // }
                         // scientifNameList.push(data.results[i]['species']);
-                          if (scientifNameList[i][2] == 'Mollusca' && mollusksList.length < 10){
+                          if (scientifNameList[i][2] == 'Mollusca' && mollusksList.length < 10 && scientifNameList[i][1]!='undefined'){
                               mollusksList.push(scientifNameList[i][1])
                           }
-                          else if(scientifNameList[i][2] == 'Chordata' && fishList.length < 10){
+                          else if(scientifNameList[i][2] == 'Chordata' && fishList.length < 10 && scientifNameList[i][1]!='undefined'){
                             fishList.push(scientifNameList[i][1])
                           }
-                          else if(scientifNameList[i][2] == 'Cnidaria' && coralsList.length < 10){
+                          else if(scientifNameList[i][2] == 'Cnidaria' && coralsList.length < 10 && scientifNameList[i][1]!='undefined'){
                             coralsList.push(scientifNameList[i][1])
                           }
                         // console.log(scientifNameList[i]);
@@ -303,44 +249,38 @@ var GeoCode = (function() {
                         console.log("List of corals");
                         console.log(coralsList); 
                       console.log(scientifNameList[0]);
-                        
-
-                     var filler = "";
-                     // modified_code
-                     var imageLink = "";
+                     
+                      document.getElementById('fishTab').style.backgroundColor = "lightblue";
+                      document.getElementById('mollusksTab').style.backgroundColor = "white";
+                      document.getElementById('coralsTabs').style.backgroundColor = "white";
                       var index = 39;
-                      for (var i in scientifNameList) {
-                          if (typeof scientifNameList[i] == 'undefined'){
-                              continue;
-                          }
-
-                        //   imageHTML = IMAGE(imageDoc);
-                        //   if (imageHTML == ""){
-                        //   var word = split[1].split(" ").join("_")
-                        //   imageHTML = wiki(word);
-                        // }
-                        //   if (scientifNameList[i].split().length == 1){
-                        //     imageHTML = wiki(scientifNameList[i][1]);
-                        //     filler += "<li class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p>"+scientifNameList[i][1]+"</i></a></li>\n";
-                        //   }
-                        //   else{
-                        //     splitWords = scientifNameList[i][1].split(" ");
-                        //     var word = scientifNameList[i][1].split(" ").join("_");
-                        //     imageHTML = wiki(word)
-                        //     filler += "<li class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p>"+scientifNameList[i][1]+"</i></a></li>\n";
-                        //   }
-
-
-                         
-
-                          imageLink += getImages(getSpecies(scientifNameList[i]));
-                          var imagehtmltext = "<img src=\""+imageLink+"\" width=\"150\"></img>";
-                          filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imagehtmltext+scientifNameList[i][1]+"</i></a></li>\n";
-
-                          index++;
+                      filler = null;
+                      if (fishList.length == 0){
+                        filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+"No Fishes Found"+"</i></a></li>\n";
+                        index++;
                       }
-                     }
-                    document.getElementById("list_display").innerHTML = filler;
+                      else{
+                            for (var i in fishList) {
+                                    // species_id = getSpecies(i);
+                                    // image_info=getImageInfo(species_id);
+                                    // imageHTML = IMAGE(image_info);
+                                    filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+fishList[i]+"</i></a></li>\n";
+                                    index++;
+                                }
+                          }
+                          document.getElementById("list_display").innerHTML = filler;   
+                        }
+                    //  var filler = "";
+                    //   var index = 39;
+                    //   for (var i in scientifNameList) {
+                    //       if (typeof scientifNameList[i] == 'undefined'){
+                    //           continue;
+                    //       }
+                    //       filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+scientifNameList[i][1]+"</i></a></li>\n";
+                    //       index++;
+                    //   }
+                    //  }
+                    // document.getElementById("list_display").innerHTML = filler;
              
             },
 
@@ -361,78 +301,8 @@ var GeoCode = (function() {
 
     // });
     
-    function getSpecies(species){
-
-//var species = "Xyrichtys martinicensis";
-
-$.ajax({
-             type: "GET",
-             url:"http://eol.org/api/search/1.0.json?q="+species+"&page=1&exact=false&filter_by_taxon_concept_id=&filter_by_hierarchy_entry_id=&filter_by_string=&cache_ttl=",
-             contentType: "application/json; charset=utf-8",
-             dataType: "json",
-             
-             success: function(data){
-                 var id=0;
-                 id = data["results"][0]["id"];
-                 console.log("id assigned");
-                 getImages(id);
-                 console.log(id);
-                 console.log(id.toString);
-              console.log("success after calling getImages");
-             }
-    
-});
-    return id;
-}
-
-/* getImages() takes in the id returned by the getSpecies function and 
-returns the image URL of the species as a string.
- Doesn't need to be tested, it works.' */
-
-function getImages(id){
-    var link = "";
-    $.ajax({
-             type: "GET",
-
-        url:"http://eol.org/api/pages/1.0.json?batch=false&id="+id+"&images_per_page=2&images_page=1&videos_per_page=0&videos_page=1&sounds_per_page=0&sounds_page=1&maps_per_page=0&maps_page=1&texts_per_page=2&texts_page=1&iucn=false&subjects=overview&licenses=all&details=true&common_names=true&synonyms=true&references=true&taxonomy=true&vetted=0&cache_ttl=&language=en",
-             contentType: "application/json; charset=utf-8",
-             dataType: "json",
-             
-             success: function(imgdata){
-                 console.log(id);
-
-              console.log("pages api call success");
-            console.log(imgdata["dataObjects"][2]["eolMediaURL"]);
-             link += imgdata["dataObjects"][2]["eolMediaURL"];
-             },
-        error: function (errorMessage) {
-        console.log("error");
-            console.log(id);
-        console.log(errorMessage);
-    
-        }
-    
-        return link;
-    
-});
-}
-    
     return {
-   codeAddress: codeAddress,
-//    init: init
+    codeAddress: codeAddress,
+    init: init
   };
-    
-    
-
 })();
-// modified_code
-/*
-WHAT I DID: Basically added an <img> tag to all the filler variables in the code (there are 5).
-Got the image URLs from the below two functions. 
-*/
-
-/* getSpecies() takes in the name of the species scientific name and
- gets its id number from the EOL search API. 
- Doesn't need to be tested, it works.' */
-
-
