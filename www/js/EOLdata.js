@@ -4,7 +4,7 @@ var eolDataFile = (function(){
 function getSpeciesID(species){
 
 //var species = "Xyrichtys martinicensis";
-var id=0;
+var id=994417;
 $.ajax({
              type: "GET",
              url:"http://eol.org/api/search/1.0.json?q="+species+"&page=1&exact=false&filter_by_taxon_concept_id=&filter_by_hierarchy_entry_id=&filter_by_string=&cache_ttl=",
@@ -17,8 +17,8 @@ $.ajax({
                  console.log("id assigned");
                  // getImageURL(id);
                  console.log(id);
-                 console.log(id.toString);
-              console.log("success after calling getImageInfo");
+                // console.log(id.toString);
+              console.log("success after calling getSpeciesID");
              }
     
 });
@@ -51,16 +51,16 @@ function getImageInfo(id){
                            commonName +=  imgdata["vernacularNames"][i]["vernacularName"];
                          }
                      }
-                 
+                 commonName=commonName.charAt(0).toUpperCase() + commonName.slice(1);
                  document.getElementById("fishimg").innerHTML ="<img src ="+link+">";
                  
-                  document.getElementById("SpeciesName").innerHTML = "<div class=\"widget-container left-receptacle\"></div> <div class=\"widget-container right-receptacle\"></div> <div class=\"text-container\"> "+scientificName+"</div>";
-                  document.getElementById("CommonName").innerHTML = "<div class=\"widget-container left-receptacle\"></div> <div class=\"widget-container right-receptacle\"></div> <div class=\"text-container\"> "+commonName+"</div>";
+                  document.getElementById("SpeciesName").innerHTML = "<div class=\"widget-container left-receptacle\"></div> <div class=\"widget-container right-receptacle\"></div> <div class=\"text-container\"><br/><b><i> "+scientificName+"</i></b></div><br/>";
+                  document.getElementById("CommonName").innerHTML = "<div class=\"widget-container left-receptacle\"></div> <div class=\"widget-container right-receptacle\"></div> <div class=\"text-container\"><b> "+commonName+"</b></div><br/>";
                 document.getElementById("Description").innerHTML = "<div class=\"widget-container left-receptacle\"></div> <div class=\"widget-container right-receptacle\"></div> <div class=\"text-container\"> "+description+"</div>";
              },
         error: function (errorMessage) {
-        console.log("error");
-            console.log(id);
+        console.log("error with GetImageInfo");
+         console.log(id);
         console.log(errorMessage);
     
         }
