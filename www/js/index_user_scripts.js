@@ -206,6 +206,7 @@
         // get species name by searching for " - <i>", if not found, then the whole text
         var speciesID = eolDataFile.getSpeciesID(speciesName);
         console.log("ID "+speciesID);
+        
         var templink = eolDataFile.getImageInfo(speciesID);
          activate_subpage("#fishinfo");
          

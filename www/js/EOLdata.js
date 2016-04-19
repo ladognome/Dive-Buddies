@@ -4,13 +4,13 @@ var eolDataFile = (function(){
 function getSpeciesID(species){
 
 //var species = "Xyrichtys martinicensis";
-var id=994417;
+var id=0;
 $.ajax({
              type: "GET",
              url:"http://eol.org/api/search/1.0.json?q="+species+"&page=1&exact=false&filter_by_taxon_concept_id=&filter_by_hierarchy_entry_id=&filter_by_string=&cache_ttl=",
              contentType: "application/json; charset=utf-8",
              dataType: "json",
-             
+             async: false,
              success: function(data){
                  
                  id = data["results"][0]["id"];
