@@ -328,6 +328,13 @@
         activate_subpage(backpage);
         
     });
+     $(document).on('click', "#divespot", function(evt){
+         console.log($(this).text());
+        
+         activate_subpage("#predive");
+         
+         //populate fishinfo page with relevant info
+     });
  }
  document.addEventListener("app.Ready", register_event_handlers, false);
 })();
