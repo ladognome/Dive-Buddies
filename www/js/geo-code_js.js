@@ -373,7 +373,7 @@ var GeoCode = (function() {
     
 
     return {
-    codeAddress: codeAddress,
-    init: init
+    // codeAddress: codeAddress,
+    // init: init
   };
 })();

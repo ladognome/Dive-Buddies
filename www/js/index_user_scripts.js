@@ -330,6 +330,17 @@
     });
      $(document).on('click', "#divespot", function(evt){
          console.log($(this).text());
+         var str = $(this).text();
+         var split_str = str.split(" ");
+         console.log(split_str);
+         var lat1 = (split_str[2].split("="))[1]
+         var lng1 = (split_str[3].split("="))[1]
+         console.log(lat1)
+         console.log(lng1)
+        //  var str = $(this).text();
+        //  var lat = str[str.indexOf("lat=")+4]
+        // localStorage.setItem("lat", $(this).text()[]);
+        // localStorage.setItem("long", data["loc"]["lng"]);
         
          activate_subpage("#predive");
          
