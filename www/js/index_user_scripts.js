@@ -192,7 +192,24 @@
     });
     
     $(document).on('click', "#animal_selection", function(evt){
-         console.log(this.value);
+         console.log($(this).text());
+        var speciesName = "";
+        var speciesDisplay = $(this).text();
+        if (speciesDisplay.indexOf(" - ")>=0)
+            {
+                speciesName = speciesDisplay.slice(speciesDisplay.indexOf(" - ")+3,speciesDisplay.length);
+            }
+        else{
+            speciesName = speciesDisplay;
+        }
+        console.log('species display '+speciesDisplay);
+        console.log("species name "+speciesName);
+        
+        // get species name by searching for " - <i>", if not found, then the whole text
+        var speciesID = eolDataFile.getSpeciesID(speciesName);
+        console.log("ID "+speciesID);
+        
+        var templink = eolDataFile.getImageInfo(speciesID);
          activate_subpage("#fishinfo");
          
          //populate fishinfo page with relevant info
@@ -220,7 +237,7 @@
     });
     
     
-   /*$(document).on("click", ".uib_w_50", function(evt)
+  /* $(document).on("click", ".uib_w_50", function(evt)
     {
          activate_subpage("#fishinfo"); 
     });
