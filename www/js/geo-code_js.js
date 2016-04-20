@@ -92,13 +92,18 @@ var GeoCode = (function() {
                       try{
                       species_id = eolDataFile.getSpeciesID(fishList[i]);
                       imageURL=eolDataFile.getImageInfo(species_id);
-                      imageHTML = "<img src=\""+imageURL+"\" width=\"150\"></img>";
+                      imageHTML = "<img src=\""+imageURL[0]+"\" width=\"150\"></img>";
                       }
                       catch(err){
                         imageURL = 'images/imageNotFound.png';
                         imageHTML = "<img src=\""+imageURL+"\" width=\"150\"></img>";
                       }
-                      filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p><i>"+fishList[i]+"</i></a></li>\n";
+                  if(imageURL[1]===true)
+                  {filler += "<li id=\"animal_selection\" class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p><i>"+fishList[i]+"</i></a><img width=\"75px\" height=\"75px\" src=\"http://i.imgur.com/gEieG9S.png\"></img></li>\n";
+                  }
+                    else{
+                        filler += "<li id=\"animal_selection\" class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p><i>"+fishList[i]+"</i></a></li>\n";
+                    }
                       index++;
                   }
             }
@@ -121,14 +126,19 @@ var GeoCode = (function() {
                   try{
                   species_id = eolDataFile.getSpeciesID(mollusksList[i]);
                   imageURL=eolDataFile.getImageInfo(species_id);
-                  imageHTML = "<img src=\""+imageURL+"\" width=\"150\"></img>";
+                  imageHTML = "<img src=\""+imageURL[0]+"\" width=\"150\"></img>";
                   }
                   catch(err){
                         imageURL = 'images/imageNotFound.png';
                         imageHTML = "<img src=\""+imageURL+"\" width=\"150\"></img>";
                       }
-
-                  filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p><i>"+mollusksList[i]+"</i></a></li>\n";
+                  if(imageURL[1]===true)
+                  {filler += "<li id=\"animal_selection\" class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p><i>"+mollusksList[i]+"</i></a><img width=\"75px\" height=\"75px\" src=\"http://i.imgur.com/gEieG9S.png\"></img></li>\n";
+                  }
+                    else{
+                        filler += "<li id=\"animal_selection\" class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p><i>"+mollusksList[i]+"</i></a></li>\n";
+                    }
+            
                 index++;
                 }
             }
@@ -153,13 +163,19 @@ var GeoCode = (function() {
                 try{
                   species_id = eolDataFile.getSpeciesID(coralsList[i]);
                   imageURL=eolDataFile.getImageInfo(species_id);
-                  imageHTML = "<img src=\""+imageURL+"\" width=\"150\"></img>";
+                  imageHTML = "<img src=\""+imageURL[0]+"\" width=\"150\"></img>";
                 }
                 catch(err){
                         imageURL = 'images/imageNotFound.png';
                         imageHTML = "<img src=\""+imageURL+"\" width=\"150\"></img>";
                       }
-                  filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p><i>"+coralsList[i]+"</i></a></li>\n";
+                if(imageURL[1]===true)
+                  {filler += "<li id=\"animal_selection\" class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p><i>"+coralsList[i]+"</i></a><img width=\"75px\" height=\"75px\" src=\"http://i.imgur.com/gEieG9S.png\"></img></li>\n";
+                  }
+                    else{
+                        filler += "<li id=\"animal_selection\" class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p><i>"+coralsList[i]+"</i></a></li>\n";
+                    }
+                 
                 index++;
                 }
             }
@@ -328,14 +344,19 @@ var GeoCode = (function() {
                                     try{
                                     species_id = eolDataFile.getSpeciesID(fishList[i]);
                                     imageURL=eolDataFile.getImageInfo(species_id);
-                                    imageHTML = "<img src=\""+imageURL+"\" width=\"150\"></img>";
+                                    imageHTML = "<img src=\""+imageURL[0]+"\" width=\"150\"></img>";
                                     }
                                     catch(err){
                                       imageURL = 'images/imageNotFound.png';
                                       imageHTML = "<img src=\""+imageURL+"\" width=\"150\"></img>";
                                     }
-                                    filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p><i>"+fishList[i]+"</i></a></li>\n";
-                                    index++;
+                                    if(imageURL[1]===true)
+                                    {filler += "<li id=\"animal_selection\" class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p><i>"+fishList[i]+"</i></a><img width=\"75px\" height=\"75px\" src=\"http://i.imgur.com/gEieG9S.png\"></img></li>\n";
+                                    }
+                                    else{
+                                    filler += "<li id=\"animal_selection\" class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p><i>"+fishList[i]+"</i></a></li>\n";
+                                    }
+
                                 }
                           }
                           document.getElementById("list_display").innerHTML = filler;
