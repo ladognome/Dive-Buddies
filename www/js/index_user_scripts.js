@@ -9,7 +9,8 @@
      /* graphic button  #StartPageGraphic */
     $(document).on("click", "#StartPageGraphic", function(evt)
     {
-         activate_subpage("#page_100_31"); 
+         show('loading', false); 
+        activate_subpage("#page_100_31"); 
     });
     
     $(document).on("click", "#mainButton", function(evt)
@@ -20,6 +21,7 @@
            uib_sb.toggle_sidebar($sb)
             uib_sb.close_all_sidebars()
           See js/sidebar.js for the full sidebar API */
+       
         
          uib_sb.toggle_sidebar($(".uib_w_7"));  
     });
@@ -46,12 +48,14 @@
         /* button  #postdive */
     $(document).on("click", "#postdive", function(evt)
     {
-         activate_subpage("#PostDive"); 
+        activate_subpage("#PostDive");
     });
     
      //POST DIVE SUBMIT
     $(document).on("click", ".uib_w_45", function(evt)
     {
+        show('loading', true);
+        activate_subpage("#PostDiveResults");
         var inputText = document.getElementById("input").value.toLowerCase().replace(/[.,\/#"'!$%\^&\*;:{}=\-_`~()]/g,"").replace("-"," ");
         var splitText = inputText.split(" ");
         var composedVector = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0];
@@ -135,53 +139,57 @@
             }
         }
         
-        //FEED THE WINNING QUESTION TO WATSON
-        var WatsonResults = new PostToWatson(winningQuestion);
-        var WatsonAnswers = WatsonResults["answers"];
-        var WatsonDocuments = WatsonResults["evidencelist"];
-        
-        //DISPLAY THE RESULTS
-        activate_subpage("#PostDiveResults");
-        var filler = "";
-        for (var i = 0; i < WatsonAnswers.length; i++) {
-            var imageHTML = "";
-            console.log(WatsonAnswers[i]);
-            var opt = WatsonAnswers[i].text;
-            if (opt == "${noAnswer}" || opt.indexOf("undefined") > -1 ) {continue;}
-            var split = opt.split(" - ");
-            console.log(opt);
-            if (split[1] !== undefined){
-                /*var imageDoc = WatsonDocuments[i].document;
-                imageDoc = imageDoc.replace("http://10.110.88.131:8080", "https://watson-wdc01.ihost.com");
-                imageHTML = IMAGE(imageDoc);*/
-                
-                if (opt.indexOf("Corals of the World") > -1){
-                    var coral = split[1].split(".")[0]
-                    if (filler.indexOf(coral)){ //check for duplicates
-                        species_id = eolDataFile.getSpeciesID(coral);
-                        imageURL=eolDataFile.getImageInfo(species_id);
-                        imageHTML = "<img src=\""+imageURL+"\" width=\"150\"></img>";
-                        filler += "<li id=\"animal_selection\" class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p><i>"+coral+"</i></a></li>\n";
-                        console.log(filler);
+       
+            //FEED THE WINNING QUESTION TO WATSON
+        PostToWatson(winningQuestion, function(WatsonResults){
+                var WatsonAnswers = WatsonResults["answers"];
+                var WatsonDocuments = WatsonResults["evidencelist"];
+
+                //DISPLAY THE RESULTS
+
+
+                var filler = "";
+                for (var i = 0; i < WatsonAnswers.length; i++) {
+                    var imageHTML = "";
+                    console.log(WatsonAnswers[i]);
+                    var opt = WatsonAnswers[i].text;
+                    if (opt == "${noAnswer}" || opt.indexOf("undefined") > -1 ) {continue;}
+                    var split = opt.split(" - ");
+                    console.log(opt);
+                    if (split[1] !== undefined){
+                        /*var imageDoc = WatsonDocuments[i].document;
+                        imageDoc = imageDoc.replace("http://10.110.88.131:8080", "https://watson-wdc01.ihost.com");
+                        imageHTML = IMAGE(imageDoc);*/
+
+                        if (opt.indexOf("Corals of the World") > -1){
+                            var coral = split[1].split(".")[0]
+                            if (filler.indexOf(coral)){ //check for duplicates
+                                var species_id = eolDataFile.getSpeciesID(coral);
+                                var imageURL=eolDataFile.getImageInfo(species_id);
+                                imageHTML = "<img src=\""+imageURL+"\" width=\"150\"></img>";
+                                filler += "<li id=\"animal_selection\" class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p><i>"+coral+"</i></a></li>\n";
+                                console.log(filler);
+                            }
+
+
+                        }
+                        else if (opt.indexOf("Encyclopedia of Life") > -1){
+                            if (filler.indexOf(split[1]) == -1){ //check for duplicates
+                                var species_id = eolDataFile.getSpeciesID(split[2]);
+                                var imageURL=eolDataFile.getImageInfo(species_id);
+                                imageHTML = "<img src=\""+imageURL+"\" width=\"150\"></img>";
+                                filler += "<li id=\"animal_selection\" class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p>"+split[1]+" - <i>"+split[2]+"</i></a></li>\n";
+                                console.log(filler);
+                            }
+                        }
+                        else{
+                            continue;
+                        }
                     }
-                    
-                    
                 }
-                else if (opt.indexOf("Encyclopedia of Life") > -1){
-                    if (filler.indexOf(split[1]) == -1){ //check for duplicates
-                        species_id = eolDataFile.getSpeciesID(split[2]);
-                        imageURL=eolDataFile.getImageInfo(species_id);
-                        imageHTML = "<img src=\""+imageURL+"\" width=\"150\"></img>";
-                        filler += "<li id=\"animal_selection\" class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p>"+split[1]+" - <i>"+split[2]+"</i></a></li>\n";
-                        console.log(filler);
-                    }
-                }
-                else{
-                    continue;
-                }
-            }
-        }
-        document.getElementById("watson_results").innerHTML = filler;
+                document.getElementById("watson_results").innerHTML = filler;
+                show('loading', false);
+            });        
     });
     
     $(document).on('click', "#animal_selection", function(evt){
@@ -328,7 +336,9 @@
         activate_subpage(backpage);
         
     });
-     $(document).on('click', "#divespot", function(evt){
+    
+    
+    $(document).on('click', "#divespot", function(evt){
          console.log($(this).text());
          var str = $(this).text();
          var split_str = str.split(" ");
@@ -346,6 +356,7 @@
          
          //populate fishinfo page with relevant info
      });
+    
  }
  document.addEventListener("app.Ready", register_event_handlers, false);
 })();
