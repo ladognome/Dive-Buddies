@@ -34,7 +34,7 @@ function getToxic(id){
         url:"http://eol.org/api/pages/1.0.json?batch=false&id="+id+"&images_per_page=2&images_page=1&videos_per_page=0&videos_page=1&sounds_per_page=0&sounds_page=1&maps_per_page=0&maps_page=1&texts_per_page=2&texts_page=1&iucn=false&subjects=overview&licenses=all&details=true&common_names=true&synonyms=true&references=true&taxonomy=true&vetted=0&cache_ttl=&language=en",
              contentType: "application/json; charset=utf-8",
              dataType: "json",
-             
+             async: false,
              success: function(imgdata){
                  console.log(id);
 
