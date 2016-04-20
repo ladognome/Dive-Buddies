@@ -88,11 +88,9 @@ var GeoCode = (function() {
         }
         else{
               for (var i in fishList) {
-                      console.log(fishList[i]);
                       species_id = eolDataFile.getSpeciesID(fishList[i]);
-                      image_info=eolDataFile.getImageInfo(species_id);
-                      console.log(image_info);
-                      imageHTML = IMAGE(image_info);
+                      imageURL=eolDataFile.getImageInfo(species_id);
+                      imageHTML = "<img src=\""+imageURL+"\" width=\"150\"></img>";
                       filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p><i>"+fishList[i]+"</i></a></li>\n";
                       index++;
                   }
@@ -113,9 +111,11 @@ var GeoCode = (function() {
         }
         else{
             for (var i in mollusksList) {
-                    
-                    filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+mollusksList[i]+"</i></a></li>\n";
-                    index++;
+                  species_id = eolDataFile.getSpeciesID(mollusksList[i]);
+                  imageURL=eolDataFile.getImageInfo(species_id);
+                  imageHTML = "<img src=\""+imageURL+"\" width=\"150\"></img>";
+                  filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p><i>"+mollusksList[i]+"</i></a></li>\n";
+                index++;
                 }
             }
         document.getElementById("list_display").innerHTML = filler;
@@ -136,9 +136,11 @@ var GeoCode = (function() {
         }
         else{
             for (var i in coralsList) {
-                    
-                    filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+coralsList[i]+"</i></a></li>\n";
-                    index++;
+                  species_id = eolDataFile.getSpeciesID(coralsList[i]);
+                  imageURL=eolDataFile.getImageInfo(species_id);
+                  imageHTML = "<img src=\""+imageURL+"\" width=\"150\"></img>";
+                  filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p><i>"+coralsList[i]+"</i></a></li>\n";
+                index++;
                 }
             }
         document.getElementById("list_display").innerHTML = filler;
