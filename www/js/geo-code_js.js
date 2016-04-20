@@ -149,6 +149,7 @@ var GeoCode = (function() {
     $('#enterlocation').onfocus = function(){initialize();};
     
     $('#predive').click(function () {
+
       // function prediveClicked(){
           // f = codeAddress();
           var postDate = new Date();
