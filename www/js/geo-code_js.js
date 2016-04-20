@@ -1,7 +1,9 @@
+var f = null;
+
 var GeoCode = (function() {
     var flag= true;
     var location_coordinates = null;
-    var f = null;
+    
     var scientifNameList = [];
       var fishList = [];
       var mollusksList = [];
@@ -10,61 +12,68 @@ var GeoCode = (function() {
       var specificList_LordHowe_mollusks = ['Aequipecten nux','Sepioteuthis lessoniana','Aplysia dactylomela','Conus arenatus','Ctena bella','Diacria trispinosa','Sepia bandensis','Drupa morum','Engina zonalis','Umbraculum sinicum'];
       var specificList_LordHowe_corals = ['Acropora glauca','Acropora solitaryensis','Madrepora hyacinthus','Parascolymia vitiensis','Acropora yongei','Acanthastrea bowerbanki','Isopora palifera','Goniopora lichen','Stephanocyathus spiniger','Pavona minuta'];
     
-    function init(){
-            var address = (document.getElementById('enterlocation'));
-            var  autocomplete = new google.maps.places.Autocomplete(address);
-            autocomplete.setTypes(['geocode']);
-            google.maps.event.addListener(autocomplete, 'place_changed', function() {
-                var place = autocomplete.getPlace();
-                if (!place.geometry) {
-                    return;
-                }
+    // function init(){
+    //         var address = (document.getElementById('enterlocation'));
+    //         var  autocomplete = new google.maps.places.Autocomplete(address);
+    //         autocomplete.setTypes(['geocode']);
+    //         google.maps.event.addListener(autocomplete, 'place_changed', function() {
+    //             var place = autocomplete.getPlace();
+    //             if (!place.geometry) {
+    //                 return;
+    //             }
 
-            var address = '';
-            if (place.address_components) {
-                address = [
-                    (place.address_components[0] && place.address_components[0].short_name || ''),
-                    (place.address_components[1] && place.address_components[1].short_name || ''),
-                    (place.address_components[2] && place.address_components[2].short_name || '')
-                    ].join(' ');
-            }
-          });
-    }
+    //         var address = '';
+    //         if (place.address_components) {
+    //             address = [
+    //                 (place.address_components[0] && place.address_components[0].short_name || ''),
+    //                 (place.address_components[1] && place.address_components[1].short_name || ''),
+    //                 (place.address_components[2] && place.address_components[2].short_name || '')
+    //                 ].join(' ');
+    //         }
+    //       });
+    // }
 
     
 
-    function codeAddress(){
-        geocoder = new google.maps.Geocoder();
-        var address = document.getElementById("enterlocation").value;
-        console.log()
-        geocoder.geocode( { 'address': address}, function(results, status) {
-          if (status == google.maps.GeocoderStatus.OK) {
+    // function codeAddress(){
+    //     scientifNameList=[];
+    //     fishList=[];
+    //     coralsList=[];
+    //     mollusksList=[];
+    //     geocoder = new google.maps.Geocoder();
+    //     var address = document.getElementById("enterlocation").value;
+    //     console.log("inside geo-code");
+    //     console.log(address);
+    //     geocoder.geocode( { 'address': address}, function(results, status) {
+    //       if (status == google.maps.GeocoderStatus.OK) {
 
-          //alert("Latitude: "+results[0].geometry.location.lat());
-          //alert("Longitude: "+results[0].geometry.location.lng());
-            f = 'POLYGON(('+ String(Math.floor(results[0].geometry.location.lng() -1)) +' '+ String(Math.floor(results[0].geometry.location.lat() -1)) + ',' + ' '+ String(Math.floor(results[0].geometry.location.lng() -1)) + ' ' +String(Math.floor(results[0].geometry.location.lat() +1)) + ',' + ' '+ String(Math.floor(results[0].geometry.location.lng() +1)) + ' ' + String(Math.floor(results[0].geometry.location.lat() +1)) + ',' + ' ' + String(Math.floor(results[0].geometry.location.lng() +1)) + ' ' + String(Math.floor(results[0].geometry.location.lat() -1)) + ',' + ' ' + String(Math.floor(results[0].geometry.location.lng() -1)) + ' ' + String(Math.floor(results[0].geometry.location.lat() -1)) + '))'; 
+    //       //alert("Latitude: "+results[0].geometry.location.lat());
+    //       //alert("Longitude: "+results[0].geometry.location.lng());
+    //         f = 'POLYGON(('+ String(Math.floor(results[0].geometry.location.lng() -1)) +' '+ String(Math.floor(results[0].geometry.location.lat() -1)) + ',' + ' '+ String(Math.floor(results[0].geometry.location.lng() -1)) + ' ' +String(Math.floor(results[0].geometry.location.lat() +1)) + ',' + ' '+ String(Math.floor(results[0].geometry.location.lng() +1)) + ' ' + String(Math.floor(results[0].geometry.location.lat() +1)) + ',' + ' ' + String(Math.floor(results[0].geometry.location.lng() +1)) + ' ' + String(Math.floor(results[0].geometry.location.lat() -1)) + ',' + ' ' + String(Math.floor(results[0].geometry.location.lng() -1)) + ' ' + String(Math.floor(results[0].geometry.location.lat() -1)) + '))'; 
               
-              console.log(f);
-    //      document.getElementById("lati").innerHTML = "Latitutde:"+results[0].geometry.location.lat();
-    //      document.getElementById("longi").innerHTML = "Longitude:"+results[0].geometry.location.lng();
-          if (results[0].geometry.location.lng()>158 && results[0].geometry.location.lng()<160 && results[0].geometry.location.lat()>-32 && results[0].geometry.location.lat()<-31){
-                console.log("coordinates match");
-                flag = true;
-                location_coordinates = results[0].geometry.location;
-                //alert(flag);
-              }
-              else{/*alert("Not found");*/ flag=false;
-                  location_coordinates = results[0].geometry.location;
-                  }
+    //           console.log(f);
+    // //      document.getElementById("lati").innerHTML = "Latitutde:"+results[0].geometry.location.lat();
+    // //      document.getElementById("longi").innerHTML = "Longitude:"+results[0].geometry.location.lng();
+    //       if (results[0].geometry.location.lng()>158 && results[0].geometry.location.lng()<160 && results[0].geometry.location.lat()>-32 && results[0].geometry.location.lat()<-31){
+    //             console.log("coordinates match");
+    //             flag = true;
+    //             location_coordinates = results[0].geometry.location;
+    //             //alert(flag);
+    //           }
+    //           else{/*alert("Not found");*/ flag=false;
+    //               location_coordinates = results[0].geometry.location;
+    //               }
 
-          } 
+    //       } 
 
-          else {
-            alert("Geocode was not successful for the following reason: " + status);
-          }
-        });
+    //       else {
+    //         alert("Geocode was not successful for the following reason: " + status);
+    //       }
+    //     });
 
-      } 
+    //     return f;
+
+    //   } 
 
     $('#fishTab').click(function(){
         console.log("clicked fish");
@@ -138,8 +147,29 @@ var GeoCode = (function() {
     $('#enterlocation').onfocus = function(){initialize();};
     
     $('#predive').click(function () {
+      // function prediveClicked(){
+          // f = codeAddress();
           var postDate = new Date();
           postDate.setMonth(postDate.getMonth()-3);
+          console.log("inside predive");
+          console.log(f);
+
+          lat = localStorage.getItem("lat");
+          long = localStorage.getItem("long");
+
+
+          if (long>158 && long<160 && lat>-32 && lat<-31){
+                console.log("coordinates match");
+                flag = true;
+                // location_coordinates = results[0].geometry.location;
+                //alert(flag);
+              }
+          else{
+            flag=false;
+          }
+
+
+          fo = 'POLYGON(('+ String(Math.floor(long -1)) +' '+ String(Math.floor(lat -1)) + ',' + ' '+ String(Math.floor(long -1)) + ' ' +String(Math.floor(lat +1)) + ',' + ' '+ String(Math.floor(long +1)) + ' ' + String(Math.floor(lat +1)) + ',' + ' ' + String(Math.floor(long +1)) + ' ' + String(Math.floor(lat -1)) + ',' + ' ' + String(Math.floor(long -1)) + ' ' + String(Math.floor(lat -1)) + '))'; 
       $.ajax({
              type: "GET",
              // url: "http://api.iobis.org",
@@ -148,7 +178,7 @@ var GeoCode = (function() {
              dataType: "jsonp",
              data: {
 
-              'geometry': String(f),
+              'geometry': String(fo),
 //               'year': new Date().getYear(),
               // 'startdate': new Date(),
               // 'enddate': postDate,
@@ -156,7 +186,7 @@ var GeoCode = (function() {
 
               // 'phylum': "Chordata",
 //                 'geometry': POLYGON(((location_address.lng-1) (location_address),,,))
-              // 'limit': 1000,
+              'limit': 1000
              },
              success: function(data){
 
@@ -195,6 +225,9 @@ var GeoCode = (function() {
 
 
                       for(var i=0;i<(data.results).length;i++){
+                        if (data.results[i] == null){
+                          continue;
+                        }
                         if(typeof data.results[i]['species'] == 'undefined'){
                           continue;
                         }

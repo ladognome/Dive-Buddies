@@ -16,12 +16,15 @@ function getList(data,source){
     
     var sites = data["sites"];
     // var re
-    location_diveSite = data["loc"]["postal_code"];
+    location_diveSite = data["loc"]["city"];
     if (source=='current'){
       document.getElementById("enterlocation").value = location_diveSite;
       console.log(data["loc"]);
       console.log(sites);
+
     }
+    localStorage.setItem("lat", data["loc"]["lat"]);
+    localStorage.setItem("long", data["loc"]["lng"]);
     var filler="";
         for (var i in sites) {
                 var spot = sites[i];

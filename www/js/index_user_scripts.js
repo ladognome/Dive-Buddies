@@ -37,7 +37,9 @@
     /* button  #predive */
     $(document).on("click", "#predive", function(evt)
     {   
-         GeoCode.codeAddress();
+        // GeoCode.init();
+         // GeoCode.codeAddress();
+         // GeoCode.prediveClicked();
          activate_subpage("#PreDive"); 
     });
     
@@ -276,8 +278,8 @@
          /*global activate_subpage */
 //         GeoCodeGoogle.init();
 //        GeoCodeGoogle.codeAddress();
-        GeoCode.init(); 
-        GeoCode.codeAddress();
+        GeoCodeGoogle.init(); 
+        GeoCodeGoogle.codeAddress();
          diveSitesFunction.goClickedHere();
          activate_subpage("#DiveSpotSelect"); 
     });
