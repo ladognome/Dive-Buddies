@@ -88,9 +88,16 @@ var GeoCode = (function() {
         }
         else{
               for (var i in fishList) {
+
+                      try{
                       species_id = eolDataFile.getSpeciesID(fishList[i]);
                       imageURL=eolDataFile.getImageInfo(species_id);
                       imageHTML = "<img src=\""+imageURL+"\" width=\"150\"></img>";
+                      }
+                      catch(err){
+                        imageURL = 'images/imageNotFound.png';
+                        imageHTML = "<img src=\""+imageURL+"\" width=\"150\"></img>";
+                      }
                       filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p><i>"+fishList[i]+"</i></a></li>\n";
                       index++;
                   }
@@ -111,9 +118,16 @@ var GeoCode = (function() {
         }
         else{
             for (var i in mollusksList) {
+                  try{
                   species_id = eolDataFile.getSpeciesID(mollusksList[i]);
                   imageURL=eolDataFile.getImageInfo(species_id);
                   imageHTML = "<img src=\""+imageURL+"\" width=\"150\"></img>";
+                  }
+                  catch(err){
+                        imageURL = 'images/imageNotFound.png';
+                        imageHTML = "<img src=\""+imageURL+"\" width=\"150\"></img>";
+                      }
+
                   filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p><i>"+mollusksList[i]+"</i></a></li>\n";
                 index++;
                 }
@@ -136,9 +150,15 @@ var GeoCode = (function() {
         }
         else{
             for (var i in coralsList) {
+                try{
                   species_id = eolDataFile.getSpeciesID(coralsList[i]);
                   imageURL=eolDataFile.getImageInfo(species_id);
                   imageHTML = "<img src=\""+imageURL+"\" width=\"150\"></img>";
+                }
+                catch(err){
+                        imageURL = 'images/imageNotFound.png';
+                        imageHTML = "<img src=\""+imageURL+"\" width=\"150\"></img>";
+                      }
                   filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p><i>"+coralsList[i]+"</i></a></li>\n";
                 index++;
                 }
@@ -149,6 +169,10 @@ var GeoCode = (function() {
     $('#enterlocation').onfocus = function(){initialize();};
     
     $('#predive').click(function () {
+          scientifNameList = [];
+          fishList = [];
+          mollusksList = [];
+          coralsList = [];
 
       // function prediveClicked(){
           // f = codeAddress();
@@ -300,14 +324,21 @@ var GeoCode = (function() {
                       }
                       else{
                             for (var i in fishList) {
-                                    // species_id = getSpecies(i);
-                                    // image_info=getImageInfo(species_id);
-                                    // imageHTML = IMAGE(image_info);
-                                    filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+fishList[i]+"</i></a></li>\n";
+
+                                    try{
+                                    species_id = eolDataFile.getSpeciesID(fishList[i]);
+                                    imageURL=eolDataFile.getImageInfo(species_id);
+                                    imageHTML = "<img src=\""+imageURL+"\" width=\"150\"></img>";
+                                    }
+                                    catch(err){
+                                      imageURL = 'images/imageNotFound.png';
+                                      imageHTML = "<img src=\""+imageURL+"\" width=\"150\"></img>";
+                                    }
+                                    filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p><i>"+fishList[i]+"</i></a></li>\n";
                                     index++;
                                 }
                           }
-                          document.getElementById("list_display").innerHTML = filler;   
+                          document.getElementById("list_display").innerHTML = filler;
                         }
                     //  var filler = "";
                     //   var index = 39;
