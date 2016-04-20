@@ -39,9 +39,6 @@
     /* button  #predive */
     $(document).on("click", "#predive", function(evt)
     {   
-        // GeoCode.init();
-         // GeoCode.codeAddress();
-         // GeoCode.prediveClicked();
          activate_subpage("#PreDive"); 
     });
     
@@ -165,7 +162,7 @@
                             var coral = split[1].split(".")[0]
                             if (filler.indexOf(coral)){ //check for duplicates
                                 var species_id = eolDataFile.getSpeciesID(coral);
-                                var imageURL=eolDataFile.getImageInfo(species_id);
+                                var imageURL=eolDataFile.getImageInfo(species_id)[0];
                                 imageHTML = "<img src=\""+imageURL+"\" width=\"150\"></img>";
                                 filler += "<li id=\"animal_selection\" class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p><i>"+coral+"</i></a></li>\n";
                                 console.log(filler);
@@ -176,7 +173,7 @@
                         else if (opt.indexOf("Encyclopedia of Life") > -1){
                             if (filler.indexOf(split[1]) == -1){ //check for duplicates
                                 var species_id = eolDataFile.getSpeciesID(split[2]);
-                                var imageURL=eolDataFile.getImageInfo(species_id);
+                                var imageURL=eolDataFile.getImageInfo(species_id)[0];
                                 imageHTML = "<img src=\""+imageURL+"\" width=\"150\"></img>";
                                 filler += "<li id=\"animal_selection\" class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p>"+split[1]+" - <i>"+split[2]+"</i></a></li>\n";
                                 console.log(filler);

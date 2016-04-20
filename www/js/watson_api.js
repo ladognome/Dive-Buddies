@@ -1,6 +1,6 @@
 //TODO: stem?
 
-function PostToWatson(QUESTION){
+function PostToWatson(QUESTION, callback){
     var WATSON_URL = "https://watson-wdc01.ihost.com/instance/514/deepqa/v1/question";
     var WATSON_USERNAME = "gt2_administrator";
     var WATSON_PASSWORD = "bCze2OdC";
@@ -21,19 +21,18 @@ function PostToWatson(QUESTION){
             url: WATSON_URL,
             contentType: 'application/json; charset=utf-8',
             dataType: 'json',
-            async: false,
             //json object to sent to the authentication url
             data: JSON.stringify(data),
             headers: { "Authorization" : "Basic " + authorizationBasic},
-            success: function(resultData) {
-                console.log(resultData["question"]);
-                output = resultData["question"];
+            success: function(resultData){
+                    console.log(resultData["question"]);
+                    output = resultData["question"];
+                    callback(output);
             },
             error: function(jqXHR, textStatus, errorThrown) {
             },
             timeout: 120000        
         });
-    return output;
 }
 
 
