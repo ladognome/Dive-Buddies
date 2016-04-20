@@ -25,6 +25,10 @@ var eolDataFile = (function(){
         var description="";
         var commonName = "";
         var scientificName = "";
+        var toxicList =["anemone","toxic","venom","venomous","poisonous","poison","danger","dangerous","sting"];
+        var toxicCount = 0;
+        var toxic=false;
+        var startPoint=0;
         $.ajax({
                  type: "GET",
 
@@ -50,6 +54,18 @@ var eolDataFile = (function(){
                 document.getElementById("SpeciesName").innerHTML = "<div class=\"widget-container left-receptacle\"></div> <div class=\"widget-container right-receptacle\"></div> <div class=\"text-container\"><br/><b><i> "+scientificName+"</i></b></div><br/>";
                 document.getElementById("CommonName").innerHTML = "<div class=\"widget-container left-receptacle\"></div> <div class=\"widget-container right-receptacle\"></div> <div class=\"text-container\"><b> "+commonName+"</b></div><br/>";
                 document.getElementById("Description").innerHTML = "<div class=\"widget-container left-receptacle\"></div> <div class=\"widget-container right-receptacle\"></div> <div class=\"text-container\"> "+description+"</div>";
+                for(var i =0;i<toxicList.length;i++){
+                     startPoint = 0;
+                     while(startPoint<description.length && description.indexOf(toxicList[i],startPoint)!=-1){
+                     if(description.indexOf(toxicList[i],startPoint)>=startPoint){
+                         startPoint = description.indexOf(toxicList[i]);
+                         toxicCount+=1;
+                     }
+                 }
+            }
+                if(toxicCount>=3){
+                    toxic=true;
+                }
              },
              error: function (errorMessage) {
              console.log("error with GetImageInfo");
@@ -59,7 +75,8 @@ var eolDataFile = (function(){
             }
 
             });
-        return link;
+        var returnList=[link,toxic];
+        return returnList;
 
     }
     return{
@@ -67,3 +84,52 @@ var eolDataFile = (function(){
         getImageInfo: getImageInfo
     };
 })();
+//function getToxic(id){
+//    var link = "";
+//    var toxicList = ["anemone","toxic","venom","venomous","poisonous","poison","danger","dangerous","sting"];
+//    var description = "";
+//    var toxicCount = 0;
+//    var toxic=false;
+//    var startPoint=0;
+//    $.ajax({
+//             type: "GET",
+//
+//        url:"http://eol.org/api/pages/1.0.json?batch=false&id="+id+"&images_per_page=2&images_page=1&videos_per_page=0&videos_page=1&sounds_per_page=0&sounds_page=1&maps_per_page=0&maps_page=1&texts_per_page=2&texts_page=1&iucn=false&subjects=overview&licenses=all&details=true&common_names=true&synonyms=true&references=true&taxonomy=true&vetted=0&cache_ttl=&language=en",
+//             contentType: "application/json; charset=utf-8",
+//             dataType: "json",
+//             
+//             success: function(imgdata){
+//                 console.log(id);
+//
+//              console.log("pages api call success");
+//            console.log(imgdata["dataObjects"][2]["eolMediaURL"]);
+//                
+//            link += imgdata["dataObjects"][2]["eolMediaURL"];
+//            description += imgdata["dataObjects"][0]["description"];
+//                 for(var i =0;i<toxicList.length;i++){
+//                     startPoint = 0;
+//                     while(startPoint<description.length && description.indexOf(toxicList[i],startPoint)!=-1){
+//                     if(description.indexOf(toxicList[i],startPoint)>=startPoint){
+//                         startPoint = description.indexOf(toxicList[i]);
+//                         toxicCount+=1;
+//                     }
+//                 }
+//            }
+//            if(toxicCount>=3){
+//                 toxic=true;
+//            }
+//            console.log(link);
+//            console.log(toxicCount);
+//            console.log(toxic);
+//            },
+//        error: function (errorMessage) {
+//        console.log("error");
+//            console.log(id);
+//        console.log(errorMessage);
+//    
+//        }
+//        var returnList=[link,toxic];
+//        return returnList;
+//    
+//});
+//}
