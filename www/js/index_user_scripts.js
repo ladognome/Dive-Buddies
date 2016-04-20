@@ -10,6 +10,8 @@
     $(document).on("click", "#StartPageGraphic", function(evt)
     {
          show('loading', false); 
+         GeoCodeGoogle.init(); 
+        GeoCodeGoogle.codeAddress();
         activate_subpage("#page_100_31"); 
     });
     
@@ -163,6 +165,7 @@
                             if (filler.indexOf(coral)){ //check for duplicates
                                 var species_id = eolDataFile.getSpeciesID(coral);
                                 var imageURL=eolDataFile.getImageInfo(species_id)[0];
+                                console.log("toxic: "+eolDataFile.getImageInfo(species_id)[1]);
                                 imageHTML = "<img src=\""+imageURL+"\" width=\"150\"></img>";
                                 filler += "<li id=\"animal_selection\" class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p><i>"+coral+"</i></a></li>\n";
                                 console.log(filler);
@@ -174,6 +177,7 @@
                             if (filler.indexOf(split[1]) == -1){ //check for duplicates
                                 var species_id = eolDataFile.getSpeciesID(split[2]);
                                 var imageURL=eolDataFile.getImageInfo(species_id)[0];
+                                console.log("toxic: "+eolDataFile.getImageInfo(species_id)[1]);
                                 imageHTML = "<img src=\""+imageURL+"\" width=\"150\"></img>";
                                 filler += "<li id=\"animal_selection\" class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p>"+split[1]+" - <i>"+split[2]+"</i></a></li>\n";
                                 console.log(filler);
@@ -293,8 +297,8 @@
          /*global activate_subpage */
 //         GeoCodeGoogle.init();
 //        GeoCodeGoogle.codeAddress();
-        GeoCodeGoogle.init(); 
-        GeoCodeGoogle.codeAddress();
+//        GeoCodeGoogle.init(); 
+//        GeoCodeGoogle.codeAddress();
          diveSitesFunction.goClickedHere();
          activate_subpage("#DiveSpotSelect"); 
     });

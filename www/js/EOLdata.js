@@ -40,6 +40,9 @@ var eolDataFile = (function(){
                 console.log(id);
 
                 link += imgdata["dataObjects"][2]["eolMediaURL"];
+                if (link === undefined){
+                link = "";
+                }
                 description += imgdata["dataObjects"][0]["description"];
                 scientificName += imgdata["scientificName"];
                 for (var i in imgdata["vernacularNames"])
