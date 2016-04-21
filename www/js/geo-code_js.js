@@ -240,16 +240,16 @@ var GeoCode = (function() {
                      coralsList = specificList_LordHowe_corals;
                      fishList = specificList_LordHowe_fish;
 
-                     var filler = "";
-                      var index = 39;
-                      for (var i in scientifNameList) {
-                          if (typeof scientifNameList[i] == 'undefined'){
-                              continue;
-                          }
-                          filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+scientifNameList[i]+"</i></a></li>\n";
-                          index++;
-                      }
-                      // document.getElementById("list_display").innerHTML = filler;
+                     // var filler = "";
+                     //  var index = 39;
+                     //  for (var i in scientifNameList) {
+                     //      if (typeof scientifNameList[i] == 'undefined'){
+                     //          continue;
+                     //      }
+                     //      filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+scientifNameList[i]+"</i></a></li>\n";
+                     //      index++;
+                     //  }
+                     //  // document.getElementById("list_display").innerHTML = filler;
                  }
                  else{
                      console.log("Flag is not true, proceed to generic display");
@@ -320,7 +320,7 @@ var GeoCode = (function() {
                         
                         // console.log(typeof scientifNameList[i])
                       }
-
+                      }
                       console.log("List of fish");
                         console.log(fishList);
                         console.log("List of Mollusks");
@@ -360,7 +360,7 @@ var GeoCode = (function() {
                                 }
                           }
                           document.getElementById("list_display").innerHTML = filler;
-                        }
+                        
                     //  var filler = "";
                     //   var index = 39;
                     //   for (var i in scientifNameList) {
