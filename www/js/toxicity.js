@@ -23,7 +23,7 @@ console.log("toxic js loads");
 
 function getToxic(id){
     var link = "";
-    var toxicList = ["anemone","toxic","venom","venomous","poisonous","poison","danger","dangerous","sting"];
+    var toxicList = ["anemone","toxic","venom","venomous","poisonous","poison","danger","dangerous","sting", "puffer", "shark", "stinging", "spines", "painful", "harmful", "hurtful", "hazardous"];
     var description = "";
     var toxicCount = 0;
     var toxic=false;
