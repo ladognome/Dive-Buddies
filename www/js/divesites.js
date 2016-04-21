@@ -30,7 +30,7 @@ function getList(data,source){
         for (var i in sites) {
                 var spot = sites[i];
                 var index = 56;
-                filler += "<li id=\"divespot\" class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+spot["name"]+"</i></a><text style=\"opacity: 0.0; size=1px;\"> lat="+spot["lat"]+" long="+spot["lng"]+"</text></li>\n";
+                filler += "<li id=\"divespot\" class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+spot["name"]+"</i></a></li>\n";
                 index++;
             }
             document.getElementById("divespots").innerHTML = filler;

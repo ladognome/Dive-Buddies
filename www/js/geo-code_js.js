@@ -99,7 +99,7 @@ var GeoCode = (function() {
                         imageHTML = "<img src=\""+imageURL+"\" width=\"150\"></img>";
                       }
                   if(imageURL[1]===true)
-                  {filler += "<li id=\"animal_selection\" class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p><i>"+fishList[i]+"</i></a><img width=\"75px\" height=\"75px\" src=\"http://i.imgur.com/gEieG9S.png\"></img></li>\n";
+                  {filler += "<li id=\"animal_selection\" class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p><i>"+fishList[i]+"</i></a><img width=\"25px\" height=\"75px\" src=\"http://i.imgur.com/gEieG9S.png\"></img></li>\n";
                   }
                     else{
                         filler += "<li id=\"animal_selection\" class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p><i>"+fishList[i]+"</i></a></li>\n";
@@ -133,7 +133,7 @@ var GeoCode = (function() {
                         imageHTML = "<img src=\""+imageURL+"\" width=\"150\"></img>";
                       }
                   if(imageURL[1]===true)
-                  {filler += "<li id=\"animal_selection\" class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p><i>"+mollusksList[i]+"</i></a><img width=\"75px\" height=\"75px\" src=\"http://i.imgur.com/gEieG9S.png\"></img></li>\n";
+                  {filler += "<li id=\"animal_selection\" class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p><i>"+mollusksList[i]+"</i></a><img width=\"25px\" height=\"75px\" src=\"http://i.imgur.com/gEieG9S.png\"></img></li>\n";
                   }
                     else{
                         filler += "<li id=\"animal_selection\" class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p><i>"+mollusksList[i]+"</i></a></li>\n";
@@ -170,7 +170,7 @@ var GeoCode = (function() {
                         imageHTML = "<img src=\""+imageURL+"\" width=\"150\"></img>";
                       }
                 if(imageURL[1]===true)
-                  {filler += "<li id=\"animal_selection\" class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p><i>"+coralsList[i]+"</i></a><img width=\"75px\" height=\"75px\" src=\"http://i.imgur.com/gEieG9S.png\"></img></li>\n";
+                  {filler += "<li id=\"animal_selection\" class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p><i>"+coralsList[i]+"</i></a><img width=\"25px\" height=\"75px\" src=\"http://i.imgur.com/gEieG9S.png\"></img></li>\n";
                   }
                     else{
                         filler += "<li id=\"animal_selection\" class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p><i>"+coralsList[i]+"</i></a></li>\n";
@@ -351,7 +351,7 @@ var GeoCode = (function() {
                                       imageHTML = "<img src=\""+imageURL+"\" width=\"150\"></img>";
                                     }
                                     if(imageURL[1]===true)
-                                    {filler += "<li id=\"animal_selection\" class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p><i>"+fishList[i]+"</i></a><img width=\"75px\" height=\"75px\" src=\"http://i.imgur.com/gEieG9S.png\"></img></li>\n";
+                                    {filler += "<li id=\"animal_selection\" class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p><i>"+fishList[i]+"</i></a><img width=\"75px\" height=\"25px\" src=\"http://i.imgur.com/gEieG9S.png\"></img></li>\n";
                                     }
                                     else{
                                     filler += "<li id=\"animal_selection\" class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p><i>"+fishList[i]+"</i></a></li>\n";

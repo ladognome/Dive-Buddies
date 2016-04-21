@@ -58,15 +58,15 @@ var eolDataFile = (function(){
                 document.getElementById("CommonName").innerHTML = "<div class=\"widget-container left-receptacle\"></div> <div class=\"widget-container right-receptacle\"></div> <div class=\"text-container\"><b> "+commonName+"</b></div><br/>";
                 document.getElementById("Description").innerHTML = "<div class=\"widget-container left-receptacle\"></div> <div class=\"widget-container right-receptacle\"></div> <div class=\"text-container\"> "+description+"</div>";
                 for(var i =0;i<toxicList.length;i++){
-                     startPoint = 0;
-                     while(startPoint<description.length && description.indexOf(toxicList[i],startPoint)!=-1){
-                     if(description.indexOf(toxicList[i],startPoint)>=startPoint){
-                         startPoint = description.indexOf(toxicList[i]);
-                         toxicCount+=1;
+//                     startPoint = 0;
+//                     while(startPoint<description.length && description.indexOf(toxicList[i],startPoint)!=-1){
+                    if(description.indexOf(toxicList[i],startPoint)>=startPoint){
+//                        startPoint = description.indexOf(toxicList[i]);
+                       toxicCount+=1;
                      }
-                 }
+//                 }
             }
-                if(toxicCount>=3){
+                if(toxicCount>=1){
                     toxic=true;
                 }
              },
