@@ -344,19 +344,17 @@ var GeoCode = (function() {
                                     try{
                                     species_id = eolDataFile.getSpeciesID(fishList[i]);
                                     imageURL=eolDataFile.getImageInfo(species_id);
-                                    //imageHTML = "<img src=\""+imageURL[0]+"\" width=\"150\"></img>";
+                                    imageHTML = "<img src=\""+imageURL[0]+"\" width=\"150\"></img>";
                                     }
-                                    /*catch(err){
+                                    catch(err){
                                       imageURL = 'images/imageNotFound.png';
                                       imageHTML = "<img src=\""+imageURL+"\" width=\"150\"></img>";
-                                    }*/
+                                    }
                                     if(imageURL[1]===true)
-                                    {//filler += "<li id=\"animal_selection\" class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p><i>"+fishList[i]+"</i></a><img width=\"25px\" height=\"25px\" src=\"http://i.imgur.com/gEieG9S.png\"></img></li>\n";
-                                        filler += "<li style=\"background-image: url("+imageURL+"); background-size: 100% 200px; background-repeat: no-repeat; height:210px; -webkit-text-fill-color: white;  -webkit-text-stroke-width: 0.8px; -webkit-text-stroke-color: black; font-size:25px; font-weight: bold;\" id=\"animal_selection\" class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\" ><a>"+fishList[i]+"</i></a></li>\n";
+                                    {filler += "<li id=\"animal_selection\" class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p><i>"+fishList[i]+"</i></a><img width=\"25px\" height=\"25px\" src=\"http://i.imgur.com/gEieG9S.png\"></img></li>\n";
                                     }
                                     else{
-                                        filler += "<li style=\"background-image: url("+imageURL+"); background-size: 100% 200px; background-repeat: no-repeat; height:210px; -webkit-text-fill-color: white;  -webkit-text-stroke-width: 0.8px; -webkit-text-stroke-color: black; font-size:25px; font-weight: bold;\" id=\"animal_selection\" class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\" ><a>"+fishList[i]+"</i></a></li>\n";
-                                    //filler += "<li id=\"animal_selection\" class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p><i>"+fishList[i]+"</i></a></li>\n";
+                                    filler += "<li id=\"animal_selection\" class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p><i>"+fishList[i]+"</i></a></li>\n";
                                     }
 
                                 }
