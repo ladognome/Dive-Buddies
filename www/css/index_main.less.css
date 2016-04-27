@@ -305,7 +305,16 @@ body:not(#afui) .upage-outer {
   }
 }
 @media all {
-  
+  #afui .vertical-col > .d-margins,
+  #afui .vertical-col > .afScrollPanel > .d-margins {
+    margin-left: 6px;
+    margin-right: 6px;
+  }
+  #afui .vertical-col > .d-margins,
+  #afui .vertical-col > .afScrollPanel > .d-margins {
+    margin-left: 6px;
+    margin-right: 6px;
+  }
 }
 @media all {
   #afui .color {
@@ -737,5 +746,25 @@ body:not(#afui) .upage-outer {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100% 100%;
+  }
+}
+@media all {
+  #afui .link_buttons {
+    height: 80px   !important;
+    width: 80px   !important;
+    border-radius: 100%  100% 100% 100%  100% 100% 100% !important;
+    font-size: 15px;
+    text-align: center;
+    line-height: 15px;
+  }
+}
+@media all {
+  #afui .circle_padding {
+    display: block;
+  }
+}
+@media all {
+  #afui .linkbuttontext {
+    color: #3eac75;
   }
 }
