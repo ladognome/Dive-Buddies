@@ -56,7 +56,7 @@ body {
 #postdive,#Go{font-family: Arial;
   color: #ffffff;
   font-size: 20px;
-  background: #61abff;
+  background-color: #61abff;
   padding: 10px 20px 10px 20px;
   text-decoration: none;
 }
@@ -64,13 +64,16 @@ body {
   font-family: Arial;
   color: #ffffff;
   font-size: 20px;
-  background: #66b517;
+  background-color: #66b517;
   padding: 10px 20px 10px 20px;
   text-decoration: none;
 }
 li{
     background-color: transparent;
     
+}
+#divespot{
+    background-color:azure ;
 }
 #enterlabel{
     font-size: 16px;
@@ -79,6 +82,6 @@ li{
     background-color: azure;
 
 }
-#mainpage{
-    background-image: url("www/images/divebackground.png");
+#mainpage, #page_100_31, #DiveModeSelect,#PreDive, #PostDive,#DiveSpotSelect,#PostDiveResults{
+    background-image: url("www/images/divebuddiesbg.png");
 }
