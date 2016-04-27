@@ -154,8 +154,7 @@
                                 var species_id = eolDataFile.getSpeciesID(coral);
                                 var imageURL=eolDataFile.getImageInfo(species_id)[0];
                                 console.log("toxic: "+eolDataFile.getImageInfo(species_id)[1]);
-                                imageHTML = "<img src=\""+imageURL+"\" width=\"150\"></img>";
-                                filler += "<li id=\"animal_selection\" class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p><i>"+coral+"</i></a></li>\n";
+                                filler += "<li style=\"background-image: url("+imageURL+"); background-size: 100% 200px; background-repeat: no-repeat; height:210px; -webkit-text-fill-color: white;  -webkit-text-stroke-width: 0.8px; -webkit-text-stroke-color: black; font-size:25px; font-weight: bold;\" id=\"animal_selection\" class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\" ><a><i>"+coral+"</i></a></li>\n";
                                 console.log(filler);
                             }
 
@@ -166,8 +165,7 @@
                                 var species_id = eolDataFile.getSpeciesID(split[2]);
                                 var imageURL=eolDataFile.getImageInfo(species_id)[0];
                                 console.log("toxic: "+eolDataFile.getImageInfo(species_id)[1]);
-                                imageHTML = "<img src=\""+imageURL+"\" width=\"150\"></img>";
-                                filler += "<li id=\"animal_selection\" class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p>"+split[1]+" - <i>"+split[2]+"</i></a></li>\n";
+                                filler += "<li style=\"background-image: url("+imageURL+"); background-size: 100% 200px; background-repeat: no-repeat; height:210px; -webkit-text-fill-color: white;  -webkit-text-stroke-width: 0.8px; -webkit-text-stroke-color: black; font-size:25px; font-weight: bold;\" id=\"animal_selection\" class=\"widget uib_w_"+String(48+i)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\" ><a>"+split[1]+" - <i>"+split[2]+"</i></a></li>\n";
                                 console.log(filler);
                             }
                         }
