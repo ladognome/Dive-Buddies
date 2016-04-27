@@ -6,7 +6,7 @@
       "projectTypeName": "com.intel.xdk.projecttype.webapp",
       "src": "webapp/sample-app-framework/sample.zip",
       "projectGuid": "98a4b025-422c-4e73-94a4-4c0b6a83b276",
-      "lastModifiedDate": 1458828886864,
+      "lastModifiedDate": 1461793262850,
       "creationDate": 1457020315421
     },
     "XDK-app-designer": "true",
@@ -238,7 +238,7 @@
         "splashes_": [],
         "addlPermissions_": "",
         "excludedLibraries_": "",
-        "certificateId_": "",
+        "certificateId_": "I1UHiLImw0-359nMm1GCeQ2",
         "iosProvs_": [],
         "cordovaCLIVersion_": "5.1.1",
         "crosswalkVersion_": "15",
