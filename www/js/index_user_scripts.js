@@ -63,12 +63,7 @@
         //CONVERT QUERY INTO WORD-TO-VEC VECTOR, WORDS SUMMED
         for (var i =0; i < splitText.length; i++){
             [].forEach.call(Word2VecUtils.findSimilarWords(1,splitText[i]), function(element, index, array){
-                if (element[0] == "fin"){
-                    composedVector = Word2VecUtils.addVecs(composedVector, wordVecs["limb"]); //change all instances of fin to limb
-                }
-                else{
                     composedVector = Word2VecUtils.addVecs(composedVector, wordVecs[element[0]]);
-                }
                 //console.log(element[0]); //the word
                 //console.log(element[1]); //the confidence
             });
@@ -82,17 +77,11 @@
         //************************************************************
         //TRAINING
         //CODE FOR FINDING THE VECTORS FOR THE QUESTIONS
-       /* var winningVector = [];
+        /*var winningVector = [];
         
         var QUESTIONS = [
-            "what fish is silver to white blue on back and yellow towards the tail",
-            "what fish has a narrow bronze line along middle of body becoming yellow towards the tail",
-            "what fish is black with big white spots",
-            "what fish lives in shallow rocky and coral reef and the common name is double head",
-            "what fish has lots of limbs which fan out from its body",
-            "what fish has long spine coming out the side of the body",
-            "what fish looks like a turkey",
-            "what fish has gold brown bands stretch across a light yellow or white background"
+           "what fish has blue fins and a yellow tail",
+            "what fish has lots of fins which fan out from its body"
         ];
         
         for (var i = 0; i < QUESTIONS.length; i++){
@@ -106,7 +95,9 @@
 
             for (var j =1; j < split_question.length; j++){
                 [].forEach.call(Word2VecUtils.findSimilarWords(1,split_question[j]), function(element, index, array){
-                    composedVector_question = Word2VecUtils.addVecs(composedVector_question, wordVecs[element[0]]);
+                    if (wordVecs[element[0]]!= undefined){
+                        composedVector_question = Word2VecUtils.addVecs(composedVector_question, wordVecs[element[0]]);
+                    }
                     
                 });
             }
@@ -156,9 +147,6 @@
                     var split = opt.split(" - ");
                     console.log(opt);
                     if (split[1] !== undefined){
-                        /*var imageDoc = WatsonDocuments[i].document;
-                        imageDoc = imageDoc.replace("http://10.110.88.131:8080", "https://watson-wdc01.ihost.com");
-                        imageHTML = IMAGE(imageDoc);*/
 
                         if (opt.indexOf("Corals of the World") > -1){
                             var coral = split[1].split(".")[0]
@@ -190,7 +178,7 @@
                 }
                 document.getElementById("watson_results").innerHTML = filler;
                 show('loading', false);
-            });        
+            }); 
     });
     
     $(document).on('click', "#animal_selection", function(evt){
