@@ -38,36 +38,37 @@ var eolDataFile = (function(){
              async: false,
              success: function(imgdata){
                 console.log(id);
+                if (imgdata["dataObjects"][2] !== undefined){
+                    link += imgdata["dataObjects"][2]["eolMediaURL"];
+                    if (link === undefined){
+                    link = "";
+                    }
+                    description += imgdata["dataObjects"][0]["description"];
+                    scientificName += imgdata["scientificName"];
+                    for (var i in imgdata["vernacularNames"])
+                    {
+                         if((imgdata["vernacularNames"][i]["language"]==="en")&& (imgdata["vernacularNames"][i]["eol_preferred"]===true)){
+                           commonName +=  imgdata["vernacularNames"][i]["vernacularName"];
+                         }
+                    }
+                    commonName=commonName.charAt(0).toUpperCase() + commonName.slice(1);
+                    document.getElementById("fishimg").innerHTML ="<img src ="+link+">";
 
-                link += imgdata["dataObjects"][2]["eolMediaURL"];
-                if (link === undefined){
-                link = "";
-                }
-                description += imgdata["dataObjects"][0]["description"];
-                scientificName += imgdata["scientificName"];
-                for (var i in imgdata["vernacularNames"])
-                {
-                     if((imgdata["vernacularNames"][i]["language"]==="en")&& (imgdata["vernacularNames"][i]["eol_preferred"]===true)){
-                       commonName +=  imgdata["vernacularNames"][i]["vernacularName"];
-                     }
-                }
-                commonName=commonName.charAt(0).toUpperCase() + commonName.slice(1);
-                document.getElementById("fishimg").innerHTML ="<img src ="+link+">";
-
-                document.getElementById("SpeciesName").innerHTML = "<div class=\"widget-container left-receptacle\"></div> <div class=\"widget-container right-receptacle\"></div> <div class=\"text-container\"><br/><b><i> "+scientificName+"</i></b></div><br/>";
-                document.getElementById("CommonName").innerHTML = "<div class=\"widget-container left-receptacle\"></div> <div class=\"widget-container right-receptacle\"></div> <div class=\"text-container\"><b> "+commonName+"</b></div><br/>";
-                document.getElementById("Description").innerHTML = "<div class=\"widget-container left-receptacle\"></div> <div class=\"widget-container right-receptacle\"></div> <div class=\"text-container\"> "+description+"</div>";
-                for(var i =0;i<toxicList.length;i++){
-//                     startPoint = 0;
-//                     while(startPoint<description.length && description.indexOf(toxicList[i],startPoint)!=-1){
-                    if(description.indexOf(toxicList[i],startPoint)>=startPoint){
-//                        startPoint = description.indexOf(toxicList[i]);
-                       toxicCount+=1;
-                     }
-//                 }
-            }
-                if(toxicCount>=1){
-                    toxic=true;
+                    document.getElementById("SpeciesName").innerHTML = "<div class=\"widget-container left-receptacle\"></div> <div class=\"widget-container right-receptacle\"></div> <div class=\"text-container\"><br/><b><i> "+scientificName+"</i></b></div><br/>";
+                    document.getElementById("CommonName").innerHTML = "<div class=\"widget-container left-receptacle\"></div> <div class=\"widget-container right-receptacle\"></div> <div class=\"text-container\"><b> "+commonName+"</b></div><br/>";
+                    document.getElementById("Description").innerHTML = "<div class=\"widget-container left-receptacle\"></div> <div class=\"widget-container right-receptacle\"></div> <div class=\"text-container\"> "+description+"</div>";
+                    for(var i =0;i<toxicList.length;i++){
+    //                     startPoint = 0;
+    //                     while(startPoint<description.length && description.indexOf(toxicList[i],startPoint)!=-1){
+                        if(description.indexOf(toxicList[i],startPoint)>=startPoint){
+    //                        startPoint = description.indexOf(toxicList[i]);
+                           toxicCount+=1;
+                         }
+    //                 }
+                    }
+                    if(toxicCount>=1){
+                        toxic=true;
+                    }
                 }
              },
              error: function (errorMessage) {
