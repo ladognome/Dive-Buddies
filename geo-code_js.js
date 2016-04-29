@@ -1,8 +1,3 @@
-// ==ClosureCompiler==
-// @output_file_name default.js
-// @compilation_level ADVANCED_OPTIMIZATIONS
-// ==/ClosureCompiler==
-
 var f = null;
 
 var GeoCode = (function() {
@@ -16,22 +11,7 @@ var GeoCode = (function() {
       var specificList_LordHowe_fish = ['Pterois volitans','Coris bulbifrons','Seriola lalandi','Thalassoma lunare','Canthigaster callisternus','Pseudanthias pictilis','Alutarius macracanthus','Trachypoma macracanthus','Xyrichtys niger','Epinephelus undulatostriatus'];
       var specificList_LordHowe_mollusks = ['Aequipecten nux','Sepioteuthis lessoniana','Aplysia dactylomela','Conus arenatus','Ctena bella','Diacria trispinosa','Sepia bandensis','Drupa morum','Engina zonalis','Umbraculum sinicum'];
       var specificList_LordHowe_corals = ['Acropora glauca','Acropora solitaryensis','Madrepora hyacinthus','Parascolymia vitiensis','Acropora yongei','Acanthastrea bowerbanki','Isopora palifera','Goniopora lichen','Stephanocyathus spiniger','Pavona minuta'];
-      
-
-
-
-      function getBase64Image(img) {
-        var canvas = document.createElement("canvas");
-        canvas.width = img.width;
-        canvas.height = img.height;
-
-        var ctx = canvas.getContext("2d");
-        ctx.drawImage(img, 0, 0);
-
-        var dataURL = canvas.toDataURL("image/png");
-
-        return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
-      }
+    
     // function init(){
     //         var address = (document.getElementById('enterlocation'));
     //         var  autocomplete = new google.maps.places.Autocomplete(address);
@@ -95,6 +75,20 @@ var GeoCode = (function() {
 
     //   } 
 
+    function getBase64Image(img) {
+    var canvas = document.createElement("canvas");
+    canvas.width = img.width;
+    canvas.height = img.height;
+
+    var ctx = canvas.getContext("2d");
+    ctx.drawImage(img, 0, 0);
+
+    var dataURL = canvas.toDataURL("image/png");
+
+    return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+    }
+
+
     $('#fishTab').click(function(){
         console.log("clicked fish");
         document.getElementById('fishTab').style.backgroundColor = "lightblue";
@@ -109,16 +103,14 @@ var GeoCode = (function() {
         else{
               for (var i in fishList) {
 
-                      try{
-                      species_id = eolDataFile.getSpeciesID(fishList[i]);
-                      imageURL=eolDataFile.getImageInfo(species_id);
-                      imageHTML = "<img src=\""+imageURL[0]+"\" width=\"150\"></img>";
-                      }
-                      catch(err){
-                        imageURL = 'images/imageNotFound.png';
-                        imageHTML = "<img src=\""+imageURL+"\" width=\"150\"></img>";
-                      }
-                  if(imageURL[1]===true)
+                      var object = JSON.parse(localStorage.getItem(fishList[i])),
+                      dateString = object.timestamp,
+                      now = new Date().getTime().toString();
+                      // compareTime(dateString, now);
+
+                      imageHTML = "<img src=\""+object.imgSrc+"\" width=\"150\"></img>";
+
+                  if(object.toxicity== 1)
                   {filler += "<li id=\"animal_selection\" class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p><i>"+fishList[i]+"</i></a><img width=\"25px\" height=\"25px\" src=\"http://i.imgur.com/gEieG9S.png\"></img></li>\n";
                   }
                     else{
@@ -220,6 +212,11 @@ var GeoCode = (function() {
           lat = localStorage.getItem("lat");
           long = localStorage.getItem("long");
 
+          string_there_mollusks = String(lat) + ' ' + String(long) + ' ' + 'mollusks';
+          string_there_fish = String(lat) + ' ' + String(long) + ' ' + 'fish';
+          string_there_corals = String(lat) + ' ' + String(long) + ' ' + 'corals';
+
+          
 
           if (long>158 && long<160 && lat>-32 && lat<-31){
                 console.log("coordinates match");
@@ -230,13 +227,10 @@ var GeoCode = (function() {
           else{
             flag=false;
           }
+          if (localStorage.getItem(string_there_corals)===null && localStorage.getItem(string_there_fish)===null && localStorage.getItem(string_there_mollusks)===null){
 
-          string_there_mollusks = String(lat) + ' ' + String(long) + ' ' + 'mollusks';
-          string_there_fish = String(lat) + ' ' + String(long) + ' ' + 'fish';
-          string_there_corals = String(lat) + ' ' + String(long) + ' ' + 'corals';
+          
 
-        if (localStorage.getItem(string_there_corals)===null && localStorage.getItem(string_there_fish)===null && localStorage.getItem(string_there_mollusks)===null){
-          console.log("Generating new local storage item");
           fo = 'POLYGON(('+ String(Math.floor(long -1)) +' '+ String(Math.floor(lat -1)) + ',' + ' '+ String(Math.floor(long -1)) + ' ' +String(Math.floor(lat +1)) + ',' + ' '+ String(Math.floor(long +1)) + ' ' + String(Math.floor(lat +1)) + ',' + ' ' + String(Math.floor(long +1)) + ' ' + String(Math.floor(lat -1)) + ',' + ' ' + String(Math.floor(long -1)) + ' ' + String(Math.floor(lat -1)) + '))'; 
       $.ajax({
              type: "GET",
@@ -332,6 +326,7 @@ var GeoCode = (function() {
                         //     continue;
                         // }
                         // scientifNameList.push(data.results[i]['species']);
+                        // imgFinalUrl = ''
                           if (scientifNameList[i][2] == 'Mollusca' && mollusksList.length < 10 && scientifNameList[i][1]!='undefined'){
                               mollusksList.push(scientifNameList[i][1])
                               try{
@@ -339,7 +334,7 @@ var GeoCode = (function() {
                                 imageURL=eolDataFile.getImageInfo(species_id);
                                 // imageHTML = "<img src=\""+imageURL[0]+"\" width=\"150\"></img>";
                                 // imgFinalUrl=
-                                if (imageURL[1]===true){
+                                if imageURL[1]===true{
                                   toxicity = 1;
                                 }
                                 else{
@@ -358,6 +353,7 @@ var GeoCode = (function() {
 
                                     var object = {value:scientifNameList[i][1] , timestamp: new Date().getTime(), imgSrc:imgData, info:'hello',toxicity:toxicity}
                                 localStorage.setItem(scientifNameList[i][1], JSON.stringify(object));
+                              
                           }
                           else if(scientifNameList[i][2] == 'Chordata' && fishList.length < 10 && scientifNameList[i][1]!='undefined'){
                             fishList.push(scientifNameList[i][1])
@@ -366,7 +362,7 @@ var GeoCode = (function() {
                                 imageURL=eolDataFile.getImageInfo(species_id);
                                 // imageHTML = "<img src=\""+imageURL[0]+"\" width=\"150\"></img>";
                                 // imgFinalUrl=
-                                if (imageURL[1]===true){
+                                if imageURL[1]===true{
                                   toxicity = 1;
                                 }
                                 else{
@@ -427,7 +423,6 @@ var GeoCode = (function() {
                       console.log(scientifNameList[0]);
 
 
-
                       var string_here = String(lat) + ' ' + String(long) + ' ' + 'mollusks';
                       localStorage.setItem(string_here, mollusksList);
                       string_here = String(lat) + ' ' + String(long) + ' ' + 'fish';
@@ -435,7 +430,49 @@ var GeoCode = (function() {
                       string_here = String(lat) + ' ' + String(long) + ' ' + 'corals';
                       localStorage.setItem(string_here, coralsList);
                      
-                      
+                      // document.getElementById('fishTab').style.backgroundColor = "lightblue";
+                      // document.getElementById('mollusksTab').style.backgroundColor = "white";
+                      // document.getElementById('coralsTabs').style.backgroundColor = "white";
+                      // var index = 39;
+                      // filler = "";
+                      // if (fishList.length == 0){
+                      //   filler += "<li class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+"No Fishes Found"+"</i></a></li>\n";
+                      //   index++;
+                      // }
+                      // else{
+                      //       for (var i in fishList) {
+
+                                    
+                      //                   var object = JSON.parse(localStorage.getItem(fishList[i])),
+                      //                   dateString = object.timestamp,
+                      //                   now = new Date().getTime().toString();
+                      //                   // compareTime(dateString, now);
+
+
+
+                      //                   imageHTML = "<img src=\""+object.imgSrc+"\" width=\"150\"></img>";
+
+
+                      //               // species_id = eolDataFile.getSpeciesID(fishList[i]);
+                      //               // imageURL=eolDataFile.getImageInfo(species_id);
+                      //               // imageHTML = "<img src=\""+imageURL[0]+"\" width=\"150\"></img>";
+                                    
+                                    
+
+
+
+                                    
+
+                      //               if(object.toxicity== 1)
+                      //               {filler += "<li id=\"animal_selection\" class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p><i>"+fishList[i]+"</i></a><img width=\"25px\" height=\"25px\" src=\"http://i.imgur.com/gEieG9S.png\"></img></li>\n";
+                      //               }
+                      //               else{
+                      //               filler += "<li id=\"animal_selection\" class=\"widget uib_w_"+String(index)+"\" data-uib=\"app_framework/listitem\" data-ver=\"1\"><a>"+imageHTML+"<p><i>"+fishList[i]+"</i></a></li>\n";
+                      //               }
+
+                      //           }
+                      //     }
+                      //     document.getElementById("list_display").innerHTML = filler;
                         
                     //  var filler = "";
                     //   var index = 39;
@@ -455,14 +492,17 @@ var GeoCode = (function() {
                  console.log("Problem");
              }
             // }
-            });}
+            });
+}
       else{
-        console.log("using old local storage item");
         fishList = localStorage.getItem(string_there_fish);
         coralsList=localStorage.getItem(string_there_corals);
         mollusksList=localStorage.getItem(string_there_mollusks);
-      }
+
+        }
         });
+      }
+  
     // $.ajax({
     //     url: 'http://api.iobis.org/',
     //     type: 'GET',
@@ -474,7 +514,7 @@ var GeoCode = (function() {
 
     // });
     
-    
+
     return {
     // codeAddress: codeAddress,
     // init: init
