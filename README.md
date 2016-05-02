@@ -5,8 +5,8 @@ This application was made to help recreational divers better understand their un
 Installation
 ---------------------------------------------
 We have provided two APK files (for armv7 & x86 processors). Please select the one that will work for your Android phone. If you are not sure which one will work, you can try them both and only one will be able to install. You will have to enable installation from "unknown sources" under Security in your settings. Since we worked with Intel XDK**, we can create other installation files for various browsers, the Windows phone, or the iPhone, if requested.
-
 In order to start the application, make sure that your GPS is turned on, in addition to either your data or wifi.
+If this does not work, you can run the emulator for this code through Intel XDK itself.
 
 Start-Up
 ---------------------------------------------
