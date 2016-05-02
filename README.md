@@ -4,13 +4,15 @@ This application was made to help recreational divers better understand their un
 
 Installation
 ---------------------------------------------
-We have provided two APK files (for armv7 & x86 processors). Please select the one that will work for your Android phone. If you are not sure which one will work, you can try them both and only one will be able to install. You will have to enable installation from "unknown sources" under Security in your settings. Since we worked with Intel XDK**, we can create other installation files for various browsers, the Windows phone, or the iPhone, if requested.
-In order to start the application, make sure that your GPS is turned on, in addition to either your data or wifi.
+We have provided two APK files (for armv7 & x86 processors). Please select the one that will work for your Android phone. If you are not sure which one will work, you can try them both and only one will be able to install. You will have to enable installation from "unknown sources" under Security in your settings. Since we worked with Intel XDK**, we can create other installation files for various browsers, the Windows phone, or the iPhone, if requested. In order to start the application, make sure that your GPS is turned on, in addition to either your data or wifi.
+
 If this does not work, you can run the emulator for this code through Intel XDK itself.
 
 Start-Up
 ---------------------------------------------
 After you install the application, click on the splashscreen to go to the next page where you will enter your location or choose to use your current location. Based on the location you select, you will see a list of dive spots in that area. Select the one you want, and you will be taken to a screen where you can choose to enter the pre-dive or post-dive portions of the application, in addition to a few external links.
+
+We worked with three main locations: Lord Howe Island, Australia; Curaçao; and Gray’s Reef Sanctuary, GA, USA.
 
 Pre-Dive
 ---------------------------------------------
@@ -18,7 +20,7 @@ Given the location of the dive spot you selected, the application will display a
 
 Post-Dive
 ---------------------------------------------
-Type a textual description of an animal and it will give a list of possible marine animals that it thinks you might have seen. Again, clicking on an animal will provide more information about that animal. This section of the application does not take into account your location, as of yet.
+Type a textual description of an animal and it will give a list of possible marine animals that it thinks you might have seen. Again, clicking on an animal will provide more information about that animal. This section of the application does not take into account your location, as of yet, and will return animals from the three locations mentioned above.
 
 
 **Intel XDK is under Copyright © 2012-2015, Intel Corporation. All rights reserved.
