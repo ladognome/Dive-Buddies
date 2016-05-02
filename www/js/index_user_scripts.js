@@ -9,8 +9,8 @@
      /* graphic button  #StartPageGraphic */
     $(document).on("click", "#StartPageGraphic", function(evt)
     {
-         show('loading', false); 
-         GeoCodeGoogle.init(); 
+        show('loading', false); 
+        GeoCodeGoogle.init(); 
         GeoCodeGoogle.codeAddress();
         activate_subpage("#page_100_31"); 
     });
