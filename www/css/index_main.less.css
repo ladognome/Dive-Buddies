@@ -860,3 +860,6 @@ body:not(#afui) .upage-outer {
   display: inline;
   width: 50%;
 }
+.selection_text {
+  text-align: center;
+}

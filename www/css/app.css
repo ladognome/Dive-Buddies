@@ -48,7 +48,7 @@ body {
     width: 100vw;
     height: 100vh;
     background-color: rgba(192, 192, 192, 0.5);
-    background-image: url("http://i.stack.imgur.com/MnyxU.gif");
+    background-image: url("../images/loading.gif");
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -79,9 +79,6 @@ li{
     font-size: 16px;
 }
 #animal_selection{
-    background-color: azure;
+    background-color: azure!important;
 
-}
-#mainpage, #page_100_31, #DiveModeSelect,#PreDive, #PostDive,#DiveSpotSelect,#PostDiveResults{
-    background-image: url("www/images/divebuddiesbg.png");
 }
