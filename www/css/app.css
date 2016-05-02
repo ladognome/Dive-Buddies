@@ -82,3 +82,6 @@ li{
     background-color: azure!important;
 
 }
+.predivebutton:target, .predivebutton:active, .postdivebutton:target, .postdivebutton:active, .linkButtons:target, .linkButtons:active{
+    background-color: #000099!important;
+}

@@ -4,17 +4,36 @@
 <!--To change the contents of this file, see the documentation on the intelxdk.config.additions.xml file.-->
 <intelxdk:version value="1.0"/>
 <intelxdk:cordova-cli version="5.1.1"/>
-<name>DiveBuddies</name>
+<name>Dive Buddies</name>
 <description>Template to develop a packaged mobile web app using the App Designer UI editor.</description>
 <author>Intel XDK</author>
 <content src="index.html"/>
 <access origin="*"/>
-<intelxdk:plugin intelxdk:name="Cordova Legacy Whitelist Plugin (added by Intel XDK)" intelxdk:value="cordova-plugin-legacy-whitelist" intelxdk:version="1.1.1"/>
+<allow-intent href="*"/>
+<allow-navigation href="*"/>
+<icon platform="android" src="images/LDPI.png" density="ldpi" width="36" height="36"/>
+<icon platform="android" src="images/MDPI.png" density="mdpi" width="48" height="48"/>
+<icon platform="android" src="images/HDPI.png" density="hdpi" width="72" height="72"/>
+<icon platform="android" src="images/XHDPI.png" density="xhdpi" width="96" height="96"/>
+<splash platform="android" src="images/LDPI_splash.png" density="ldpi" width="320" height="426" orientation="portrait"/>
+<splash platform="android" src="images/MDPI_splash.png" density="mdpi" width="320" height="470" orientation="portrait"/>
+<splash platform="android" src="images/HDPI_splash.png" density="hdpi" width="480" height="640" orientation="portrait"/>
+<splash platform="android" src="images/XHDPI_splash.png" density="xhdpi" width="720" height="960" orientation="portrait"/>
+<intelxdk:plugin intelxdk:name="Network Information" intelxdk:value="cordova-plugin-network-information" intelxdk:version="1.1.0" intelxdk:checksum="4be25d7c" intelxdk:type="file"/>
+<intelxdk:plugin intelxdk:name="Geolocation" intelxdk:value="cordova-plugin-geolocation" intelxdk:version="1.0.1" intelxdk:checksum="2cb3083e" intelxdk:type="file"/>
+<intelxdk:plugin intelxdk:name="Splashscreen" intelxdk:value="cordova-plugin-splashscreen" intelxdk:version="2.1.0" intelxdk:checksum="a7fdb6d9" intelxdk:type="file"/>
+<intelxdk:plugin intelxdk:name="InAppBrowser" intelxdk:value="cordova-plugin-inappbrowser" intelxdk:version="1.1.0" intelxdk:checksum="20096ffc" intelxdk:type="file"/>
+<intelxdk:plugin intelxdk:name="Cordova Network Whitelist Plugin (added by Intel XDK)" intelxdk:value="cordova-plugin-whitelist" intelxdk:version="1.2.1"/>
 <preference name="android-minSdkVersion" value="14"/>
 <preference name="android-targetSdkVersion" value="19"/>
 <preference name="android-installLocation" value="auto"/>
+<preference name="android-signed" value="true"/>
+<preference name="Fullscreen" value="true"/>
+<platform name="android">
+<preference name="Orientation" value="portrait"/></platform>
 <intelxdk:crosswalk version="15"/>
-<!--creationInfo:{"src":"webapp/sample-app-framework/sample.zip","projectTypeName":"com.intel.xdk.projecttype.webapp"}-->
+<preference name="splashscreen" value="splash"/>
+<!--creationInfo:{"src":"webapp/sample-app-framework/sample.zip","projectTypeName":"com.intel.xdk.projecttype.jsapp"}-->
 <preference name="debuggable" value="false"/>
 <platform name="ios">
     <!-- below requires the splash screen plugin -->
