@@ -1,0 +1,44 @@
+{
+    "!name": "cordova-plugin-geolocation",
+    "!define": {
+        "!modules": {
+            "Coordinates": {
+                "!type": "fn(lat: ?, lng: ?, alt: ?, acc: ?, head: ?, vel: ?, altacc: ?)",
+                "heading": "number"
+            },
+            "PositionError": {
+                "PERMISSION_DENIED": "number",
+                "POSITION_UNAVAILABLE": "number",
+                "TIMEOUT": "number",
+                "!type": "fn(code: number, message: string)"
+            },
+            "Position": {
+                "!type": "fn(coords: ?, timestamp: +Date)",
+                "coords": "+!modules.Coordinates",
+                "timestamp": "+Date"
+            },
+            "geolocation": {
+                "lastPosition": "+!modules.Position",
+                "getCurrentPosition": "fn(successCallback: ?, errorCallback: ?, options: !modules.geolocation.getCurrentPosition.!2) -> !modules.geolocation.getCurrentPosition.!ret",
+                "watchPosition": "fn(successCallback: ?, errorCallback: ?, options: !modules.geolocation.getCurrentPosition.!2)",
+                "clearWatch": "fn(id: ?)"
+            }
+        },
+        "!modules.Position.!0": {},
+        "!modules.geolocation.getCurrentPosition.!2": {
+            "maximumAge": "number",
+            "enableHighAccuracy": "bool",
+            "timeout": "number"
+        },
+        "!modules.geolocation.getCurrentPosition.!ret": {
+            "timer": "bool"
+        }
+    },
+    "!plugin-version": "1.0.1",
+    "Coordinates": "!modules.Coordinates",
+    "PositionError": "!modules.PositionError",
+    "Position": "!modules.Position",
+    "navigator": {
+        "geolocation": "!modules.geolocation"
+    }
+}
